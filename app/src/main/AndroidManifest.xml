@@ -21,5 +21,17 @@
                 android:resource="@xml/widget_info_clock_hydrogen" />
         </receiver>
 
+        <receiver
+            android:name=".widgets.NerverSettleWidget"
+            android:label="Nerver Settle">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_nerver_settle" />
+        </receiver>
+
     </application>
 </manifest>

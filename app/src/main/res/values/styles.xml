@@ -1,5 +1,10 @@
 <resources>
 
     <!-- Base application theme. -->
+    <style name="shadowStyle">
+        <item name="android:shadowColor">#66000000</item>
+        <item name="android:shadowDy">5.25</item>
+        <item name="android:shadowRadius">6.0</item>
+    </style>
 
 </resources>

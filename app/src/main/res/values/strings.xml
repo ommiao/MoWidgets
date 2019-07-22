@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MoWidgets</string>
+    <string name="date_format_clock_nerver_settle">EE, MMM d</string>
 </resources>
