@@ -1,0 +1,25 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="cn.ommiao.mowidgets">
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="false"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <receiver
+            android:name=".widgets.HydrogenClockWidget"
+            android:label="Hydrogen Clock">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_clock_hydrogen" />
+        </receiver>
+
+    </application>
+</manifest>
