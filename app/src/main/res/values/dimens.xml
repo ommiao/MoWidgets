@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="time_text_size_nerver_settle">14sp</dimen>
+    <dimen name="widget_margin_google_now">8dp</dimen>
 </resources>
