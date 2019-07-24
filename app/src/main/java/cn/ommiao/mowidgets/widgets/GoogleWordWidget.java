@@ -17,9 +17,17 @@ public class GoogleWordWidget extends BaseWidget {
 
     public static RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId){
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_google_word);
-        String colorStr = SPUtil.getString(context.getString(R.string.label_google_word) + appWidgetId, context.getString(R.string.default_google_word_color));
-        Log.d("ommiao", "update: color is " + colorStr);
+        String colorStr;
+        int alpha = 255;
+        String colorStrOrigin = SPUtil.getString(context.getString(R.string.label_google_word) + appWidgetId, context.getString(R.string.default_google_word_color));
+        if(colorStrOrigin.length() == 9){
+            colorStr = "#" + colorStrOrigin.substring(3);
+            alpha = Integer.parseInt(colorStrOrigin.substring(1, 3), 16);
+        } else {
+            colorStr = colorStrOrigin;
+        }
         views.setInt(R.id.iv_google_word, "setColorFilter", Color.parseColor(colorStr));
+        views.setInt(R.id.iv_google_word, "setAlpha", alpha);
         return views;
     }
 }
