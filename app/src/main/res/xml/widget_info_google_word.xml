@@ -7,4 +7,5 @@
     android:previewImage="@drawable/word_google"
     android:updatePeriodMillis="0"
     android:widgetCategory="home_screen"
-    android:resizeMode="vertical|horizontal"/>
+    android:resizeMode="vertical|horizontal"
+    android:configure="cn.ommiao.mowidgets.configs.GoogleWordConfigActivity"/>

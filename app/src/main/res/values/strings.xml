@@ -7,4 +7,11 @@
     <string name="label_google_now">Google Now</string>
     <string name="label_google_word">Google Word</string>
     <string name="colon">:</string>
+    <string name="title_google_word_settings">Google Word Settings</string>
+    <string name="txt_confirm">确定</string>
+    <string name="txt_cancel">取消</string>
+    <string name="txt_color">颜色</string>
+    <string name="color_prefix">#</string>
+    <string name="please_input_valid_color">请输入正确的颜色值</string>
+    <string name="default_google_word_color">#ffffff</string>
 </resources>

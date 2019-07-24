@@ -3,11 +3,9 @@ package cn.ommiao.mowidgets.widgets;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.provider.AlarmClock;
-import android.provider.CalendarContract;
 import android.widget.RemoteViews;
 
 import java.util.Calendar;
@@ -23,11 +21,11 @@ public abstract class BaseWidget extends AppWidgetProvider {
     }
 
     private void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-        RemoteViews remoteViews = update(context);
+        RemoteViews remoteViews = update(context, appWidgetManager, appWidgetId);
         appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
     }
 
-    protected abstract RemoteViews update(Context context);
+    protected abstract RemoteViews update(Context context, AppWidgetManager appWidgetManager, int appWidgetId);
 
     protected int getWeekNo(){
         Calendar calendar = Calendar.getInstance();

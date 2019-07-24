@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">#00D8A0</color>
+    <color name="configBgColor">@android:color/white</color>
     <color name="transWhite">#EEFFFFFF</color>
     <color name="greyWhite">#AAAAAA</color>
+    <color name="dividerColor">#EEEEEE</color>
+    <color name="configTitleColor">#000000</color>
+    <color name="cancelColor">#000000</color>
+    <color name="colorLabel">#111111</color>
 </resources>

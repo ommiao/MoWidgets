@@ -2,4 +2,9 @@
 <resources>
     <dimen name="time_text_size_nerver_settle">14sp</dimen>
     <dimen name="widget_margin_google_now">8dp</dimen>
+    <dimen name="dialog_margin">20dp</dimen>
+    <dimen name="configTitleSize">16sp</dimen>
+    <dimen name="configFooterSize">16sp</dimen>
+    <dimen name="labelSize">15sp</dimen>
+    <dimen name="editSize">15sp</dimen>
 </resources>
