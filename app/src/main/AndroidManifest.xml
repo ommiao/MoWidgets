@@ -11,7 +11,7 @@
 
         <receiver
             android:name=".widgets.HydrogenClockWidget"
-            android:label="Hydrogen Clock">
+            android:label="@string/label_hydrogen_clock">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
@@ -22,18 +22,20 @@
         </receiver>
 
         <receiver
-            android:name=".widgets.NerverSettleWidget"
-            android:label="Nerver Settle">
+            android:name=".widgets.NeverSettleWidget"
+            android:label="@string/label_never_settle">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
             <meta-data
                 android:name="android.appwidget.provider"
-                android:resource="@xml/widget_info_nerver_settle" />
+                android:resource="@xml/widget_info_never_settle" />
         </receiver>
 
-        <receiver android:name=".widgets.GoogleNowWidget">
+        <receiver
+            android:name=".widgets.GoogleNowWidget"
+            android:label="@string/label_google_now">
         <intent-filter>
             <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
         </intent-filter>
@@ -41,6 +43,18 @@
         <meta-data
             android:name="android.appwidget.provider"
             android:resource="@xml/widget_info_google_now" />
+        </receiver>
+
+        <receiver
+            android:name=".widgets.GoogleWordWidget"
+            android:label="@string/label_google_word">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_google_word" />
         </receiver>
 
     </application>

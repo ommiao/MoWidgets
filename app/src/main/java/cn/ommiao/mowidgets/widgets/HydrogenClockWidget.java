@@ -17,6 +17,9 @@ public class HydrogenClockWidget extends BaseWidget {
         String week = getDisplayWeekEn();
         views.setTextViewText(R.id.date, date);
         views.setTextViewText(R.id.week, week);
+        views.setOnClickPendingIntent(R.id.tv_hour, getAlarmIntent(context));
+        views.setOnClickPendingIntent(R.id.tv_colon, getAlarmIntent(context));
+        views.setOnClickPendingIntent(R.id.tv_minute, getAlarmIntent(context));
         return views;
     }
 

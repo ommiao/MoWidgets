@@ -1,12 +1,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/clock"
+    android:id="@+id/hydrogen_clock"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="bottom">
 
     <TextClock
+        android:id="@+id/tv_hour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
@@ -18,17 +19,19 @@
         android:format12Hour="hh"/>
 
     <TextView
+        android:id="@+id/tv_colon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="3dp"
         android:layout_marginEnd="3dp"
-        android:text=":"
+        android:text="@string/colon"
         android:gravity="center"
         android:fontFamily="@font/agency_m"
         android:textSize="50sp"
         android:textColor="@android:color/white"/>
 
     <TextClock
+        android:id="@+id/tv_minute"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
@@ -49,6 +52,7 @@
         android:layout_marginEnd="12dp"/>
 
     <LinearLayout
+        android:id="@+id/ll_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"

@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">MoWidgets</string>
-    <string name="date_format_clock_nerver_settle">EE, MMM d</string>
+    <string name="date_format_clock_never_settle">EE, MMM d</string>
     <string name="slogan_google_now">Say \"OK Google&#8230;\"</string>
+    <string name="label_hydrogen_clock">Hydrogen Clock</string>
+    <string name="label_never_settle">Never Settle</string>
+    <string name="label_google_now">Google Now</string>
+    <string name="label_google_word">Google Word</string>
+    <string name="colon">:</string>
 </resources>

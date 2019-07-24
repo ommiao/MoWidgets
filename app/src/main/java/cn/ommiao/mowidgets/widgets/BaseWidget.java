@@ -1,8 +1,13 @@
 package cn.ommiao.mowidgets.widgets;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.provider.AlarmClock;
+import android.provider.CalendarContract;
 import android.widget.RemoteViews;
 
 import java.util.Calendar;
@@ -109,6 +114,11 @@ public abstract class BaseWidget extends AppWidgetProvider {
                 return "Dec";
         }
         return "Null";
+    }
+
+    protected PendingIntent getAlarmIntent(Context context){
+        Intent alarmIntent = new Intent(AlarmClock.ACTION_SHOW_ALARMS);
+        return PendingIntent.getActivity(context, 0, alarmIntent, 0);
     }
 
 }
