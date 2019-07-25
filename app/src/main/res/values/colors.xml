@@ -8,4 +8,7 @@
     <color name="configTitleColor">#000000</color>
     <color name="cancelColor">#000000</color>
     <color name="colorLabel">#111111</color>
+    <color name="colorosTimeColor">#ffffff</color>
+    <color name="colorosDateColor">#ffffff</color>
+    <color name="colorosWeatherColor">#ffffff</color>
 </resources>

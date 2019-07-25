@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <TextClock
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/colorosTimeSize"
+        android:fontFamily="@font/pfdin_b"
+        android:textColor="@color/colorosTimeColor"
+        android:format12Hour="hh\nmm"
+        android:format24Hour="HH\nmm"
+        android:letterSpacing="0.08"
+        tools:text="12\n34"/>
+
+    <TextClock
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/colorosDateSize"
+        android:textColor="@color/colorosDateColor"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="15dp"
+        android:format12Hour="EEE M月d日"
+        android:format24Hour="EEE M月d日"
+        tools:text="周四 7月25日"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/colorosWeatherSize"
+        android:textColor="@color/colorosWeatherColor"
+        android:layout_marginStart="3dp"
+        android:text="多云 29℃"/>
+
+</LinearLayout>

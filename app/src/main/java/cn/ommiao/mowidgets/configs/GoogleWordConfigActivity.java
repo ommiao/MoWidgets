@@ -1,7 +1,6 @@
 package cn.ommiao.mowidgets.configs;
 
 import android.graphics.Color;
-import android.util.Log;
 import android.widget.RemoteViews;
 
 import cn.ommiao.mowidgets.R;
@@ -52,7 +51,6 @@ public class GoogleWordConfigActivity extends BaseConfigActivity {
 
     @Override
     protected void saveConfigs() {
-        Log.d("ommiao", "saveConfigs: color is #" + colorStr);
         SPUtil.put(getString(R.string.label_google_word) + widgetId, "#" + colorStr);
     }
 

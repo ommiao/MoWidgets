@@ -7,4 +7,7 @@
     <dimen name="configFooterSize">16sp</dimen>
     <dimen name="labelSize">15sp</dimen>
     <dimen name="editSize">15sp</dimen>
+    <dimen name="colorosTimeSize">70sp</dimen>
+    <dimen name="colorosDateSize">14sp</dimen>
+    <dimen name="colorosWeatherSize">14sp</dimen>
 </resources>

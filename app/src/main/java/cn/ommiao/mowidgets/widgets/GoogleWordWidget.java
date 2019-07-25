@@ -3,7 +3,6 @@ package cn.ommiao.mowidgets.widgets;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.graphics.Color;
-import android.util.Log;
 import android.widget.RemoteViews;
 
 import cn.ommiao.mowidgets.R;
