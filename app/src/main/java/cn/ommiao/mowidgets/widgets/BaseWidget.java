@@ -9,23 +9,38 @@ import android.provider.AlarmClock;
 import android.widget.RemoteViews;
 
 import java.util.Calendar;
+import java.util.HashMap;
+
+import cn.ommiao.network.BaseRequest;
+import cn.ommiao.network.RequestCallBack;
+import cn.ommiao.network.RequestInBase;
+import cn.ommiao.network.RequestOutBase;
+import okhttp3.ResponseBody;
+import retrofit2.Response;
 
 public abstract class BaseWidget extends AppWidgetProvider {
 
+    private boolean needRequestData = false;
+
+    private HashMap<RequestInBase, RequestCallBack<? extends RequestOutBase>> callBacks = new HashMap<>();
+    private HashMap<String, BaseRequest<? extends RequestInBase, ? extends RequestOutBase>> requests = new HashMap<>();
+
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
+        needRequestData = true;
         // There may be multiple widgets active, so update all of them
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId);
         }
+        needRequestData = false;
     }
 
-    private void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-        RemoteViews remoteViews = update(context, appWidgetManager, appWidgetId);
+    protected void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
+        RemoteViews remoteViews = getRemoteViews(context, appWidgetManager, appWidgetId);
         appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
     }
 
-    protected abstract RemoteViews update(Context context, AppWidgetManager appWidgetManager, int appWidgetId);
+    public abstract RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId);
 
     protected int getWeekNo(){
         Calendar calendar = Calendar.getInstance();
@@ -117,6 +132,55 @@ public abstract class BaseWidget extends AppWidgetProvider {
     protected PendingIntent getAlarmIntent(Context context){
         Intent alarmIntent = new Intent(AlarmClock.ACTION_SHOW_ALARMS);
         return PendingIntent.getActivity(context, 0, alarmIntent, 0);
+    }
+
+    private <OUT extends RequestOutBase> RequestCallBack<OUT> arrangeCallback(final String url, final RequestInBase in, final RequestCallBack<OUT> callBack) {
+        RequestCallBack<OUT> temp = new RequestCallBack<OUT>() {
+            @Override
+            public void onSuccess(OUT result, String str, Response<ResponseBody> res) {
+                callBacks.remove(in);
+                requests.remove(url);
+                callBack.onSuccess(result, str, res);
+            }
+
+            @Override
+            public void onError(int code, String message, Throwable err) {
+                callBacks.remove(in);
+                requests.remove(url);
+                callBack.onError(code,  message, err);
+            }
+
+            @Override
+            public void onCancel() {
+                callBacks.remove(in);
+                requests.remove(url);
+                callBack.onCancel();
+            }
+        };
+        callBacks.put(in, temp);
+        return temp;
+    }
+
+    protected  <IN extends RequestInBase, OUT extends RequestOutBase> void newCall(BaseRequest<IN, OUT> request, IN in, RequestCallBack<OUT> callBack) {
+        request.params(in).build(arrangeCallback(request.getUrl(), in, callBack));
+        BaseRequest old = requests.put(request.getUrl(), request.call());
+        if (old != null) {
+            RequestCallBack oldCallback = callBacks.remove(old.getParam());
+            if (oldCallback != null) {
+                //won't receive http callback.
+                old.clearCallback();
+                //send cancel callback.
+                oldCallback.onCancel();
+            }
+        }
+    }
+
+    public void setNeedRequestData(boolean needRequestData) {
+        this.needRequestData = needRequestData;
+    }
+
+    protected boolean needRequestData(){
+        return needRequestData;
     }
 
 }

@@ -8,7 +8,7 @@ import cn.ommiao.mowidgets.R;
 
 public class NeverSettleWidget extends BaseWidget {
     @Override
-    protected RemoteViews update(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
+    public RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         return new RemoteViews(context.getPackageName(), R.layout.widget_clock_never_settle);
     }
 }

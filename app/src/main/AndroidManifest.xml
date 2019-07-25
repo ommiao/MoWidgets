@@ -2,6 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="cn.ommiao.mowidgets">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".App"
         android:allowBackup="false"
@@ -72,6 +74,10 @@
 
         <activity
             android:name=".configs.GoogleWordConfigActivity"
+            android:theme="@style/FakeDialog"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".configs.ColorosClockConfigActivity"
             android:theme="@style/FakeDialog"
             android:screenOrientation="portrait"/>
     </application>

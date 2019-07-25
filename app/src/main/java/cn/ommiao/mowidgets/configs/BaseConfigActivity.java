@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.databinding.ActivityConfigBinding;
 import cn.ommiao.mowidgets.databinding.LayoutColorSelectorBinding;
+import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
 
 public abstract class BaseConfigActivity extends Activity {
 
@@ -98,6 +99,13 @@ public abstract class BaseConfigActivity extends Activity {
 
     protected LayoutColorSelectorBinding getColorSelectorBinding(String label){
         LayoutColorSelectorBinding binding = DataBindingUtil.bind(LayoutInflater.from(this).inflate(R.layout.layout_color_selector, null));
+        assert binding != null;
+        binding.tvLabel.setText(label);
+        return binding;
+    }
+
+    protected LayoutEdittextBinding getEdittextBinding(String label){
+        LayoutEdittextBinding binding = DataBindingUtil.bind(LayoutInflater.from(this).inflate(R.layout.layout_edittext, null));
         assert binding != null;
         binding.tvLabel.setText(label);
         return binding;

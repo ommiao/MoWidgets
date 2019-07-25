@@ -9,7 +9,7 @@ import cn.ommiao.mowidgets.R;
 public class HydrogenClockWidget extends BaseWidget {
 
     @Override
-    protected RemoteViews update(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
+    public RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_clock_hydrogen);
         String year = getYearStr();
         String month = getDisplaySimpleMonthEn();
@@ -23,5 +23,4 @@ public class HydrogenClockWidget extends BaseWidget {
         views.setOnClickPendingIntent(R.id.tv_minute, getAlarmIntent(context));
         return views;
     }
-
 }

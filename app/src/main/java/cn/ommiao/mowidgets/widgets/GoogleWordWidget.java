@@ -10,11 +10,7 @@ import cn.ommiao.mowidgets.utils.SPUtil;
 
 public class GoogleWordWidget extends BaseWidget {
     @Override
-    protected RemoteViews update(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-        return getRemoteViews(context, appWidgetManager, appWidgetId);
-    }
-
-    public static RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId){
+    public RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_google_word);
         String colorStr;
         int alpha = 255;

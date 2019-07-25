@@ -56,6 +56,6 @@ public class GoogleWordConfigActivity extends BaseConfigActivity {
 
     @Override
     protected RemoteViews getRemoteViews() {
-        return GoogleWordWidget.getRemoteViews(this, appWidgetManager, widgetId);
+        return new GoogleWordWidget().getRemoteViews(this, appWidgetManager, widgetId);
     }
 }
