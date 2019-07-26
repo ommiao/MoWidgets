@@ -6,6 +6,6 @@ import retrofit2.Response;
 
 public interface RequestCallBack<D extends RequestOutBase> {
     void onSuccess(D res, String str, Response<ResponseBody> result);
-    void onError(int code, String message, Throwable err);
+    void onError(D res, int code, String message, Throwable err);
     void onCancel();
 }

@@ -19,13 +19,15 @@ import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.databinding.ActivityConfigBinding;
 import cn.ommiao.mowidgets.databinding.LayoutColorSelectorBinding;
 import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
+import cn.ommiao.mowidgets.widgets.BaseWidget;
 
-public abstract class BaseConfigActivity extends Activity {
+public abstract class BaseConfigActivity<W extends BaseWidget> extends Activity {
 
     private ArrayList<View> configList = new ArrayList<>();
     private ActivityConfigBinding mBinding;
     protected int widgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
     protected AppWidgetManager appWidgetManager;
+    private W widget;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +45,12 @@ public abstract class BaseConfigActivity extends Activity {
         initWindow();
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_config);
         appWidgetManager = AppWidgetManager.getInstance(this);
+        widget = getTargetWidget();
         initConfigViews();
         initViews();
     }
+
+    protected abstract W getTargetWidget();
 
     private void initWindow(){
         Window window = getWindow();
@@ -79,11 +84,17 @@ public abstract class BaseConfigActivity extends Activity {
         Intent reslut = new Intent();
         reslut.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, widgetId);
         setResult(RESULT_OK, reslut);
-        appWidgetManager.updateAppWidget(widgetId, getRemoteViews());
+        if(widget.needRequestData()){
+            widget.getDataRequester(this, appWidgetManager, widgetId).request();
+        } else {
+            appWidgetManager.updateAppWidget(widgetId, getRemoteViews());
+        }
         finish();
     }
 
-    protected abstract RemoteViews getRemoteViews();
+    protected RemoteViews getRemoteViews(){
+        return getTargetWidget().getRemoteViews(this, appWidgetManager, widgetId);
+    }
 
     protected abstract void initConfigViews();
 

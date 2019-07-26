@@ -1,28 +1,25 @@
 package cn.ommiao.mowidgets.configs;
 
-import android.widget.RemoteViews;
-
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
 import cn.ommiao.mowidgets.utils.SPUtil;
 import cn.ommiao.mowidgets.utils.ToastUtil;
 import cn.ommiao.mowidgets.widgets.ColorosClockWidget;
 
-public class ColorosClockConfigActivity extends BaseConfigActivity {
+public class ColorosClockConfigActivity extends BaseConfigActivity<ColorosClockWidget> {
 
     private LayoutEdittextBinding edittextBinding;
     private String area;
 
     @Override
-    protected RemoteViews getRemoteViews() {
-        ColorosClockWidget widget = new ColorosClockWidget();
-        widget.setNeedRequestData(true);
-        return widget.getRemoteViews(this, appWidgetManager, widgetId);
+    protected ColorosClockWidget getTargetWidget() {
+        return new ColorosClockWidget();
     }
 
     @Override
     protected void initConfigViews() {
         edittextBinding = getEdittextBinding(getString(R.string.txt_area));
+        edittextBinding.et.setHint(R.string.hint_et_location);
         addConfigView(edittextBinding.getRoot());
     }
 

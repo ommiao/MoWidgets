@@ -25,7 +25,7 @@ public class WeatherNowCall extends BaseRequest<WeatherNowIn, WeatherNowOut> {
     @Override
     protected String extraHandle(String res) {
         WeatherNowOut out = WeatherNowOut.fromJson(res, WeatherNowOut.class);
-        if(res.contains("now")){
+        if("ok".equals(out.getStatus())){
             out.setCode(ErrorCodes.SUCCESS);
         } else {
             out.setCode(-1);

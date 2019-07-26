@@ -32,6 +32,8 @@
             android:layout_weight="1"
             android:textSize="@dimen/editSize"
             android:digits="0123456789abcdef"
+            android:singleLine="true"
+            android:maxLength="8"
             android:background="@null"
             style="@null"/>
 

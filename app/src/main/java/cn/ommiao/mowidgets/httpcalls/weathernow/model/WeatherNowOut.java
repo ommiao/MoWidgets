@@ -14,4 +14,8 @@ public class WeatherNowOut extends RequestOutBase {
         return HeWeather6.get(0).getNow();
     }
 
+    public String getStatus(){
+        return HeWeather6.get(0).getStatus();
+    }
+
 }

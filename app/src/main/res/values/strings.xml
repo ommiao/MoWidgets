@@ -18,4 +18,6 @@
     <string name="title_coloros_clock_settings">Coloros Clock Settings</string>
     <string name="txt_area">地区</string>
     <string name="please_input_valid_area">请输入有效地区</string>
+    <string name="hint_et_location">西安市</string>
+    <string name="hint_et_color">(ff)ffffff</string>
 </resources>

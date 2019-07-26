@@ -1,7 +1,6 @@
 package cn.ommiao.mowidgets.configs;
 
 import android.graphics.Color;
-import android.widget.RemoteViews;
 
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.databinding.LayoutColorSelectorBinding;
@@ -9,7 +8,7 @@ import cn.ommiao.mowidgets.utils.SPUtil;
 import cn.ommiao.mowidgets.utils.ToastUtil;
 import cn.ommiao.mowidgets.widgets.GoogleWordWidget;
 
-public class GoogleWordConfigActivity extends BaseConfigActivity {
+public class GoogleWordConfigActivity extends BaseConfigActivity<GoogleWordWidget> {
 
     private LayoutColorSelectorBinding colorSelectorBinding;
     private String colorStr;
@@ -17,6 +16,7 @@ public class GoogleWordConfigActivity extends BaseConfigActivity {
     @Override
     protected void initConfigViews() {
         colorSelectorBinding = getColorSelectorBinding(getString(R.string.txt_color));
+        colorSelectorBinding.etColor.setHint(R.string.hint_et_color);
         colorSelectorBinding.ivTest.setOnClickListener(view -> {
             colorStr = colorSelectorBinding.etColor.getText().toString().trim();
             if(isColorValid(colorStr)){
@@ -55,7 +55,8 @@ public class GoogleWordConfigActivity extends BaseConfigActivity {
     }
 
     @Override
-    protected RemoteViews getRemoteViews() {
-        return new GoogleWordWidget().getRemoteViews(this, appWidgetManager, widgetId);
+    protected GoogleWordWidget getTargetWidget() {
+        return new GoogleWordWidget();
     }
+
 }
