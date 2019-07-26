@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextClock
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/pocoTimeColor"
+            android:textSize="@dimen/pocoTimeSize"
+            android:format12Hour="hh:mm"
+            android:format24Hour="HH:mm"
+            android:fontFamily="@font/poco_num"
+            tools:text="12:34"/>
+
+        <TextClock
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/pocoDateColor"
+            android:textSize="@dimen/pocoDateSize"
+            android:format12Hour="@string/date_format_poco_clock"
+            android:format24Hour="@string/date_format_poco_clock"
+            android:maxLines="1"
+            tools:text="Friday, July 26"/>
+    </LinearLayout>
+</RelativeLayout>

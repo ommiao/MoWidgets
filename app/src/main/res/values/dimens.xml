@@ -10,4 +10,6 @@
     <dimen name="colorosTimeSize">70sp</dimen>
     <dimen name="colorosDateSize">14sp</dimen>
     <dimen name="colorosWeatherSize">14sp</dimen>
+    <dimen name="pocoTimeSize">65sp</dimen>
+    <dimen name="pocoDateSize">14sp</dimen>
 </resources>

@@ -15,7 +15,7 @@ public class ColorosClockWidget extends BaseWidget<ColorosClockRequester> {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_clock_coloros);
         String tmp = SPUtil.getString(context.getString(R.string.label_coloros_clock) + appWidgetId + "_tmp", "26");
         String conTxt = SPUtil.getString(context.getString(R.string.label_coloros_clock) + appWidgetId + "_con_txt", "晴");
-        String weatherStr = conTxt + " " + tmp + "℃";
+        String weatherStr = conTxt + "   " + tmp + "℃";
         views.setTextViewText(R.id.tv_weather, weatherStr);
         return views;
     }

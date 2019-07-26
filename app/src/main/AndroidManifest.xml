@@ -72,6 +72,18 @@
                 android:resource="@xml/widget_info_coloros_clock" />
         </receiver>
 
+        <receiver
+            android:name=".widgets.PocoClockWidget"
+            android:label="@string/label_poco_clock">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_poco_clock" />
+        </receiver>
+
         <activity
             android:name=".configs.GoogleWordConfigActivity"
             android:theme="@style/FakeDialog"

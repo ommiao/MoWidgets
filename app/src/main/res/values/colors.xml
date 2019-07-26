@@ -11,4 +11,6 @@
     <color name="colorosTimeColor">#ffffff</color>
     <color name="colorosDateColor">#ffffff</color>
     <color name="colorosWeatherColor">#ffffff</color>
+    <color name="pocoTimeColor">#ffffff</color>
+    <color name="pocoDateColor">#ffffff</color>
 </resources>

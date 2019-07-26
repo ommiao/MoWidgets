@@ -21,10 +21,10 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/colorosDateSize"
         android:textColor="@color/colorosDateColor"
-        android:layout_marginStart="3dp"
-        android:layout_marginTop="15dp"
-        android:format12Hour="EEE M月d日"
-        android:format24Hour="EEE M月d日"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="18dp"
+        android:format12Hour="@string/date_format_coloros_clock"
+        android:format24Hour="@string/date_format_coloros_clock"
         tools:text="周四 7月25日"/>
 
     <TextView
@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:textSize="@dimen/colorosWeatherSize"
         android:textColor="@color/colorosWeatherColor"
-        android:layout_marginStart="3dp"
+        android:layout_marginStart="5dp"
         android:text="多云 29℃"/>
 
 </LinearLayout>
