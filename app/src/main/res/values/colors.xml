@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#00D8A0</color>
+    <color name="colorPrimary">#FF0000</color>
+    <color name="colorPrimaryLight">#FF5555</color>
     <color name="configBgColor">@android:color/white</color>
     <color name="transWhite">#EEFFFFFF</color>
     <color name="greyWhite">#AAAAAA</color>

@@ -23,4 +23,11 @@
     <string name="label_poco_clock">Poco Clock</string>
     <string name="date_format_poco_clock">EEEE, MMMM dd</string>
     <string name="date_format_coloros_clock">EEE \ \ MMM d</string>
+    <string name="label_three_lines_word">Three Lines Word</string>
+    <string name="title_three_lines_word">Three Lines Word Settings</string>
+    <string name="please_input_at_least_one_line">请至少输入一行文字</string>
+    <string name="default_word_line1">第一行</string>
+    <string name="default_word_line2">第二行</string>
+    <string name="default_word_line3">第三行</string>
+    <string name="default_three_line_word_color">#ffffff</string>
 </resources>

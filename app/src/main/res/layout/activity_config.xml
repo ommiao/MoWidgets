@@ -5,75 +5,92 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/bg_activity_config">
-
-        <TextView
-            android:id="@+id/tv_config_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:layout_margin="15dp"
-            android:textSize="@dimen/configTitleSize"
-            android:textColor="@color/configTitleColor"
-            tools:text="Widget Settings"/>
+        android:orientation="vertical">
 
         <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/dividerColor"/>
-
-        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:padding="15dp">
-
-            <LinearLayout
-                android:id="@+id/ll_config"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-            </LinearLayout>
-
-        </ScrollView>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:background="@color/dividerColor"/>
+            android:layout_weight="1"/>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_margin="15dp"
-            android:gravity="end">
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:background="@drawable/bg_activity_config">
 
             <TextView
-                android:id="@+id/tv_confirm"
-                android:layout_width="wrap_content"
+                android:id="@+id/tv_config_title"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/txt_confirm"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/configFooterSize"
-                android:layout_marginEnd="20dp"/>
+                android:ellipsize="end"
+                android:layout_margin="15dp"
+                android:textSize="@dimen/configTitleSize"
+                android:textColor="@color/configTitleColor"
+                tools:text="Widget Settings"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/dividerColor"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:scrollbarThumbVertical="@drawable/shape_scroll_bar">
+
+                <LinearLayout
+                    android:id="@+id/ll_config"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/configListPadding"
+                    android:orientation="vertical">
+
+                </LinearLayout>
+
+            </ScrollView>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/dividerColor"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="15dp"
+                android:gravity="end">
+
+                <TextView
+                    android:id="@+id/tv_confirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_confirm"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/configFooterSize"
+                    android:layout_marginEnd="20dp"/>
 
 
-            <TextView
-                android:id="@+id/tv_cancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/txt_cancel"
-                android:textColor="@color/cancelColor"
-                android:textSize="@dimen/configFooterSize"
-                android:layout_marginEnd="15dp"/>
+                <TextView
+                    android:id="@+id/tv_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/txt_cancel"
+                    android:textColor="@color/cancelColor"
+                    android:textSize="@dimen/configFooterSize"
+                    android:layout_marginEnd="15dp"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
     </LinearLayout>
-
-
 
 </layout>

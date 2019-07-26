@@ -16,16 +16,6 @@ public class GoogleWordConfigActivity extends BaseConfigActivity<GoogleWordWidge
     @Override
     protected void initConfigViews() {
         colorSelectorBinding = getColorSelectorBinding(getString(R.string.txt_color));
-        colorSelectorBinding.etColor.setHint(R.string.hint_et_color);
-        colorSelectorBinding.ivTest.setOnClickListener(view -> {
-            colorStr = colorSelectorBinding.etColor.getText().toString().trim();
-            if(isColorValid(colorStr)){
-                int color = Color.parseColor("#" + colorStr);
-                colorSelectorBinding.ivColor.setColorFilter(color);
-            } else {
-                ToastUtil.shortToast(R.string.please_input_valid_color);
-            }
-        });
         addConfigView(colorSelectorBinding.getRoot());
     }
 
@@ -43,10 +33,6 @@ public class GoogleWordConfigActivity extends BaseConfigActivity<GoogleWordWidge
             ToastUtil.shortToast(R.string.please_input_valid_color);
             return false;
         }
-    }
-
-    private boolean isColorValid(String colorStr){
-        return colorStr.length() == 6 || colorStr.length() == 8;
     }
 
     @Override

@@ -133,4 +133,22 @@ public abstract class BaseWidget<R extends BaseRequester> extends AppWidgetProvi
         return null;
     }
 
+    protected String getColorByHex(String hex){
+        String colorStr;
+        if(hex.length() == 9){
+            colorStr = "#" + hex.substring(3);
+        } else {
+            colorStr = hex;
+        }
+        return colorStr;
+    }
+
+    protected int getAlphaByHex(String hex){
+        int alpha = 255;
+        if(hex.length() == 9){
+            alpha = Integer.parseInt(hex.substring(1, 3), 16);
+        }
+        return alpha;
+    }
+
 }

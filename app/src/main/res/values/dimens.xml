@@ -12,4 +12,6 @@
     <dimen name="colorosWeatherSize">14sp</dimen>
     <dimen name="pocoTimeSize">65sp</dimen>
     <dimen name="pocoDateSize">14sp</dimen>
+    <dimen name="configListDividerHeight">9dp</dimen>
+    <dimen name="configListPadding">15dp</dimen>
 </resources>

@@ -3,7 +3,10 @@ package cn.ommiao.mowidgets.configs;
 import android.app.Activity;
 import android.appwidget.AppWidgetManager;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.InputType;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,12 +16,15 @@ import android.widget.RemoteViews;
 
 import androidx.databinding.DataBindingUtil;
 
+import com.orhanobut.logger.Logger;
+
 import java.util.ArrayList;
 
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.databinding.ActivityConfigBinding;
 import cn.ommiao.mowidgets.databinding.LayoutColorSelectorBinding;
 import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
+import cn.ommiao.mowidgets.utils.ToastUtil;
 import cn.ommiao.mowidgets.widgets.BaseWidget;
 
 public abstract class BaseConfigActivity<W extends BaseWidget> extends Activity {
@@ -59,12 +65,13 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends Activity 
         int screenHeight = metrics.heightPixels;
         WindowManager.LayoutParams params = window.getAttributes();
         params.width = screenWidth - getResources().getDimensionPixelSize(R.dimen.dialog_margin) * 2;
-        params.height = screenHeight / 2;
+        params.height = screenHeight;
         window.setAttributes(params);
     }
 
     private void initViews(){
         mBinding.tvConfigTitle.setText(getConfigTitle());
+        Logger.d(configList.size());
         for (View view : configList){
             mBinding.llConfig.addView(view);
         }
@@ -101,6 +108,15 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends Activity 
     protected abstract String getConfigTitle();
 
     protected void addConfigView(View view){
+        boolean needDivider = configList.size() > 0;
+        if(needDivider){
+            addConfigItemDivider();
+        }
+        configList.add(view);
+    }
+
+    private void addConfigItemDivider() {
+        View view = LayoutInflater.from(this).inflate(R.layout.layout_config_list_divider, null);
         configList.add(view);
     }
 
@@ -112,13 +128,44 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends Activity 
         LayoutColorSelectorBinding binding = DataBindingUtil.bind(LayoutInflater.from(this).inflate(R.layout.layout_color_selector, null));
         assert binding != null;
         binding.tvLabel.setText(label);
+        binding.etColor.setHint(R.string.hint_et_color);
+        binding.ivTest.setOnClickListener(view -> {
+            String colorStr = binding.etColor.getText().toString().trim();
+            if(isColorValid(colorStr)){
+                int color = Color.parseColor("#" + colorStr);
+                binding.ivColor.setColorFilter(color);
+            } else {
+                ToastUtil.shortToast(R.string.please_input_valid_color);
+            }
+        });
         return binding;
     }
 
+    protected boolean isColorValid(String colorStr){
+        return colorStr.length() == 6 || colorStr.length() == 8;
+    }
+
     protected LayoutEdittextBinding getEdittextBinding(String label){
+        return getEdittextBinding(label, 30);
+    }
+
+    protected LayoutEdittextBinding getEdittextBinding(String label, int maxLength){
         LayoutEdittextBinding binding = DataBindingUtil.bind(LayoutInflater.from(this).inflate(R.layout.layout_edittext, null));
         assert binding != null;
         binding.tvLabel.setText(label);
+        binding.et.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+        return binding;
+    }
+
+    protected LayoutEdittextBinding getNumberEdittextBinding(String label){
+        LayoutEdittextBinding binding = getEdittextBinding(label);
+        binding.et.setInputType(InputType.TYPE_CLASS_PHONE);
+        return binding;
+    }
+
+    protected LayoutEdittextBinding getNumberEdittextBinding(String label, int maxLength){
+        LayoutEdittextBinding binding = getEdittextBinding(label, maxLength);
+        binding.et.setInputType(InputType.TYPE_CLASS_PHONE);
         return binding;
     }
 
