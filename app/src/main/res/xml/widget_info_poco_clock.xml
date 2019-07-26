@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:initialKeyguardLayout="@layout/widget_clock_coloros"
-    android:initialLayout="@layout/widget_clock_coloros"
-    android:minHeight="60dp"
+    android:initialKeyguardLayout="@layout/widget_clock_poco"
+    android:initialLayout="@layout/widget_clock_poco"
+    android:minHeight="40dp"
     android:minWidth="150dp"
     android:previewImage="@drawable/preview_poco_clock"
     android:updatePeriodMillis="0"
