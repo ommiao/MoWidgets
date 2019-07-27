@@ -4,9 +4,11 @@ import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.graphics.Color;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.widget.RemoteViews;
 
 import cn.ommiao.mowidgets.R;
+import cn.ommiao.mowidgets.configs.BaseConfigActivity;
 import cn.ommiao.mowidgets.utils.SPUtil;
 
 public class ThreeLinesWordWidget extends BaseWidget {
@@ -23,6 +25,8 @@ public class ThreeLinesWordWidget extends BaseWidget {
         views.setTextViewTextSize(R.id.tv_line1, TypedValue.COMPLEX_UNIT_SP, SPUtil.getInt(context.getString(R.string.label_three_lines_word) + appWidgetId + "_size_line1", 14));
         views.setTextViewTextSize(R.id.tv_line2, TypedValue.COMPLEX_UNIT_SP, SPUtil.getInt(context.getString(R.string.label_three_lines_word) + appWidgetId + "_size_line2", 14));
         views.setTextViewTextSize(R.id.tv_line3, TypedValue.COMPLEX_UNIT_SP, SPUtil.getInt(context.getString(R.string.label_three_lines_word) + appWidgetId + "_size_line3", 14));
+        int alignment = SPUtil.getInt(context.getString(R.string.label_three_lines_word) + appWidgetId + "_alignment", Gravity.START);
+        views.setInt(R.id.ll_lines, "setGravity", alignment);
         return views;
     }
 

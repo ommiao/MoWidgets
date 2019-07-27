@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RadioTextView">
+        <attr name="normalBackground" format="reference"/>
+        <attr name="checkedBackground" format="reference"/>
+        <attr name="normalTextColor" format="reference"/>
+        <attr name="checkedTextColor" format="reference"/>
+        <attr name="groupId" format="string"/>
+        <attr name="checked" format="boolean"/>
+    </declare-styleable>
+</resources>

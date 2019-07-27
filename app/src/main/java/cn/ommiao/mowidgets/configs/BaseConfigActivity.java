@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -22,10 +23,12 @@ import java.util.ArrayList;
 
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.databinding.ActivityConfigBinding;
+import cn.ommiao.mowidgets.databinding.LayoutAlignmentBinding;
 import cn.ommiao.mowidgets.databinding.LayoutColorSelectorBinding;
 import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
 import cn.ommiao.mowidgets.utils.ToastUtil;
 import cn.ommiao.mowidgets.widgets.BaseWidget;
+import cn.ommiao.mowidgets.widgets.others.RadioTextView;
 
 public abstract class BaseConfigActivity<W extends BaseWidget> extends Activity {
 
@@ -167,6 +170,30 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends Activity 
         LayoutEdittextBinding binding = getEdittextBinding(label, maxLength);
         binding.et.setInputType(InputType.TYPE_CLASS_PHONE);
         return binding;
+    }
+
+    protected LayoutAlignmentBinding getAlignmentBinding(String label){
+        RadioTextView.clearGroup(label);
+        LayoutAlignmentBinding binding = DataBindingUtil.bind(LayoutInflater.from(this).inflate(R.layout.layout_alignment, null));
+        assert binding != null;
+        binding.tvLabel.setText(label);
+        binding.tvAlignLeft.setGroupId(label);
+        binding.tvAlignMiddle.setGroupId(label);
+        binding.tvAlignRight.setGroupId(label);
+        return binding;
+    }
+
+    protected int getAlignment(String alignmentStr){
+        switch (alignmentStr){
+            case "居左":
+                return Gravity.START;
+            case "居中":
+                return Gravity.CENTER_HORIZONTAL;
+            case "居右":
+                return Gravity.END;
+            default:
+                return Gravity.START;
+        }
     }
 
 }

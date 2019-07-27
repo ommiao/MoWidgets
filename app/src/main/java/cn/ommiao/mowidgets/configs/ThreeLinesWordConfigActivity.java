@@ -1,12 +1,14 @@
 package cn.ommiao.mowidgets.configs;
 
 import cn.ommiao.mowidgets.R;
+import cn.ommiao.mowidgets.databinding.LayoutAlignmentBinding;
 import cn.ommiao.mowidgets.databinding.LayoutColorSelectorBinding;
 import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
 import cn.ommiao.mowidgets.utils.SPUtil;
 import cn.ommiao.mowidgets.utils.StringUtil;
 import cn.ommiao.mowidgets.utils.ToastUtil;
 import cn.ommiao.mowidgets.widgets.ThreeLinesWordWidget;
+import cn.ommiao.mowidgets.widgets.others.RadioTextView;
 
 public class ThreeLinesWordConfigActivity extends BaseConfigActivity<ThreeLinesWordWidget> {
 
@@ -16,6 +18,7 @@ public class ThreeLinesWordConfigActivity extends BaseConfigActivity<ThreeLinesW
     private String colorLine1, colorLine2, colorLine3;
     private LayoutEdittextBinding bindingSize1, bindingSize2, bindingSize3;
     private int sizeLine1, sizeLine2, sizeLine3;
+    private String alignment;
 
     @Override
     protected ThreeLinesWordWidget getTargetWidget() {
@@ -27,21 +30,32 @@ public class ThreeLinesWordConfigActivity extends BaseConfigActivity<ThreeLinesW
         bindingLine1 = getEdittextBinding("第一行文字");
         bindingLine2 = getEdittextBinding("第二行文字");
         bindingLine3 = getEdittextBinding("第三行文字");
+        bindingLine1.et.setText("我");
+        bindingLine2.et.setText("只有在做一件事的时候才会想你");
+        bindingLine3.et.setText("那就是  呼吸");
         addConfigView(bindingLine1.getRoot());
         addConfigView(bindingLine2.getRoot());
         addConfigView(bindingLine3.getRoot());
         bindingColor1 = getColorSelectorBinding("第一行颜色");
         bindingColor2 = getColorSelectorBinding("第二行颜色");
         bindingColor3= getColorSelectorBinding("第三行颜色");
+        bindingColor1.etColor.setText("ffffffff");
+        bindingColor2.etColor.setText("ffffffff");
+        bindingColor3.etColor.setText("ffffffff");
         addConfigView(bindingColor1.getRoot());
         addConfigView(bindingColor2.getRoot());
         addConfigView(bindingColor3.getRoot());
         bindingSize1 = getNumberEdittextBinding("第一行大小", 2);
         bindingSize2 = getNumberEdittextBinding("第二行大小", 2);
         bindingSize3 = getNumberEdittextBinding("第三行大小", 2);
+        bindingSize1.et.setText("32");
+        bindingSize2.et.setText("24");
+        bindingSize3.et.setText("28");
         addConfigView(bindingSize1.getRoot());
         addConfigView(bindingSize2.getRoot());
         addConfigView(bindingSize3.getRoot());
+        LayoutAlignmentBinding alignmentBinding = getAlignmentBinding("文字对齐方式");
+        addConfigView(alignmentBinding.getRoot());
     }
 
     @Override
@@ -88,6 +102,7 @@ public class ThreeLinesWordConfigActivity extends BaseConfigActivity<ThreeLinesW
             ToastUtil.shortToast("请输入正确的文字大小（第三行）");
             return false;
         }
+        alignment = RadioTextView.getCheckedString("文字对齐方式");
         return true;
     }
 
@@ -102,6 +117,7 @@ public class ThreeLinesWordConfigActivity extends BaseConfigActivity<ThreeLinesW
         SPUtil.put(getString(R.string.label_three_lines_word) + widgetId + "_size_line1", sizeLine1);
         SPUtil.put(getString(R.string.label_three_lines_word) + widgetId + "_size_line2", sizeLine2);
         SPUtil.put(getString(R.string.label_three_lines_word) + widgetId + "_size_line3", sizeLine3);
+        SPUtil.put(getString(R.string.label_three_lines_word) + widgetId + "_alignment", getAlignment(alignment));
     }
 
 }

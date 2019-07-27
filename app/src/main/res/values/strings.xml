@@ -30,4 +30,7 @@
     <string name="default_word_line2">第二行</string>
     <string name="default_word_line3">第三行</string>
     <string name="default_three_line_word_color">#ffffff</string>
+    <string name="alignment_left">居左</string>
+    <string name="alignment_middle">居中</string>
+    <string name="alignment_right">居右</string>
 </resources>
