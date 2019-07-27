@@ -6,9 +6,10 @@ import cn.ommiao.network.RequestInBase;
 public class WeatherNowIn extends RequestInBase {
 
     private String location;
-    private String key = Constant.WEATHER_KEY;
+    private String key;
 
-    public WeatherNowIn(String location) {
+    public WeatherNowIn(String location, String key) {
         this.location = location;
+        this.key = key;
     }
 }
