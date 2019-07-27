@@ -99,16 +99,19 @@
         <activity
             android:name=".configs.GoogleWordConfigActivity"
             android:theme="@style/FakeDialog"
+            android:exported="true"
             android:screenOrientation="portrait"/>
 
         <activity
             android:name=".configs.ColorosClockConfigActivity"
             android:theme="@style/FakeDialog"
+            android:exported="true"
             android:screenOrientation="portrait"/>
 
         <activity
             android:name=".configs.ThreeLinesWordConfigActivity"
             android:theme="@style/FakeDialog"
+            android:exported="true"
             android:screenOrientation="portrait"/>
     </application>
 </manifest>
