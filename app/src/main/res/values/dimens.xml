@@ -14,4 +14,7 @@
     <dimen name="pocoDateSize">14sp</dimen>
     <dimen name="configListDividerHeight">9dp</dimen>
     <dimen name="configListPadding">15dp</dimen>
+    <dimen name="iuniDateLarge">42sp</dimen>
+    <dimen name="iuniSuffix">25sp</dimen>
+    <dimen name="iuniDateWeekSize">16sp</dimen>
 </resources>

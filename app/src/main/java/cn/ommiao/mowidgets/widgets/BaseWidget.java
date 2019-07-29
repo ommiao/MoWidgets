@@ -3,10 +3,14 @@ package cn.ommiao.mowidgets.widgets;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.provider.AlarmClock;
 import android.widget.RemoteViews;
+
+import com.orhanobut.logger.Logger;
 
 import java.util.Calendar;
 
@@ -62,6 +66,16 @@ public abstract class BaseWidget<R extends BaseRequester> extends AppWidgetProvi
         return d >= 10 ? String.valueOf(d) : "0" + d;
     }
 
+    protected int getMinute(){
+        Calendar calendar = Calendar.getInstance();
+        return calendar.get(Calendar.MINUTE);
+    }
+
+    protected String getMinuteWith0(){
+        int m = getMinute();
+        return m >= 10 ? String.valueOf(m) : "0" + m;
+    }
+
     protected String getDisplayWeekEn() {
         return getDisplayWeekEn(getWeekNo());
     }
@@ -82,6 +96,30 @@ public abstract class BaseWidget<R extends BaseRequester> extends AppWidgetProvi
                 return "Saturday";
             case 0:
                 return "Sunday";
+        }
+        return "Null...";
+    }
+
+    protected String getDisplayWeekCn() {
+        return getDisplayWeekCn(getWeekNo());
+    }
+
+    protected String getDisplayWeekCn(int w) {
+        switch (w){
+            case 1:
+                return "星期一";
+            case 2:
+                return "星期二";
+            case 3:
+                return "星期三";
+            case 4:
+                return "星期四";
+            case 5:
+                return "星期五";
+            case 6:
+                return "星期六";
+            case 0:
+                return "星期日";
         }
         return "Null...";
     }
@@ -120,6 +158,40 @@ public abstract class BaseWidget<R extends BaseRequester> extends AppWidgetProvi
         return "Null";
     }
 
+    protected String getDisplayMonthEn() {
+        return getDisplayMonthEn(getMonthNo());
+    }
+
+    protected String getDisplayMonthEn(int m) {
+        switch (m){
+            case 1:
+                return "January";
+            case 2:
+                return "February";
+            case 3:
+                return "March";
+            case 4:
+                return "April";
+            case 5:
+                return "May";
+            case 6:
+                return "June";
+            case 7:
+                return "July";
+            case 8:
+                return "August";
+            case 9:
+                return "September";
+            case 10:
+                return "October";
+            case 11:
+                return "November";
+            case 12:
+                return "December";
+        }
+        return "Null";
+    }
+
     protected PendingIntent getAlarmIntent(Context context){
         Intent alarmIntent = new Intent(AlarmClock.ACTION_SHOW_ALARMS);
         return PendingIntent.getActivity(context, 0, alarmIntent, 0);
@@ -149,6 +221,24 @@ public abstract class BaseWidget<R extends BaseRequester> extends AppWidgetProvi
             alpha = Integer.parseInt(hex.substring(1, 3), 16);
         }
         return alpha;
+    }
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        Logger.d(intent.getAction());
+        if(needListenTimeChanged()){
+            context.getApplicationContext().registerReceiver(this, new IntentFilter(Intent.ACTION_TIME_TICK));
+        }
+        if(Intent.ACTION_TIME_CHANGED.equals(intent.getAction()) || Intent.ACTION_TIME_TICK.equals(intent.getAction())){
+            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+            onUpdate(context, appWidgetManager, appWidgetManager.getAppWidgetIds(new ComponentName(context, this.getClass())));
+        } else {
+            super.onReceive(context, intent);
+        }
+    }
+
+    protected boolean needListenTimeChanged(){
+        return false;
     }
 
 }

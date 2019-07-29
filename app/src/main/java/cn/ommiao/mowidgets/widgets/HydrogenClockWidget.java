@@ -23,4 +23,9 @@ public class HydrogenClockWidget extends BaseWidget {
         views.setOnClickPendingIntent(R.id.tv_minute, getAlarmIntent(context));
         return views;
     }
+
+    @Override
+    protected boolean needListenTimeChanged() {
+        return true;
+    }
 }

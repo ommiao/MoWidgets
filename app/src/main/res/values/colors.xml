@@ -16,4 +16,5 @@
     <color name="pocoDateColor">#ffffff</color>
     <color name="defaultNormalRadioTextColor">#666666</color>
     <color name="defaultCheckedRadioTextColor">#ffffff</color>
+    <color name="colorIuniDateColor">@android:color/white</color>
 </resources>

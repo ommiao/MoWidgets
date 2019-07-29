@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tv_week"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_a"
+        android:textSize="@dimen/iuniDateLarge"
+        android:textColor="@color/colorIuniDateColor"
+        tools:text="Monday"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="-8dp">
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_a"
+            android:textSize="@dimen/iuniDateLarge"
+            android:textColor="@color/colorIuniDateColor"
+            tools:text="July 29"/>
+
+        <TextView
+            android:id="@+id/tv_suffix"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/roboto_a"
+            android:textSize="@dimen/iuniSuffix"
+            android:textColor="@color/colorIuniDateColor"
+            android:layout_gravity="top"
+            tools:text="th"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_date_and_week"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorIuniDateColor"
+        android:textSize="@dimen/iuniDateWeekSize"
+        tools:text="7月29日  星期一"/>
+
+</LinearLayout>

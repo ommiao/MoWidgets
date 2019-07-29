@@ -17,6 +17,7 @@
             android:label="@string/label_hydrogen_clock">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET"/>
             </intent-filter>
 
             <meta-data
@@ -94,6 +95,19 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info_three_lines_word" />
+        </receiver>
+
+        <receiver
+            android:name=".widgets.IUNIDateWidget"
+            android:label="@string/label_iuni_date">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_iuni_date" />
         </receiver>
 
         <activity

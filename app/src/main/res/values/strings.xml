@@ -35,4 +35,5 @@
     <string name="alignment_right">居右</string>
     <string name="key_secret">ermiao</string>
     <string name="please_input_display_word">请输入显示文字</string>
+    <string name="label_iuni_date">IUNI Date</string>
 </resources>
