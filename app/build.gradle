@@ -23,6 +23,14 @@ android {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
     }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            if (outputFileName.endsWith('.apk')) {
+                outputFileName = "MoWidgets_" + versionName + ".apk"
+            }
+        }
+    }
 }
 
 dependencies {
