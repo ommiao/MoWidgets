@@ -17,4 +17,5 @@
     <dimen name="iuniDateLarge">42sp</dimen>
     <dimen name="iuniSuffix">25sp</dimen>
     <dimen name="iuniDateWeekSize">16sp</dimen>
+    <dimen name="qTextClockWordSize">24sp</dimen>
 </resources>

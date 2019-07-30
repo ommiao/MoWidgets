@@ -10,7 +10,9 @@ public class PocoClockWidget extends BaseWidget {
 
     @Override
     public RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-        return new RemoteViews(context.getPackageName(), R.layout.widget_clock_poco);
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_clock_poco);
+        views.setOnClickPendingIntent(R.id.rl_poco_clock, getAlarmIntent(context));
+        return views;
     }
 
 }

@@ -132,6 +132,7 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends Activity 
         assert binding != null;
         binding.tvLabel.setText(label);
         binding.etColor.setHint(R.string.hint_et_color);
+        binding.etColor.setText(R.string.default_et_color);
         binding.ivTest.setOnClickListener(view -> {
             String colorStr = binding.etColor.getText().toString().trim();
             if(isColorValid(colorStr)){

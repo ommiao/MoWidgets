@@ -17,6 +17,8 @@ public class ColorosClockWidget extends BaseWidget<ColorosClockRequester> {
         String conTxt = SPUtil.getString(context.getString(R.string.label_coloros_clock) + appWidgetId + "_con_txt", "晴");
         String weatherStr = conTxt + "   " + tmp + "℃";
         views.setTextViewText(R.id.tv_weather, weatherStr);
+        views.setOnClickPendingIntent(R.id.tc_time, getAlarmIntent(context));
+        views.setOnClickPendingIntent(R.id.tc_date, getAlarmIntent(context));
         return views;
     }
 

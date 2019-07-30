@@ -36,4 +36,10 @@
     <string name="key_secret">ermiao</string>
     <string name="please_input_display_word">请输入显示文字</string>
     <string name="label_iuni_date">IUNI Date</string>
+    <string name="label_q_text_clock">Q Text Clock</string>
+    <string name="it_s">It’s</string>
+    <string name="default_et_color">ffffffff</string>
+    <string name="title_q_text_clock_settings">Q Text Clock Settings</string>
+    <string name="default_color_q_text_it_s">#f9cc88</string>
+    <string name="default_color_q_text_time">#ffffff</string>
 </resources>

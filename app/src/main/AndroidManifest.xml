@@ -110,6 +110,19 @@
                 android:resource="@xml/widget_info_iuni_date" />
         </receiver>
 
+        <receiver
+            android:name=".widgets.QTextClockWidget"
+            android:label="@string/label_q_text_clock">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_q_text_clock" />
+        </receiver>
+
         <activity
             android:name=".configs.GoogleWordConfigActivity"
             android:theme="@style/FakeDialog"
@@ -130,6 +143,12 @@
 
         <activity
             android:name=".configs.GoogleNowConfigActivity"
+            android:theme="@style/FakeDialog"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".configs.QTextClockConfigActivity"
             android:theme="@style/FakeDialog"
             android:exported="true"
             android:screenOrientation="portrait"/>

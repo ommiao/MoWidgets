@@ -87,21 +87,25 @@ public class ThreeLinesWordConfigActivity extends BaseConfigActivity<ThreeLinesW
             ToastUtil.shortToast("请输入正确的颜色值（第三行）");
             return false;
         }
-        sizeLine1 = Integer.parseInt(bindingSize1.et.getText().toString());
-        sizeLine2 = Integer.parseInt(bindingSize2.et.getText().toString());
-        sizeLine3 = Integer.parseInt(bindingSize3.et.getText().toString());
-        if(sizeLine1 == 0){
+        String size1, size2, size3;
+        size1 = bindingSize1.et.getText().toString().trim();
+        size2 = bindingSize2.et.getText().toString().trim();
+        size3 = bindingSize3.et.getText().toString().trim();
+        if(size1.length() == 0){
             ToastUtil.shortToast("请输入正确的文字大小（第一行）");
             return false;
         }
-        if(sizeLine2 == 0){
+        if(size2.length() == 0){
             ToastUtil.shortToast("请输入正确的文字大小（第二行）");
             return false;
         }
-        if(sizeLine3 == 0){
+        if(size3.length() == 0){
             ToastUtil.shortToast("请输入正确的文字大小（第三行）");
             return false;
         }
+        sizeLine1 = Integer.parseInt(size1);
+        sizeLine2 = Integer.parseInt(size2);
+        sizeLine3 = Integer.parseInt(size3);
         alignment = RadioTextView.getCheckedString("文字对齐方式");
         return true;
     }

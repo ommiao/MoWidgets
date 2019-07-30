@@ -26,6 +26,7 @@ public class IUNIDateWidget extends BaseWidget {
         views.setTextViewText(R.id.tv_suffix, suffix);
         String dateWeek = getMonthNo() + "月" + day + "日" + "  " + getDisplayWeekCn();
         views.setTextViewText(R.id.tv_date_and_week, dateWeek);
+        views.setOnClickPendingIntent(R.id.ll_iuni_date, getAlarmIntent(context));
         return views;
     }
 

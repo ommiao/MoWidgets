@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <TextClock
+        android:id="@+id/tc_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/colorosTimeSize"
@@ -17,6 +18,7 @@
         tools:text="12\n34"/>
 
     <TextClock
+        android:id="@+id/tc_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/colorosDateSize"

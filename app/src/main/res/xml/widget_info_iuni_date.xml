@@ -2,9 +2,9 @@
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
     android:initialKeyguardLayout="@layout/widget_iuni_date"
     android:initialLayout="@layout/widget_iuni_date"
-    android:minHeight="60dp"
+    android:minHeight="80dp"
     android:minWidth="160dp"
-    android:previewImage="@drawable/ic_rectangle_round"
+    android:previewImage="@drawable/preview_iuni_date"
     android:updatePeriodMillis="1800000"
     android:widgetCategory="home_screen"
     android:resizeMode="vertical|horizontal"/>

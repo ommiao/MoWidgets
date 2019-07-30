@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_q_text_clock"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_margin="0dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_it_s"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:text="@string/it_s"
+        android:fontFamily="@font/product"
+        android:textSize="@dimen/qTextClockWordSize"
+        android:textColor="@color/qTextClockIts"/>
+
+    <TextView
+        android:id="@+id/tv_hour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        tools:text="Five"
+        android:fontFamily="@font/product"
+        android:textSize="@dimen/qTextClockWordSize"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/tv_minute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        tools:text="Sixteen"
+        android:fontFamily="@font/product"
+        android:textSize="@dimen/qTextClockWordSize"
+        android:textColor="@android:color/white"/>
+
+</LinearLayout>

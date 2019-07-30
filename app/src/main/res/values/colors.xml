@@ -17,4 +17,5 @@
     <color name="defaultNormalRadioTextColor">#666666</color>
     <color name="defaultCheckedRadioTextColor">#ffffff</color>
     <color name="colorIuniDateColor">@android:color/white</color>
+    <color name="qTextClockIts">#f9cc88</color>
 </resources>
