@@ -44,4 +44,7 @@
     <string name="default_color_q_text_time">#ffffff</string>
     <string name="label_time_service">Mo控件刷新服务</string>
     <string name="accessibily_desc_time_service">本服务仅用于提供稳定的时间更新服务，如出现自动关闭请将Mo控件加入系统白名单。</string>
+    <string name="label_pixel_date_weather">Pixel Date Weather</string>
+    <string name="title_pixel_date_weather_settings">Pixel Date Weather Settings</string>
+    <string name="date_format_pixel_date">MMM d \ EEEE</string>
 </resources>
