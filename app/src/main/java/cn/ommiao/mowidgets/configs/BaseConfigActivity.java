@@ -5,8 +5,10 @@ import android.appwidget.AppWidgetManager;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -17,17 +19,17 @@ import android.widget.RemoteViews;
 
 import androidx.databinding.DataBindingUtil;
 
-import com.orhanobut.logger.Logger;
-
 import java.util.ArrayList;
 
 import cn.ommiao.mowidgets.R;
+import cn.ommiao.mowidgets.TimeService;
 import cn.ommiao.mowidgets.databinding.ActivityConfigBinding;
 import cn.ommiao.mowidgets.databinding.LayoutAlignmentBinding;
 import cn.ommiao.mowidgets.databinding.LayoutColorSelectorBinding;
 import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
 import cn.ommiao.mowidgets.utils.ToastUtil;
 import cn.ommiao.mowidgets.widgets.BaseWidget;
+import cn.ommiao.mowidgets.widgets.TimingRefreshWidget;
 import cn.ommiao.mowidgets.widgets.others.RadioTextView;
 
 public abstract class BaseConfigActivity<W extends BaseWidget> extends Activity {
@@ -74,7 +76,6 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends Activity 
 
     private void initViews(){
         mBinding.tvConfigTitle.setText(getConfigTitle());
-        Logger.d(configList.size());
         for (View view : configList){
             mBinding.llConfig.addView(view);
         }
@@ -98,6 +99,15 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends Activity 
             widget.getDataRequester(this, appWidgetManager, widgetId).request();
         } else {
             appWidgetManager.updateAppWidget(widgetId, getRemoteViews());
+        }
+        if(getTargetWidget() instanceof TimingRefreshWidget && !isTimeAccessibilityServiceOn()){
+            ToastUtil.shortToast("请打开无障碍服务以稳定更新时间！");
+            try {
+                Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
+                startActivity(intent);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
         finish();
     }
@@ -195,6 +205,35 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends Activity 
             default:
                 return Gravity.START;
         }
+    }
+
+    private boolean isTimeAccessibilityServiceOn() {
+        int accessibilityEnabled = 0;
+        final String service = getPackageName() + "/" + TimeService.class.getCanonicalName();
+        try {
+            accessibilityEnabled = Settings.Secure.getInt(
+                    getContentResolver(),
+                    android.provider.Settings.Secure.ACCESSIBILITY_ENABLED);
+        } catch (Settings.SettingNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        TextUtils.SimpleStringSplitter mStringColonSplitter = new TextUtils.SimpleStringSplitter(':');
+        if (accessibilityEnabled == 1) {
+            String settingValue = Settings.Secure.getString(
+                    getContentResolver(),
+                    Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES);
+            if (settingValue != null) {
+                mStringColonSplitter.setString(settingValue);
+                while (mStringColonSplitter.hasNext()) {
+                    String accessibilityService = mStringColonSplitter.next();
+                    if (accessibilityService.equalsIgnoreCase(service)) {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 
 }

@@ -3,14 +3,10 @@ package cn.ommiao.mowidgets.widgets;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.provider.AlarmClock;
 import android.widget.RemoteViews;
-
-import com.orhanobut.logger.Logger;
 
 import java.util.Calendar;
 
@@ -226,24 +222,6 @@ public abstract class BaseWidget<R extends BaseRequester> extends AppWidgetProvi
             alpha = Integer.parseInt(hex.substring(1, 3), 16);
         }
         return alpha;
-    }
-
-    @Override
-    public void onReceive(Context context, Intent intent) {
-        Logger.d(intent.getAction());
-        if(needListenTimeChanged()){
-            context.getApplicationContext().registerReceiver(this, new IntentFilter(Intent.ACTION_TIME_TICK));
-        }
-        if(Intent.ACTION_TIME_CHANGED.equals(intent.getAction()) || Intent.ACTION_TIME_TICK.equals(intent.getAction())){
-            AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-            onUpdate(context, appWidgetManager, appWidgetManager.getAppWidgetIds(new ComponentName(context, this.getClass())));
-        } else {
-            super.onReceive(context, intent);
-        }
-    }
-
-    protected boolean needListenTimeChanged(){
-        return false;
     }
 
 }

@@ -6,7 +6,7 @@ import android.widget.RemoteViews;
 
 import cn.ommiao.mowidgets.R;
 
-public class HydrogenClockWidget extends BaseWidget {
+public class HydrogenClockWidget extends TimingRefreshWidget {
 
     @Override
     public RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
@@ -24,8 +24,4 @@ public class HydrogenClockWidget extends BaseWidget {
         return views;
     }
 
-    @Override
-    protected boolean needListenTimeChanged() {
-        return true;
-    }
 }

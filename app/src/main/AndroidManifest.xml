@@ -116,6 +116,7 @@
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
                 <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="cn.ommiao.action.TIME_TICK"/>
             </intent-filter>
 
             <meta-data
@@ -153,5 +154,20 @@
             android:exported="true"
             android:screenOrientation="portrait"/>
 
+        <service
+            android:name=".TimeService"
+            android:enabled="true"
+            android:exported="true"
+            android:label="@string/label_time_service"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibility_info_time_service" />
+
+        </service>
     </application>
 </manifest>

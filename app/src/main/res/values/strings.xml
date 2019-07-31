@@ -42,4 +42,6 @@
     <string name="title_q_text_clock_settings">Q Text Clock Settings</string>
     <string name="default_color_q_text_it_s">#f9cc88</string>
     <string name="default_color_q_text_time">#ffffff</string>
+    <string name="label_time_service">Mo控件刷新服务</string>
+    <string name="accessibily_desc_time_service">本服务仅用于提供稳定的时间更新服务，如出现自动关闭请将Mo控件加入系统白名单。</string>
 </resources>

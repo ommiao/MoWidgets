@@ -9,7 +9,7 @@ import android.widget.RemoteViews;
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.utils.SPUtil;
 
-public class QTextClockWidget extends BaseWidget {
+public class QTextClockWidget extends TimingRefreshWidget {
 
     @Override
     public RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
@@ -178,8 +178,4 @@ public class QTextClockWidget extends BaseWidget {
         }
     }
 
-    @Override
-    protected boolean needListenTimeChanged() {
-        return true;
-    }
 }
