@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Mo控件</string>
     <string name="date_format_clock_never_settle">EE, M月d日</string>
     <string name="date_format_poco_clock">EEEE, M月d日</string>
     <string name="date_format_coloros_clock">EEE \ \ M月d日</string>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MoWidgets</string>
+    <string name="app_name">Mo Widgets</string>
     <string name="date_format_clock_never_settle">EE, MMM d</string>
     <string name="slogan_google_now">Say \"OK Google&#8230;\"</string>
     <string name="label_hydrogen_clock">Hydrogen Clock</string>
