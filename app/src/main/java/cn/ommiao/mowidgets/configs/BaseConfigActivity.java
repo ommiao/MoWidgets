@@ -8,7 +8,10 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.text.InputFilter;
 import android.text.InputType;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -81,6 +84,14 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends Activity 
         }
         mBinding.tvConfirm.setOnClickListener(this::onConfirmClick);
         mBinding.tvCancel.setOnClickListener(this::onCancelClick);
+        if(isSharedWidget()){
+            String strStart = "此控件由", strEnd = "共享定制";
+            String footerStr = strStart + getSharedUserName() + strEnd;
+            SpannableString spannableString = new SpannableString(footerStr);
+            ForegroundColorSpan colorSpan = new ForegroundColorSpan(Color.parseColor(getSharedUserNameColorStr()));
+            spannableString.setSpan(colorSpan, strStart.length(), strStart.length() + getSharedUserName().length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+            mBinding.tvFooter.setText(spannableString);
+        }
     }
 
     private void onCancelClick(View view) {
@@ -138,11 +149,15 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends Activity 
     protected abstract void saveConfigs();
 
     protected LayoutColorSelectorBinding getColorSelectorBinding(String label){
+        return getColorSelectorBinding(label, getString(R.string.default_et_color));
+    }
+
+    protected LayoutColorSelectorBinding getColorSelectorBinding(String label, String defaultColorStr){
         LayoutColorSelectorBinding binding = DataBindingUtil.bind(LayoutInflater.from(this).inflate(R.layout.layout_color_selector, null));
         assert binding != null;
         binding.tvLabel.setText(label);
         binding.etColor.setHint(R.string.hint_et_color);
-        binding.etColor.setText(R.string.default_et_color);
+        binding.etColor.setText(defaultColorStr);
         binding.ivTest.setOnClickListener(view -> {
             String colorStr = binding.etColor.getText().toString().trim();
             if(isColorValid(colorStr)){
@@ -234,6 +249,18 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends Activity 
             }
         }
         return false;
+    }
+
+    protected boolean isSharedWidget(){
+        return false;
+    }
+
+    protected String getSharedUserName(){
+        return "@喵了";
+    }
+
+    protected String getSharedUserNameColorStr(){
+        return "#0099EE";
     }
 
 }

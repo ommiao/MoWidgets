@@ -47,4 +47,6 @@
     <string name="label_pixel_date_weather">Pixel Date Weather</string>
     <string name="title_pixel_date_weather_settings">Pixel Date Weather Settings</string>
     <string name="date_format_pixel_date">MMM d \ EEEE</string>
+    <string name="label_paper_notes">Paper Notes</string>
+    <string name="title_paper_notes_settings">Paper Notes Settings</string>
 </resources>
