@@ -49,4 +49,6 @@
     <string name="date_format_pixel_date">MMM d \ EEEE</string>
     <string name="label_paper_notes">Paper Notes</string>
     <string name="title_paper_notes_settings">Paper Notes Settings</string>
+    <string name="label_art_sentence">Art Sentence</string>
+    <string name="title_art_sentence_settings">Art Sentence Settings</string>
 </resources>

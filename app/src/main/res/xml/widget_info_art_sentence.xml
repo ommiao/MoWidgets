@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialKeyguardLayout="@layout/widget_art_sentence"
+    android:initialLayout="@layout/widget_art_sentence"
+    android:minHeight="80dp"
+    android:minWidth="180dp"
+    android:previewImage="@drawable/preview_art_sentence"
+    android:updatePeriodMillis="0"
+    android:widgetCategory="home_screen"
+    android:resizeMode="vertical|horizontal"
+    android:configure="cn.ommiao.mowidgets.configs.ArtSentenceConfigActivity"/>
