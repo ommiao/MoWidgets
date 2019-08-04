@@ -29,8 +29,8 @@ public class ArtSentenceConfigActivity extends BaseConfigActivity<ArtSentenceWid
 
     @Override
     protected void initConfigViews() {
-        edittextBindingL = getEdittextBinding("文字内容(大)", 5);
-        edittextBindingS = getEdittextBinding("文字内容(小)", 30);
+        edittextBindingL = getEdittextBinding("文字内容(大)", 10);
+        edittextBindingS = getEdittextBinding("文字内容(小)", 50);
         edittextBindingL.et.setText("爱情");
         edittextBindingS.et.setText("真的是一场龙卷风啊");
         addConfigView(edittextBindingL.getRoot());

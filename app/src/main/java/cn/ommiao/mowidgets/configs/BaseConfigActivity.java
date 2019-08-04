@@ -30,6 +30,7 @@ import cn.ommiao.mowidgets.databinding.ActivityConfigBinding;
 import cn.ommiao.mowidgets.databinding.LayoutAlignmentBinding;
 import cn.ommiao.mowidgets.databinding.LayoutColorSelectorBinding;
 import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
+import cn.ommiao.mowidgets.databinding.LayoutTwoSelectionBinding;
 import cn.ommiao.mowidgets.utils.ToastUtil;
 import cn.ommiao.mowidgets.widgets.BaseWidget;
 import cn.ommiao.mowidgets.widgets.TimingRefreshWidget;
@@ -189,6 +190,18 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends Activity 
     protected LayoutEdittextBinding getNumberEdittextBinding(String label){
         LayoutEdittextBinding binding = getEdittextBinding(label);
         binding.et.setInputType(InputType.TYPE_CLASS_PHONE);
+        return binding;
+    }
+
+    protected LayoutTwoSelectionBinding getTwoSelectionBinding(String label, String[] twoSelections){
+        RadioTextView.clearGroup(label);
+        LayoutTwoSelectionBinding binding = DataBindingUtil.bind(LayoutInflater.from(this).inflate(R.layout.layout_two_selection, null));
+        assert  binding != null;
+        binding.tvLabel.setText(label);
+        binding.tvSelection1.setGroupId(label);
+        binding.tvSelection1.setText(twoSelections[0]);
+        binding.tvSelection2.setGroupId(label);
+        binding.tvSelection2.setText(twoSelections[1]);
         return binding;
     }
 

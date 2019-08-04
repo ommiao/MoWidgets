@@ -25,7 +25,7 @@
 
 
         <cn.ommiao.mowidgets.widgets.others.RadioTextView
-            android:id="@+id/tv_align_left"
+            android:id="@+id/tv_selection1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -33,27 +33,18 @@
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
             app:checked="true"
-            android:text="@string/alignment_left"/>
+            android:text="@string/selection1"/>
 
         <cn.ommiao.mowidgets.widgets.others.RadioTextView
-            android:id="@+id/tv_align_middle"
+            android:id="@+id/tv_selection2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:gravity="center"
             android:paddingStart="5dp"
             android:paddingEnd="5dp"
-            android:text="@string/alignment_middle"/>
+            android:text="@string/selection2"/>
 
-        <cn.ommiao.mowidgets.widgets.others.RadioTextView
-            android:id="@+id/tv_align_right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:gravity="center"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
-            android:text="@string/alignment_right"/>
 
     </LinearLayout>
 

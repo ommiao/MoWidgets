@@ -208,6 +208,12 @@
             android:exported="true"
             android:screenOrientation="portrait"/>
 
+        <activity
+            android:name=".configs.IUNIDateConfigActivity"
+            android:theme="@style/FakeDialog"
+            android:exported="true"
+            android:screenOrientation="portrait"/>
+
         <service
             android:name=".TimeService"
             android:enabled="true"

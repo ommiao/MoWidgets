@@ -51,4 +51,7 @@
     <string name="title_paper_notes_settings">Paper Notes Settings</string>
     <string name="label_art_sentence">Art Sentence</string>
     <string name="title_art_sentence_settings">Art Sentence Settings</string>
+    <string name="selection1">选项一</string>
+    <string name="selection2">选项二</string>
+    <string name="title_iuni_date_settings">IUNI Date Settings</string>
 </resources>
