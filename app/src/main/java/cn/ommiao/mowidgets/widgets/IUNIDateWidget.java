@@ -2,7 +2,6 @@ package cn.ommiao.mowidgets.widgets;
 
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
-import android.opengl.Visibility;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -33,7 +32,7 @@ public class IUNIDateWidget extends TimingRefreshWidget {
             String dateWeek = getMonthNo() + "月" + day + "日" + "  " + getDisplayWeekCn();
             views.setTextViewText(R.id.tv_date_and_week, dateWeek);
         } else {
-            views.setInt(R.id.tv_date_and_week, "setVisibility", View.GONE);
+            views.setViewVisibility(R.id.tv_date_and_week, View.GONE);
         }
 
         views.setOnClickPendingIntent(R.id.ll_iuni_date, getAlarmIntent(context));
