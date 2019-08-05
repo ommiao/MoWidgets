@@ -19,7 +19,7 @@
     <string name="txt_area">地区</string>
     <string name="please_input_valid_area">请输入有效地区</string>
     <string name="hint_et_location">西安市</string>
-    <string name="hint_et_color">(ff)ffffff</string>
+    <string name="hint_et_color">ffffffff</string>
     <string name="label_poco_clock">Poco Clock</string>
     <string name="date_format_poco_clock">EEEE, MMMM dd</string>
     <string name="date_format_coloros_clock">EEE \ \ MMM d</string>

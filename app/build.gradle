@@ -37,4 +37,5 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':network')
     implementation project(path: ':logger')
+    api 'com.github.QuadFlask:colorpicker:0.0.13'
 }

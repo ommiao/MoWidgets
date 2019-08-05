@@ -20,6 +20,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RemoteViews;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import java.util.ArrayList;
@@ -31,12 +32,15 @@ import cn.ommiao.mowidgets.databinding.LayoutAlignmentBinding;
 import cn.ommiao.mowidgets.databinding.LayoutColorSelectorBinding;
 import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
 import cn.ommiao.mowidgets.databinding.LayoutTwoSelectionBinding;
+import cn.ommiao.mowidgets.ui.ColorPickerFragment;
 import cn.ommiao.mowidgets.utils.ToastUtil;
 import cn.ommiao.mowidgets.widgets.BaseWidget;
 import cn.ommiao.mowidgets.widgets.TimingRefreshWidget;
 import cn.ommiao.mowidgets.widgets.others.RadioTextView;
 
-public abstract class BaseConfigActivity<W extends BaseWidget> extends Activity {
+import static cn.ommiao.mowidgets.ui.ColorPickerFragment.ARG_INIT_COLOR;
+
+public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompatActivity {
 
     private ArrayList<View> configList = new ArrayList<>();
     private ActivityConfigBinding mBinding;
@@ -159,14 +163,25 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends Activity 
         binding.tvLabel.setText(label);
         binding.etColor.setHint(R.string.hint_et_color);
         binding.etColor.setText(defaultColorStr);
+        binding.etColor.setEnabled(false);
+        if(isColorValid(defaultColorStr)){
+            binding.ivColor.setColorFilter(Color.parseColor("#" + defaultColorStr));
+        }
         binding.ivTest.setOnClickListener(view -> {
-            String colorStr = binding.etColor.getText().toString().trim();
-            if(isColorValid(colorStr)){
-                int color = Color.parseColor("#" + colorStr);
-                binding.ivColor.setColorFilter(color);
-            } else {
-                ToastUtil.shortToast(R.string.please_input_valid_color);
-            }
+            ColorPickerFragment colorPickerFragment = new ColorPickerFragment();
+            colorPickerFragment.setOnColorPickerClickedListener(new ColorPickerFragment.OnColorPickerClickedListener() {
+                @Override
+                public void onColorSelected(String hexColor) {
+                    binding.etColor.setText(hexColor);
+                    binding.ivColor.setColorFilter(Color.parseColor("#" + hexColor));
+                }
+
+                @Override
+                public void onCancel() {
+
+                }
+            });
+            colorPickerFragment.show(getSupportFragmentManager(), ColorPickerFragment.class.getSimpleName());
         });
         return binding;
     }

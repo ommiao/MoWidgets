@@ -35,6 +35,7 @@
             android:singleLine="true"
             android:maxLength="8"
             android:background="@null"
+            android:textColor="@color/editColor"
             style="@null"/>
 
         <ImageView
