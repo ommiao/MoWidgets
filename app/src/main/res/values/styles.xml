@@ -32,4 +32,9 @@
         <item name="android:shadowRadius">6.0</item>
     </style>
 
+    <style name="dialog_enter_exit">
+        <item name="android:windowEnterAnimation">@anim/dialog_enter</item>
+        <item name="android:windowExitAnimation">@anim/dialog_exit</item>
+    </style>
+
 </resources>
