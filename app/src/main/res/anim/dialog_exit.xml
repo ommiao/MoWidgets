@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android"
-    android:interpolator="@android:anim/decelerate_interpolator"
-    android:shareInterpolator="true">
+    android:shareInterpolator="false">
 
     <scale
         android:duration="@integer/dialog_animation_time"
@@ -10,7 +9,8 @@
         android:pivotX="50%"
         android:pivotY="50%"
         android:toXScale="1.2"
-        android:toYScale="1.2"/>
+        android:toYScale="1.2"
+        android:interpolator="@android:anim/accelerate_interpolator"/>
 
     <alpha
         android:duration="@integer/dialog_animation_time"
