@@ -7,6 +7,7 @@ import android.widget.RemoteViews;
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.requesters.ColorosClockRequester;
 import cn.ommiao.mowidgets.utils.SPUtil;
+import cn.ommiao.mowidgets.utils.UIUtil;
 
 public class ColorosClockWidget extends BaseWidget<ColorosClockRequester> {
 
@@ -19,6 +20,9 @@ public class ColorosClockWidget extends BaseWidget<ColorosClockRequester> {
         views.setTextViewText(R.id.tv_weather, weatherStr);
         views.setOnClickPendingIntent(R.id.tc_time, getAlarmIntent(context));
         views.setOnClickPendingIntent(R.id.tc_date, getAlarmIntent(context));
+        int topPadding = SPUtil.getInt(context.getString(R.string.label_coloros_clock) + appWidgetId + "_top_padding", 0);
+        int leftPadding = SPUtil.getInt(context.getString(R.string.label_coloros_clock) + appWidgetId + "_left_padding", 0);
+        views.setViewPadding(R.id.ll_coloros_clock, UIUtil.dp2px(leftPadding), UIUtil.dp2px(topPadding), 0, 0);
         return views;
     }
 

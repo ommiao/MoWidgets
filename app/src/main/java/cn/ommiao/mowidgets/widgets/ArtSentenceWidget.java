@@ -31,7 +31,7 @@ public class ArtSentenceWidget extends BaseWidget {
         colorS = Color.parseColor(SPUtil.getString(context.getString(R.string.label_art_sentence) + appWidgetId + "_color_small", "#ffffff"));
         sizeL = context.getResources().getDimensionPixelSize(R.dimen.artSentenceLargeSize);
         sizeS = context.getResources().getDimensionPixelSize(R.dimen.artSentenceSmallSize);
-        offset = Integer.parseInt(SPUtil.getString(context.getString(R.string.label_art_sentence) + appWidgetId + "_offset", "0"));
+        offset = SPUtil.getInt(context.getString(R.string.label_art_sentence) + appWidgetId + "_offset", 0);
         views.setImageViewBitmap(R.id.iv_text, getBitmap());
         return views;
     }

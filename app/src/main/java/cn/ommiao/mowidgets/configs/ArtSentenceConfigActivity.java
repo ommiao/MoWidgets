@@ -19,7 +19,7 @@ public class ArtSentenceConfigActivity extends BaseConfigActivity<ArtSentenceWid
     private String textL, textS;
 
     private LayoutEdittextBinding offsetBinding;
-    private String offset;
+    private int offset;
 
     @Override
     protected ArtSentenceWidget getTargetWidget() {
@@ -40,20 +40,7 @@ public class ArtSentenceConfigActivity extends BaseConfigActivity<ArtSentenceWid
         addConfigView(selectorBindingS.getRoot());
         offsetBinding = getNumberEdittextBinding("小字偏移");
         offsetBinding.et.setHint("正值向下，负值向上偏移，不填为默认位置");
-        offsetBinding.et.setFilters(new InputFilter[]{
-                new InputFilter.LengthFilter(4),
-                (source, start, end, dest, dstart, dend) -> {
-                    String allDigits = "-1234567890";
-                    String result = source.toString();
-                    for(int i = end - 1; i >= start; i--){
-                        String c = String.valueOf(source.charAt(i));
-                        if(!allDigits.contains(c)){
-                            result = result.replace(c, "");
-                        }
-                    }
-                    return result;
-                }
-        });
+        offsetBinding.et.setFilters(getNumberInputFilters(true, 4));
         addConfigView(offsetBinding.getRoot());
     }
 
@@ -68,10 +55,11 @@ public class ArtSentenceConfigActivity extends BaseConfigActivity<ArtSentenceWid
         textS = edittextBindingS.et.getText().toString().trim();
         colorL = selectorBindingL.etColor.getText().toString();
         colorS = selectorBindingS.etColor.getText().toString();
-        offset = offsetBinding.et.getText().toString().trim();
-        if(StringUtil.isEmpty(offset)){
-            offset = "0";
+        String offsetStr = offsetBinding.et.getText().toString().trim();
+        if(!isNumberValid(offsetStr)){
+            offsetStr = "0";
         }
+        offset = Integer.parseInt(offsetStr);
         if(StringUtil.isEmpty(textL)){
             ToastUtil.shortToast("请输入文字内容(大)");
             return false;

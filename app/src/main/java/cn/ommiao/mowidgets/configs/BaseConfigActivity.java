@@ -33,6 +33,7 @@ import cn.ommiao.mowidgets.databinding.LayoutColorSelectorBinding;
 import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
 import cn.ommiao.mowidgets.databinding.LayoutTwoSelectionBinding;
 import cn.ommiao.mowidgets.ui.ColorPickerFragment;
+import cn.ommiao.mowidgets.utils.StringUtil;
 import cn.ommiao.mowidgets.utils.ToastUtil;
 import cn.ommiao.mowidgets.widgets.BaseWidget;
 import cn.ommiao.mowidgets.widgets.TimingRefreshWidget;
@@ -248,6 +249,30 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompat
             default:
                 return Gravity.START;
         }
+    }
+
+    protected InputFilter[] getNumberInputFilters(boolean allowNeg, int maxLength){
+        return new InputFilter[]{
+                new InputFilter.LengthFilter(maxLength),
+                (source, start, end, dest, dstart, dend) -> {
+                    String allDigits = allowNeg ? "-1234567890" : "1234567890";
+                    String result = source.toString();
+                    for(int i = end - 1; i >= start; i--){
+                        String c = String.valueOf(source.charAt(i));
+                        if(!allDigits.contains(c)){
+                            result = result.replace(c, "");
+                        }
+                    }
+                    return result;
+                }
+        };
+    }
+
+    protected boolean isNumberValid(String numberStr){
+        if(StringUtil.isEmpty(numberStr)){
+            return false;
+        }
+        return !"-".equals(numberStr);
     }
 
     private boolean isTimeAccessibilityServiceOn() {

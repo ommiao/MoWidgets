@@ -23,7 +23,13 @@ public class QTextClockWidget extends TimingRefreshWidget {
         views.setTextViewTextSize(R.id.tv_it_s, TypedValue.COMPLEX_UNIT_SP, SPUtil.getInt(context.getString(R.string.label_q_text_clock) + appWidgetId + "_size_text", 24));
         views.setTextViewTextSize(R.id.tv_hour, TypedValue.COMPLEX_UNIT_SP, SPUtil.getInt(context.getString(R.string.label_q_text_clock) + appWidgetId + "_size_text", 24));
         views.setTextViewTextSize(R.id.tv_minute, TypedValue.COMPLEX_UNIT_SP, SPUtil.getInt(context.getString(R.string.label_q_text_clock) + appWidgetId + "_size_text", 24));
-    return views;
+        int topPadding = SPUtil.getInt(context.getString(R.string.label_q_text_clock) + appWidgetId + "_top_padding", 0);
+        int leftPadding = SPUtil.getInt(context.getString(R.string.label_q_text_clock) + appWidgetId + "_left_padding", 0);
+        int linePadding = SPUtil.getInt(context.getString(R.string.label_q_text_clock) + appWidgetId + "_line_padding", 0);
+        views.setViewPadding(R.id.ll_q_text_clock, leftPadding, topPadding, 0, 0);
+        views.setViewPadding(R.id.tv_it_s, 0, 0, 0, linePadding);
+        views.setViewPadding(R.id.tv_hour, 0, 0, 0, linePadding);
+        return views;
     }
 
     private String getTextHourEn(){
