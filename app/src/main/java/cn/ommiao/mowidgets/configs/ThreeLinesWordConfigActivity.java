@@ -20,6 +20,9 @@ public class ThreeLinesWordConfigActivity extends BaseConfigActivity<ThreeLinesW
     private int sizeLine1, sizeLine2, sizeLine3;
     private String alignment;
 
+    private LayoutEdittextBinding bindingHorizontalPadding;
+    private int horizontalPadding;
+
     @Override
     protected ThreeLinesWordWidget getTargetWidget() {
         return new ThreeLinesWordWidget();
@@ -45,17 +48,22 @@ public class ThreeLinesWordConfigActivity extends BaseConfigActivity<ThreeLinesW
         addConfigView(bindingColor1.getRoot());
         addConfigView(bindingColor2.getRoot());
         addConfigView(bindingColor3.getRoot());
-        bindingSize1 = getNumberEdittextBinding("第一行大小", 2);
-        bindingSize2 = getNumberEdittextBinding("第二行大小", 2);
-        bindingSize3 = getNumberEdittextBinding("第三行大小", 2);
+        bindingSize1 = getNumberEdittextBinding("第一行大小", TEXT_SIZE_MAX_LENGTH);
+        bindingSize2 = getNumberEdittextBinding("第二行大小", TEXT_SIZE_MAX_LENGTH);
+        bindingSize3 = getNumberEdittextBinding("第三行大小", TEXT_SIZE_MAX_LENGTH);
         bindingSize1.et.setText("32");
+        bindingSize1.et.setHint("默认为32");
         bindingSize2.et.setText("24");
+        bindingSize2.et.setHint("默认为24");
         bindingSize3.et.setText("28");
+        bindingSize3.et.setHint("默认为28");
         addConfigView(bindingSize1.getRoot());
         addConfigView(bindingSize2.getRoot());
         addConfigView(bindingSize3.getRoot());
         LayoutAlignmentBinding alignmentBinding = getAlignmentBinding("文字对齐方式");
         addConfigView(alignmentBinding.getRoot());
+        bindingHorizontalPadding = getNumberEdittextBinding("两侧边距", PADDING_MAX_LENGTH);
+        addConfigView(bindingHorizontalPadding.getRoot());
     }
 
     @Override
@@ -91,15 +99,15 @@ public class ThreeLinesWordConfigActivity extends BaseConfigActivity<ThreeLinesW
         size1 = bindingSize1.et.getText().toString().trim();
         size2 = bindingSize2.et.getText().toString().trim();
         size3 = bindingSize3.et.getText().toString().trim();
-        if(size1.length() == 0){
+        if(!isNumberValid(size1)){
             ToastUtil.shortToast("请输入正确的文字大小（第一行）");
             return false;
         }
-        if(size2.length() == 0){
+        if(!isNumberValid(size2)){
             ToastUtil.shortToast("请输入正确的文字大小（第二行）");
             return false;
         }
-        if(size3.length() == 0){
+        if(!isNumberValid(size3)){
             ToastUtil.shortToast("请输入正确的文字大小（第三行）");
             return false;
         }
@@ -107,6 +115,11 @@ public class ThreeLinesWordConfigActivity extends BaseConfigActivity<ThreeLinesW
         sizeLine2 = Integer.parseInt(size2);
         sizeLine3 = Integer.parseInt(size3);
         alignment = RadioTextView.getCheckedString("文字对齐方式");
+        String hPaddingStr = bindingHorizontalPadding.et.getText().toString().trim();
+        if(!isNumberValid(hPaddingStr)){
+            hPaddingStr = "0";
+        }
+        horizontalPadding = Integer.parseInt(hPaddingStr);
         return true;
     }
 
@@ -122,6 +135,7 @@ public class ThreeLinesWordConfigActivity extends BaseConfigActivity<ThreeLinesW
         SPUtil.put(getString(R.string.label_three_lines_word) + widgetId + "_size_line2", sizeLine2);
         SPUtil.put(getString(R.string.label_three_lines_word) + widgetId + "_size_line3", sizeLine3);
         SPUtil.put(getString(R.string.label_three_lines_word) + widgetId + "_alignment", getAlignment(alignment));
+        SPUtil.put(getString(R.string.label_three_lines_word) + widgetId + "_horizontal_padding", horizontalPadding);
     }
 
 }

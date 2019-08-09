@@ -21,8 +21,6 @@ import cn.ommiao.mowidgets.databinding.FragmentColorPickerBinding;
 
 public class ColorPickerFragment extends DialogFragment {
 
-    public static final String ARG_INIT_COLOR = "initColor";
-
     private FragmentColorPickerBinding mBinding;
 
     @Nullable

@@ -27,6 +27,8 @@ public class ThreeLinesWordWidget extends BaseWidget {
         views.setTextViewTextSize(R.id.tv_line3, TypedValue.COMPLEX_UNIT_SP, SPUtil.getInt(context.getString(R.string.label_three_lines_word) + appWidgetId + "_size_line3", 14));
         int alignment = SPUtil.getInt(context.getString(R.string.label_three_lines_word) + appWidgetId + "_alignment", Gravity.START);
         views.setInt(R.id.ll_lines, "setGravity", alignment);
+        int hPadding = SPUtil.getInt(context.getString(R.string.label_three_lines_word) + appWidgetId + "_horizontal_padding", 0);
+        views.setViewPadding(R.id.fl_three_lines_word, hPadding, 0, hPadding, 0);
         return views;
     }
 

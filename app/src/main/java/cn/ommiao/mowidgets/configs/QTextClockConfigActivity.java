@@ -27,21 +27,15 @@ public class QTextClockConfigActivity extends BaseConfigActivity<QTextClockWidge
     protected void initConfigViews() {
         colorSelectorBindingIts = getColorSelectorBinding("It's颜色");
         colorSelectorBindingTime = getColorSelectorBinding("时间颜色");
-        edittextBinding = getNumberEdittextBinding("文字大小");
-        edittextBinding.et.setFilters(getNumberInputFilters(false, 2));
+        edittextBinding = getNumberEdittextBinding("文字大小", TEXT_SIZE_MAX_LENGTH);
         edittextBinding.et.setText("24");
+        edittextBinding.et.setHint("默认为24");
         addConfigView(colorSelectorBindingIts.getRoot());
         addConfigView(colorSelectorBindingTime.getRoot());
         addConfigView(edittextBinding.getRoot());
-        bindingTopPadding = getNumberEdittextBinding("上方间距");
-        bindingTopPadding.et.setFilters(getNumberInputFilters(false, 2));
-        bindingTopPadding.et.setHint("默认为0");
-        bindingLeftPadding = getNumberEdittextBinding("左侧间距");
-        bindingLeftPadding.et.setFilters(getNumberInputFilters(false, 2));
-        bindingLeftPadding.et.setHint("默认为0");
-        bindingLinePadding = getNumberEdittextBinding("文字间距");
-        bindingLinePadding.et.setFilters(getNumberInputFilters(false, 2));
-        bindingLinePadding.et.setHint("默认为0");
+        bindingTopPadding = getNumberEdittextBinding("上方间距", PADDING_MAX_LENGTH);
+        bindingLeftPadding = getNumberEdittextBinding("左侧间距", PADDING_MAX_LENGTH);
+        bindingLinePadding = getNumberEdittextBinding("文字间距", PADDING_MAX_LENGTH);
         addConfigView(bindingTopPadding.getRoot());
         addConfigView(bindingLeftPadding.getRoot());
         addConfigView(bindingLinePadding.getRoot());
@@ -68,6 +62,9 @@ public class QTextClockConfigActivity extends BaseConfigActivity<QTextClockWidge
         if(!isNumberValid(size)){
             ToastUtil.shortToast("请输入正确的文字大小");
             return false;
+        }
+        if(!isNumberValid(size)){
+            size = "24";
         }
         textSize = Integer.parseInt(size);
         String topPaddingStr = bindingTopPadding.et.getText().toString().trim();

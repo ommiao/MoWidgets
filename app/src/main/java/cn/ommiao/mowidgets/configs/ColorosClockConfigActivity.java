@@ -18,12 +18,8 @@ public class ColorosClockConfigActivity extends WeatherNowConfigActivity<Coloros
     @Override
     protected void initConfigViews() {
         super.initConfigViews();
-        bindingTopPadding = getNumberEdittextBinding("上方边距", 2);
-        bindingLeftPadding = getNumberEdittextBinding("左侧边距", 2);
-        bindingTopPadding.et.setHint("默认为0");
-        bindingLeftPadding.et.setHint("默认为0");
-        bindingTopPadding.et.setFilters(getNumberInputFilters(false, 2));
-        bindingLeftPadding.et.setFilters(getNumberInputFilters(false, 2));
+        bindingTopPadding = getNumberEdittextBinding("上方边距", PADDING_MAX_LENGTH);
+        bindingLeftPadding = getNumberEdittextBinding("左侧边距", PADDING_MAX_LENGTH);
         addConfigView(bindingTopPadding.getRoot());
         addConfigView(bindingLeftPadding.getRoot());
     }

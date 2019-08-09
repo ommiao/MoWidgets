@@ -39,9 +39,11 @@ import cn.ommiao.mowidgets.widgets.BaseWidget;
 import cn.ommiao.mowidgets.widgets.TimingRefreshWidget;
 import cn.ommiao.mowidgets.widgets.others.RadioTextView;
 
-import static cn.ommiao.mowidgets.ui.ColorPickerFragment.ARG_INIT_COLOR;
 
 public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompatActivity {
+
+    public static final int PADDING_MAX_LENGTH = 2;
+    public static final int TEXT_SIZE_MAX_LENGTH = 2;
 
     private ArrayList<View> configList = new ArrayList<>();
     private ActivityConfigBinding mBinding;
@@ -204,8 +206,18 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompat
     }
 
     protected LayoutEdittextBinding getNumberEdittextBinding(String label){
+        return getNumberEdittextBinding(label, 100, false);
+    }
+
+    protected LayoutEdittextBinding getNumberEdittextBinding(String label, int maxLength){
+        return getNumberEdittextBinding(label, maxLength, false);
+    }
+
+    protected LayoutEdittextBinding getNumberEdittextBinding(String label, int maxLength, boolean allowNeg){
         LayoutEdittextBinding binding = getEdittextBinding(label);
         binding.et.setInputType(InputType.TYPE_CLASS_PHONE);
+        binding.et.setFilters(getNumberInputFilters(allowNeg, maxLength));
+        binding.et.setHint("默认为0");
         return binding;
     }
 
@@ -218,12 +230,6 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompat
         binding.tvSelection1.setText(twoSelections[0]);
         binding.tvSelection2.setGroupId(label);
         binding.tvSelection2.setText(twoSelections[1]);
-        return binding;
-    }
-
-    protected LayoutEdittextBinding getNumberEdittextBinding(String label, int maxLength){
-        LayoutEdittextBinding binding = getEdittextBinding(label, maxLength);
-        binding.et.setInputType(InputType.TYPE_CLASS_PHONE);
         return binding;
     }
 
