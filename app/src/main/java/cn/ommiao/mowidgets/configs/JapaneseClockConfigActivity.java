@@ -58,4 +58,8 @@ public class JapaneseClockConfigActivity extends BaseConfigActivity<JapaneseCloc
         SPUtil.put(getString(R.string.label_japanese_clock) + widgetId + "_font_name", fontName);
     }
 
+    @Override
+    protected boolean isSharedWidget() {
+        return true;
+    }
 }
