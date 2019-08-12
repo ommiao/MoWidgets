@@ -55,4 +55,6 @@
     <string name="selection2">选项二</string>
     <string name="title_iuni_date_settings">IUNI Date Settings</string>
     <string name="title_color_picker">请选择颜色</string>
+    <string name="label_japanese_clock">Japanese Clock</string>
+    <string name="title_japanese_clock_settings">Japanese Clock Settings</string>
 </resources>

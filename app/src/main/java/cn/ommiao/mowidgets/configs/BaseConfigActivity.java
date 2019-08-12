@@ -30,6 +30,7 @@ import cn.ommiao.mowidgets.TimeService;
 import cn.ommiao.mowidgets.databinding.ActivityConfigBinding;
 import cn.ommiao.mowidgets.databinding.LayoutAlignmentBinding;
 import cn.ommiao.mowidgets.databinding.LayoutColorSelectorBinding;
+import cn.ommiao.mowidgets.databinding.LayoutDescriptionBinding;
 import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
 import cn.ommiao.mowidgets.databinding.LayoutTwoSelectionBinding;
 import cn.ommiao.mowidgets.ui.ColorPickerFragment;
@@ -308,6 +309,13 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompat
             }
         }
         return false;
+    }
+
+    protected LayoutDescriptionBinding getDescriptionBinding(String desc){
+        LayoutDescriptionBinding binding = DataBindingUtil.bind(LayoutInflater.from(this).inflate(R.layout.layout_description, null));
+        assert binding != null;
+        binding.tvDesc.setText(desc);
+        return binding;
     }
 
     protected boolean isSharedWidget(){

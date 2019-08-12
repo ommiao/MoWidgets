@@ -14,6 +14,7 @@ import java.util.HashSet;
 import cn.ommiao.mowidgets.widgets.BaseWidget;
 import cn.ommiao.mowidgets.widgets.HydrogenClockWidget;
 import cn.ommiao.mowidgets.widgets.IUNIDateWidget;
+import cn.ommiao.mowidgets.widgets.JapaneseClockWidget;
 import cn.ommiao.mowidgets.widgets.QTextClockWidget;
 
 public class TimeService extends AccessibilityService {
@@ -23,6 +24,7 @@ public class TimeService extends AccessibilityService {
             add(QTextClockWidget.class);
             add(HydrogenClockWidget.class);
             add(IUNIDateWidget.class);
+            add(JapaneseClockWidget.class);
         }
     };
 
