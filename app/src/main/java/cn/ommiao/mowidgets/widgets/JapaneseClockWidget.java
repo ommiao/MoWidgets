@@ -7,7 +7,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
+import android.os.Environment;
 import android.widget.RemoteViews;
+
+import com.orhanobut.logger.Logger;
 
 import java.io.File;
 
@@ -27,10 +30,11 @@ public class JapaneseClockWidget extends TimingRefreshWidget {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_clock_japanese);
         colorIts = Color.parseColor(SPUtil.getString(context.getString(R.string.label_japanese_clock) + appWidgetId + "_color_its", "#ffffff"));
         colorTime = Color.parseColor(SPUtil.getString(context.getString(R.string.label_japanese_clock) + appWidgetId + "_color_time", "#ffffff"));
-        String fontName = SPUtil.getString(context.getString(R.string.label_japanese_clock) + appWidgetId + "_font_name", "");
-        File fontDir = context.getExternalFilesDir("font");
-        if(fontDir != null && !StringUtil.isEmpty(fontName)){
-            fontFile = new File(fontDir.getAbsolutePath() + "/" + fontName);
+        String fontPath = SPUtil.getString(context.getString(R.string.label_japanese_clock) + appWidgetId + "_font_path", "");
+        Logger.d(fontPath);
+        if(!StringUtil.isEmpty(fontPath)){
+            String fullPath = Environment.getExternalStorageDirectory() + "/" + fontPath;
+            fontFile = new File(fullPath);
         }
         views.setImageViewBitmap(R.id.iv_clock, getBitmap());
         return views;
@@ -120,8 +124,10 @@ public class JapaneseClockWidget extends TimingRefreshWidget {
             result = "十" + numberToTextJa(minute - 10);
         }  else if(minute == 10){
             result = "十";
-        } else {
+        } else if(minute > 0){
             result = "零" + numberToTextJa(minute);
+        } else {
+            result = "零";
         }
         return result + "分";
     }

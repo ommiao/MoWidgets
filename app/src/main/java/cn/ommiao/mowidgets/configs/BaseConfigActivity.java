@@ -1,9 +1,11 @@
 package cn.ommiao.mowidgets.configs;
 
-import android.app.Activity;
+import android.Manifest;
 import android.appwidget.AppWidgetManager;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.InputFilter;
@@ -20,8 +22,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.RemoteViews;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 
@@ -34,6 +40,7 @@ import cn.ommiao.mowidgets.databinding.LayoutDescriptionBinding;
 import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
 import cn.ommiao.mowidgets.databinding.LayoutTwoSelectionBinding;
 import cn.ommiao.mowidgets.ui.ColorPickerFragment;
+import cn.ommiao.mowidgets.ui.CustomDialogFragment;
 import cn.ommiao.mowidgets.utils.StringUtil;
 import cn.ommiao.mowidgets.utils.ToastUtil;
 import cn.ommiao.mowidgets.widgets.BaseWidget;
@@ -71,6 +78,47 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompat
         widget = getTargetWidget();
         initConfigViews();
         initViews();
+        if(needReadStorage() && !hasReadStoragePermission()){
+            showRequestReadStoragePermission();
+        }
+    }
+
+    private boolean hasReadStoragePermission(){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            return checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+        } else {
+            return true;
+        }
+    }
+
+    private void showRequestReadStoragePermission(){
+        new CustomDialogFragment()
+                .title("提示")
+                .content("为了读取字体文件需要申请读取存储空间权限，不授予该权限则无法使用该控件。")
+                .leftBtn("确定")
+                .rightBtn("取消")
+                .onLeftClick(this::requestReadStoragePermission)
+                .onRightClick(this::finish)
+                .show(getSupportFragmentManager());
+    }
+
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private void requestReadStoragePermission(){
+        requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+        if(shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)){
+            ToastUtil.shortToast("读取存储权限已被禁止并不再询问，请手动打开读写存储权限！");
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            Logger.d("Permission Granted.");
+        } else{
+            ToastUtil.shortToast("读写存储权限被拒绝！");
+            finish();
+        }
     }
 
     protected abstract W getTargetWidget();
@@ -328,6 +376,10 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompat
 
     protected String getSharedUserNameColorStr(){
         return "#0099EE";
+    }
+
+    protected boolean needReadStorage(){
+        return false;
     }
 
 }

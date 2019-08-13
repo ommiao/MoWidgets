@@ -18,14 +18,20 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
+        initCrashHandler();
         SimpleLogger.initLogger();
         Client.initNetwork();
         initFileDir();
     }
 
+    private void initCrashHandler() {
+        CrashHandler crashHandler = CrashHandler.getInstance();
+        crashHandler.init(context);
+    }
+
     @SuppressWarnings("ResultOfMethodCallIgnored")
     private void initFileDir() {
-        File fontFile = getExternalFilesDir("font");
+        File fontFile = getExternalFilesDir("crash");
         if (fontFile != null){
             File file = new File(fontFile.getAbsolutePath());
             if(!file.exists()){
