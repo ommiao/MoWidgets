@@ -14,6 +14,8 @@ import android.os.Environment;
 import android.text.TextPaint;
 import android.widget.RemoteViews;
 
+import com.orhanobut.logger.Logger;
+
 import java.io.File;
 
 import cn.ommiao.mowidgets.R;
@@ -42,6 +44,7 @@ public class ArtSentenceWidget extends BaseWidget {
         String fontPath = SPUtil.getString(context.getString(R.string.label_art_sentence) + appWidgetId + "_font_path", "");
         if(!StringUtil.isEmpty(fontPath)){
             String fullPath = Environment.getExternalStorageDirectory() + "/" + fontPath;
+            Logger.d(fullPath);
             fontFile = new File(fullPath);
         }
         views.setImageViewBitmap(R.id.iv_text, getBitmap());
@@ -105,12 +108,20 @@ public class ArtSentenceWidget extends BaseWidget {
 
     private int getTextWidthL(){
         TextPaint textPaint = new TextPaint();
+        if(fontFile != null && fontFile.exists()){
+            Typeface typeface = Typeface.createFromFile(fontFile);
+            textPaint.setTypeface(typeface);
+        }
         textPaint.setTextSize(sizeL);
         return (int) textPaint.measureText(textL);
     }
 
     private int getTextWidthS(){
         TextPaint textPaint = new TextPaint();
+        if(fontFile != null && fontFile.exists()){
+            Typeface typeface = Typeface.createFromFile(fontFile);
+            textPaint.setTypeface(typeface);
+        }
         textPaint.setTextSize(sizeS);
         return (int) textPaint.measureText(textS);
     }

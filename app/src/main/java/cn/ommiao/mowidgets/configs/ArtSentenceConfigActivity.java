@@ -1,7 +1,5 @@
 package cn.ommiao.mowidgets.configs;
 
-import android.text.InputFilter;
-
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.databinding.LayoutColorSelectorBinding;
 import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
