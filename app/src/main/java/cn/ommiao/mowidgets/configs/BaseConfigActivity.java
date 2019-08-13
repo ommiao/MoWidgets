@@ -50,6 +50,8 @@ import cn.ommiao.mowidgets.widgets.others.RadioTextView;
 
 public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompatActivity {
 
+    public static final int NO_LIMIT = -1;
+
     public static final int PADDING_MAX_LENGTH = 2;
     public static final int TEXT_SIZE_MAX_LENGTH = 2;
 
@@ -243,14 +245,16 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompat
     }
 
     protected LayoutEdittextBinding getEdittextBinding(String label){
-        return getEdittextBinding(label, 30);
+        return getEdittextBinding(label, NO_LIMIT);
     }
 
     protected LayoutEdittextBinding getEdittextBinding(String label, int maxLength){
         LayoutEdittextBinding binding = DataBindingUtil.bind(LayoutInflater.from(this).inflate(R.layout.layout_edittext, null));
         assert binding != null;
         binding.tvLabel.setText(label);
-        binding.et.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+        if(maxLength != NO_LIMIT){
+            binding.et.setFilters(new InputFilter[]{new InputFilter.LengthFilter(maxLength)});
+        }
         return binding;
     }
 

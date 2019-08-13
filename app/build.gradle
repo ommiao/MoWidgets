@@ -7,8 +7,8 @@ android {
         applicationId "cn.ommiao.mowidgets"
         minSdkVersion 22
         targetSdkVersion 29
-        versionCode 13
-        versionName "1.1.2"
+        versionCode 14
+        versionName "1.1.3"
         dataBinding {
             enabled true
         }
