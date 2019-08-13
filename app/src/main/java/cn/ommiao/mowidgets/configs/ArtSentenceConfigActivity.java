@@ -21,6 +21,9 @@ public class ArtSentenceConfigActivity extends BaseConfigActivity<ArtSentenceWid
     private LayoutEdittextBinding offsetBinding;
     private int offset;
 
+    private LayoutEdittextBinding bindingFontPath;
+    private String fontPath;
+
     @Override
     protected ArtSentenceWidget getTargetWidget() {
         return new ArtSentenceWidget();
@@ -42,6 +45,9 @@ public class ArtSentenceConfigActivity extends BaseConfigActivity<ArtSentenceWid
         offsetBinding.et.setHint("正值向下，负值向上偏移，不填为默认位置");
         offsetBinding.et.setFilters(getNumberInputFilters(true, 4));
         addConfigView(offsetBinding.getRoot());
+        bindingFontPath = getEdittextBinding("字体路径");
+        bindingFontPath.et.setHint("填写根目录的相对路径如font/roboto.ttf");
+        addConfigView(bindingFontPath.getRoot());
     }
 
     @Override
@@ -55,6 +61,7 @@ public class ArtSentenceConfigActivity extends BaseConfigActivity<ArtSentenceWid
         textS = edittextBindingS.et.getText().toString().trim();
         colorL = selectorBindingL.etColor.getText().toString();
         colorS = selectorBindingS.etColor.getText().toString();
+        fontPath = bindingFontPath.et.getText().toString().trim();
         String offsetStr = offsetBinding.et.getText().toString().trim();
         if(!isNumberValid(offsetStr)){
             offsetStr = "0";
@@ -76,6 +83,12 @@ public class ArtSentenceConfigActivity extends BaseConfigActivity<ArtSentenceWid
             ToastUtil.shortToast("请输入有效的文字颜色(小)");
             return false;
         }
+        if(fontPath.length() > 0){
+            if (!fontPath.endsWith(".ttf") && !fontPath.endsWith(".otf")){
+                ToastUtil.shortToast("请输入正确的字体文件路径");
+                return false;
+            }
+        }
         return true;
     }
 
@@ -86,10 +99,16 @@ public class ArtSentenceConfigActivity extends BaseConfigActivity<ArtSentenceWid
         SPUtil.put(getString(R.string.label_art_sentence) + widgetId + "_color_large", "#" + colorL);
         SPUtil.put(getString(R.string.label_art_sentence) + widgetId + "_color_small", "#" + colorS);
         SPUtil.put(getString(R.string.label_art_sentence) + widgetId + "_offset", offset);
+        SPUtil.put(getString(R.string.label_art_sentence) + widgetId + "_font_path", fontPath);
     }
 
     @Override
     protected boolean isSharedWidget() {
+        return true;
+    }
+
+    @Override
+    protected boolean needReadStorage() {
         return true;
     }
 }

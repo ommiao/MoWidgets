@@ -9,11 +9,16 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
+import android.graphics.Typeface;
+import android.os.Environment;
 import android.text.TextPaint;
 import android.widget.RemoteViews;
 
+import java.io.File;
+
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.utils.SPUtil;
+import cn.ommiao.mowidgets.utils.StringUtil;
 
 public class ArtSentenceWidget extends BaseWidget {
 
@@ -21,6 +26,8 @@ public class ArtSentenceWidget extends BaseWidget {
     private int colorL, colorS;
     private int sizeL, sizeS;
     private int offset;
+
+    private File fontFile = null;
 
     @Override
     public RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
@@ -32,6 +39,11 @@ public class ArtSentenceWidget extends BaseWidget {
         sizeL = context.getResources().getDimensionPixelSize(R.dimen.artSentenceLargeSize);
         sizeS = context.getResources().getDimensionPixelSize(R.dimen.artSentenceSmallSize);
         offset = SPUtil.getInt(context.getString(R.string.label_art_sentence) + appWidgetId + "_offset", 0);
+        String fontPath = SPUtil.getString(context.getString(R.string.label_art_sentence) + appWidgetId + "_font_path", "");
+        if(!StringUtil.isEmpty(fontPath)){
+            String fullPath = Environment.getExternalStorageDirectory() + "/" + fontPath;
+            fontFile = new File(fullPath);
+        }
         views.setImageViewBitmap(R.id.iv_text, getBitmap());
         return views;
     }
@@ -50,12 +62,22 @@ public class ArtSentenceWidget extends BaseWidget {
         paintL.setColor(colorL);
         paintL.setTextSize(sizeL);
 
+        if(fontFile != null && fontFile.exists()){
+            Typeface typeface = Typeface.createFromFile(fontFile);
+            paintL.setTypeface(typeface);
+        }
+
         canvas.drawText(textL, getTextFullWidth() / 2 - getTextWidthL() / 2, bitmapHeight / 2 + Math.abs(paintL.ascent() + paintL.descent()) / 2, paintL);
 
         Paint paintS = new Paint();
         paintS.setAntiAlias(true);
         paintS.setColor(colorS);
         paintS.setTextSize(sizeS);
+
+        if(fontFile != null && fontFile.exists()){
+            Typeface typeface = Typeface.createFromFile(fontFile);
+            paintS.setTypeface(typeface);
+        }
 
         int rectHeight = getTextHeight(paintS) + 10;
         Rect rect = new Rect();
