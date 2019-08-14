@@ -42,9 +42,10 @@
             android:id="@+id/iv_color"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/ic_rectangle_round_grey"
             android:src="@drawable/ic_rectangle_round"
-            android:layout_marginStart="10dp"
-            android:elevation="1dp"/>
+            android:padding="1dp"
+            android:layout_marginStart="10dp" />
 
         <ImageView
             android:id="@+id/iv_test"

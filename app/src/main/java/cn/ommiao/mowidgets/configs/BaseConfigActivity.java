@@ -217,10 +217,17 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompat
         binding.tvLabel.setText(label);
         binding.etColor.setHint(R.string.hint_et_color);
         binding.etColor.setText(defaultColorStr);
-        binding.etColor.setEnabled(false);
         if(isColorValid(defaultColorStr)){
             binding.ivColor.setColorFilter(Color.parseColor("#" + defaultColorStr));
         }
+        binding.ivColor.setOnClickListener(view -> {
+            String colorStr = binding.etColor.getText().toString().trim();
+            if(isColorValid(colorStr)){
+                binding.ivColor.setColorFilter(Color.parseColor("#" + colorStr));
+            } else {
+                ToastUtil.shortToast("请输入有效的颜色值");
+            }
+        });
         binding.ivTest.setOnClickListener(view -> {
             ColorPickerFragment colorPickerFragment = new ColorPickerFragment();
             colorPickerFragment.setOnColorPickerClickedListener(new ColorPickerFragment.OnColorPickerClickedListener() {
