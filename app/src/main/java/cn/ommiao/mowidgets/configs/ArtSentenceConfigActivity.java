@@ -22,6 +22,12 @@ public class ArtSentenceConfigActivity extends BaseConfigActivity<ArtSentenceWid
     private LayoutEdittextBinding bindingFontPath;
     private String fontPath;
 
+    private LayoutEdittextBinding offsetInsideBinding;
+    private int offsetInside;
+
+    private LayoutEdittextBinding spaceBinding;
+    private int space;
+
     @Override
     protected ArtSentenceWidget getTargetWidget() {
         return new ArtSentenceWidget();
@@ -31,21 +37,26 @@ public class ArtSentenceConfigActivity extends BaseConfigActivity<ArtSentenceWid
     protected void initConfigViews() {
         edittextBindingL = getEdittextBinding("文字内容(大)", 10);
         edittextBindingS = getEdittextBinding("文字内容(小)", 50);
-        edittextBindingL.et.setText("爱情");
-        edittextBindingS.et.setText("真的是一场龙卷风啊");
+        edittextBindingL.et.setText("那谁");
+        edittextBindingS.et.setText("我想要爱你一辈子啊啊");
         addConfigView(edittextBindingL.getRoot());
         addConfigView(edittextBindingS.getRoot());
         selectorBindingL = getColorSelectorBinding("文字颜色(大)");
         selectorBindingS = getColorSelectorBinding("文字颜色(小)");
         addConfigView(selectorBindingL.getRoot());
         addConfigView(selectorBindingS.getRoot());
-        offsetBinding = getNumberEdittextBinding("小字偏移");
+        offsetBinding = getNumberEdittextBinding("小字布局偏移", 4, true);
         offsetBinding.et.setHint("正值向下，负值向上偏移，不填为默认位置");
-        offsetBinding.et.setFilters(getNumberInputFilters(true, 4));
         addConfigView(offsetBinding.getRoot());
         bindingFontPath = getEdittextBinding("字体路径");
         bindingFontPath.et.setHint("填写根目录的相对路径如font/roboto.ttf");
         addConfigView(bindingFontPath.getRoot());
+        offsetInsideBinding = getNumberEdittextBinding("小字布局内偏移", 3, true);
+        offsetInsideBinding.et.setHint("默认为0");
+        addConfigView(offsetInsideBinding.getRoot());
+        spaceBinding = getNumberEdittextBinding("小字布局间隙", 2);
+        spaceBinding.et.setHint("默认为10");
+        addConfigView(spaceBinding.getRoot());
     }
 
     @Override
@@ -87,6 +98,16 @@ public class ArtSentenceConfigActivity extends BaseConfigActivity<ArtSentenceWid
                 return false;
             }
         }
+        String offsetInsideStr = offsetInsideBinding.et.getText().toString().trim();
+        if(!isNumberValid(offsetInsideStr)){
+            offsetInsideStr = "0";
+        }
+        offsetInside = Integer.parseInt(offsetInsideStr);
+        String spaceStr = spaceBinding.et.getText().toString().trim();
+        if(!isNumberValid(spaceStr)){
+            spaceStr = "10";
+        }
+        space = Integer.parseInt(spaceStr);
         return true;
     }
 
@@ -98,6 +119,8 @@ public class ArtSentenceConfigActivity extends BaseConfigActivity<ArtSentenceWid
         SPUtil.put(getString(R.string.label_art_sentence) + widgetId + "_color_small", "#" + colorS);
         SPUtil.put(getString(R.string.label_art_sentence) + widgetId + "_offset", offset);
         SPUtil.put(getString(R.string.label_art_sentence) + widgetId + "_font_path", fontPath);
+        SPUtil.put(getString(R.string.label_art_sentence) + widgetId + "_offset_inside", offsetInside);
+        SPUtil.put(getString(R.string.label_art_sentence) + widgetId + "_space", space);
     }
 
     @Override

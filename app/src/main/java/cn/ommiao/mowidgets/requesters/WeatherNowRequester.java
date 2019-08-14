@@ -3,6 +3,8 @@ package cn.ommiao.mowidgets.requesters;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 
+import com.orhanobut.logger.Logger;
+
 import cn.ommiao.mowidgets.Constant;
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.entities.NowWeather;
@@ -26,7 +28,7 @@ public abstract class WeatherNowRequester<W extends BaseWidget> extends BaseRequ
         String location = getLocation();
         String key = getWeatherKey();
         if(INVALID_KEY.equals(key)){
-            ToastUtil.shortToast("请设置和风天气的Key以获取天气");
+            //ToastUtil.shortToast("请设置和风天气的Key以获取天气");
             notifyDataRequested();
             return;
         }
@@ -47,7 +49,7 @@ public abstract class WeatherNowRequester<W extends BaseWidget> extends BaseRequ
                 if(out != null){
                     msg = out.getStatus();
                 }
-                ToastUtil.shortToast("天气获取失败：" + msg);
+                Logger.d("天气获取失败：" + msg);
                 notifyDataRequested();
             }
         });

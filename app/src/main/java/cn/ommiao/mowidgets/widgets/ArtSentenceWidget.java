@@ -31,6 +31,9 @@ public class ArtSentenceWidget extends BaseWidget {
 
     private File fontFile = null;
 
+    private int offsetInside;
+    private int space;
+
     @Override
     public RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_art_sentence);
@@ -47,6 +50,8 @@ public class ArtSentenceWidget extends BaseWidget {
             Logger.d(fullPath);
             fontFile = new File(fullPath);
         }
+        offsetInside = SPUtil.getInt(context.getString(R.string.label_art_sentence) + appWidgetId + "_offset_inside", 0);
+        space = SPUtil.getInt(context.getString(R.string.label_art_sentence) + appWidgetId + "_space", 10);
         views.setImageViewBitmap(R.id.iv_text, getBitmap());
         return views;
     }
@@ -82,7 +87,7 @@ public class ArtSentenceWidget extends BaseWidget {
             paintS.setTypeface(typeface);
         }
 
-        int rectHeight = getTextHeight(paintS) + 10;
+        int rectHeight = getTextHeight(paintS) + space;
         Rect rect = new Rect();
         rect.left = 0;
         rect.right = getTextFullWidth();
@@ -95,7 +100,8 @@ public class ArtSentenceWidget extends BaseWidget {
 
         canvas.drawRect(rect, paintL);
 
-        canvas.drawText(textS, getTextFullWidth() / 2 - getTextWidthS() / 2, rect.top + rectHeight / 2 + Math.abs(paintS.ascent() + paintS.descent()) / 2, paintS);
+        float baseLine = rect.top + rectHeight / 2 + Math.abs(paintS.ascent() + paintS.descent()) / 2;
+        canvas.drawText(textS, getTextFullWidth() / 2 - getTextWidthS() / 2, baseLine + offsetInside, paintS);
 
         return bitmap;
     }
