@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="145dp"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/v_center"
+            android:layout_width="10dp"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true"/>
+
+        <ImageView
+            android:id="@+id/iv_line2"
+            android:layout_width="100dp"
+            android:layout_height="110dp"
+            android:src="@drawable/big_drum_line2"
+            android:layout_centerInParent="true"/>
+
+        <TextClock
+            android:id="@+id/tc_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/poco_num"
+            android:textSize="21sp"
+            android:layout_toStartOf="@id/tc_minute"
+            android:format12Hour="hh : "
+            android:format24Hour="HH : "
+            android:includeFontPadding="false"
+            android:padding="0dp"
+            android:layout_marginTop="12dp"
+            tools:text="02 : "/>
+
+        <TextClock
+            android:id="@+id/tc_minute"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#9D1237"
+            android:fontFamily="@font/poco_num"
+            android:textSize="55sp"
+            android:layout_toStartOf="@id/v_center"
+            android:format12Hour="mm"
+            android:format24Hour="mm"
+            android:includeFontPadding="false"
+            android:padding="0dp"
+            tools:text="36"/>
+
+        <TextClock
+            android:id="@+id/tc_week"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/poco_num"
+            android:textSize="21sp"
+            android:layout_toEndOf="@id/v_center"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="24dp"
+            android:format12Hour="@string/week_format_big_drum"
+            android:format24Hour="@string/week_format_big_drum"
+            tools:text="今天是 周一"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

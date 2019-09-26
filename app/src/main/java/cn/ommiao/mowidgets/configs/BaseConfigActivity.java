@@ -377,6 +377,14 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompat
         return binding;
     }
 
+    protected boolean checkColorString(String colorStr, CharSequence label){
+        if(!isColorValid(colorStr)){
+            ToastUtil.shortToast("请输入有效的文字颜色(" + label + ")");
+            return false;
+        }
+        return true;
+    }
+
     protected boolean isSharedWidget(){
         return false;
     }

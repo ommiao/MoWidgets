@@ -59,4 +59,7 @@
     <string name="title_japanese_clock_settings">Japanese Clock Settings</string>
     <string name="confirm">确定</string>
     <string name="cancel">取消</string>
+    <string name="title_big_drum_clock_settings">Big Drum Clock Settings</string>
+    <string name="label_big_drum_clock">Big Drum Clock</string>
+    <string name="week_format_big_drum">EEEE</string>
 </resources>

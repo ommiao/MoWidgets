@@ -173,6 +173,18 @@
                 android:resource="@xml/widget_info_japanese_clock" />
         </receiver>
 
+        <receiver
+            android:name=".widgets.BigDrumClockWidget"
+            android:label="@string/label_big_drum_clock">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_big_drum_clock" />
+        </receiver>
+
         <activity
             android:name=".configs.GoogleWordConfigActivity"
             android:theme="@style/FakeDialog"
@@ -220,6 +232,11 @@
 
         <activity
             android:name=".configs.JapaneseClockConfigActivity"
+            android:theme="@style/FakeDialog"
+            android:exported="true"/>
+
+        <activity
+            android:name=".configs.BigDrumClockConfigActivity"
             android:theme="@style/FakeDialog"
             android:exported="true"/>
 

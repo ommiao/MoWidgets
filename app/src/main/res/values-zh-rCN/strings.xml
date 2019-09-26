@@ -5,4 +5,5 @@
     <string name="date_format_poco_clock">EEEE, M月d日</string>
     <string name="date_format_coloros_clock">EEE \ \ M月d日</string>
     <string name="date_format_pixel_date">M月d日 \ EEEE</string>
+    <string name="week_format_big_drum">今天是 EEE</string>
 </resources>
