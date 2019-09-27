@@ -185,6 +185,42 @@
                 android:resource="@xml/widget_info_big_drum_clock" />
         </receiver>
 
+        <receiver
+            android:name=".widgets.picture.DogPictureWidget"
+            android:label="@string/label_dog_picture">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_dog_picture" />
+        </receiver>
+
+        <receiver
+            android:name=".widgets.picture.DrinkPictureWidget"
+            android:label="@string/label_drink_picture">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_drink_picture" />
+        </receiver>
+
+        <receiver
+            android:name=".widgets.picture.BookPictureWidget"
+            android:label="@string/label_book_picture">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_book_picture" />
+        </receiver>
+
         <activity
             android:name=".configs.GoogleWordConfigActivity"
             android:theme="@style/FakeDialog"

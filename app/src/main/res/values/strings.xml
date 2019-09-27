@@ -62,4 +62,7 @@
     <string name="title_big_drum_clock_settings">Big Drum Clock Settings</string>
     <string name="label_big_drum_clock">Big Drum Clock</string>
     <string name="week_format_big_drum">EEEE</string>
+    <string name="label_dog_picture">萌柴</string>
+    <string name="label_drink_picture">凉饮</string>
+    <string name="label_book_picture">书叶</string>
 </resources>
