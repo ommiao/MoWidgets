@@ -109,7 +109,7 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompat
     private void requestReadStoragePermission(){
         requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
         if(shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)){
-            ToastUtil.shortToast("读取存储权限已被禁止并不再询问，请手动打开读写存储权限！");
+            ToastUtil.shortToast("如读取文件失败，请手动打开读写存储权限！");
         }
     }
 
