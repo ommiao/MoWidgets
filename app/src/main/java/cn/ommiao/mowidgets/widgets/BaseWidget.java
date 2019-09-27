@@ -5,6 +5,7 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Environment;
 import android.provider.AlarmClock;
 import android.widget.RemoteViews;
 
@@ -222,6 +223,10 @@ public abstract class BaseWidget<R extends BaseRequester> extends AppWidgetProvi
             alpha = Integer.parseInt(hex.substring(1, 3), 16);
         }
         return alpha;
+    }
+
+    protected String appendRootPath(String relativePath){
+        return Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + relativePath;
     }
 
 }

@@ -96,7 +96,7 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompat
     private void showRequestReadStoragePermission(){
         new CustomDialogFragment()
                 .title("提示")
-                .content("为了读取字体文件需要申请读取存储空间权限，不授予该权限则无法使用该控件。")
+                .content("为了读取媒体文件需要申请读取存储空间权限，不授予该权限则无法使用该控件。")
                 .leftBtn("确定")
                 .rightBtn("取消")
                 .onLeftClick(this::requestReadStoragePermission)

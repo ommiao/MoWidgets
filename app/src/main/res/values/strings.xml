@@ -65,4 +65,6 @@
     <string name="label_dog_picture">萌柴</string>
     <string name="label_drink_picture">凉饮</string>
     <string name="label_book_picture">书叶</string>
+    <string name="label_custom_picture">自定义图片</string>
+    <string name="title_custom_settings">自定义图片控件设置</string>
 </resources>

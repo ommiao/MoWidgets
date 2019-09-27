@@ -7,7 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Typeface;
-import android.os.Environment;
 import android.widget.RemoteViews;
 
 import com.orhanobut.logger.Logger;
@@ -33,7 +32,7 @@ public class JapaneseClockWidget extends TimingRefreshWidget {
         String fontPath = SPUtil.getString(context.getString(R.string.label_japanese_clock) + appWidgetId + "_font_path", "");
         Logger.d(fontPath);
         if(!StringUtil.isEmpty(fontPath)){
-            String fullPath = Environment.getExternalStorageDirectory() + "/" + fontPath;
+            String fullPath =  appendRootPath(fontPath);
             fontFile = new File(fullPath);
         }
         views.setImageViewBitmap(R.id.iv_clock, getBitmap());
