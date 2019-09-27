@@ -13,6 +13,7 @@ public class BigDrumClockWidget extends BaseWidget {
     @Override
     public RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_clock_big_drum);
+        views.setOnClickPendingIntent(R.id.fl_big_drum_clock, getAlarmIntent(context));
         int colorHour = Color.parseColor(SPUtil.getString(context.getString(R.string.label_big_drum_clock) + appWidgetId + "_color_hour", "#000000"));
         int colorMinute = Color.parseColor(SPUtil.getString(context.getString(R.string.label_big_drum_clock) + appWidgetId + "_color_minute", "#9D1237"));
         int colorWeek = Color.parseColor(SPUtil.getString(context.getString(R.string.label_big_drum_clock) + appWidgetId + "_color_week", "#000000"));
