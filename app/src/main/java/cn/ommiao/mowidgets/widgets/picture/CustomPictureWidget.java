@@ -30,6 +30,11 @@ public class CustomPictureWidget extends BaseWidget {
         }
         int alpha = SPUtil.getInt(context.getString(R.string.label_custom_picture) + appWidgetId + "_alpha", 255);
         views.setInt(R.id.iv_picture, "setAlpha", alpha);
+        int paddingL = SPUtil.getInt(context.getString(R.string.label_custom_picture) + appWidgetId + "_padding_left", 0);
+        int paddingT = SPUtil.getInt(context.getString(R.string.label_custom_picture) + appWidgetId + "_padding_top", 0);
+        int paddingR = SPUtil.getInt(context.getString(R.string.label_custom_picture) + appWidgetId + "_padding_right", 0);
+        int paddingB = SPUtil.getInt(context.getString(R.string.label_custom_picture) + appWidgetId + "_padding_bottom", 0);
+        views.setViewPadding(R.id.fl_picture, paddingL, paddingT, paddingR, paddingB);
         return views;
     }
 
