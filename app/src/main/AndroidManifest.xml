@@ -293,6 +293,11 @@
             android:theme="@style/FakeDialog"
             android:exported="true"/>
 
+        <activity
+            android:name=".configs.WeatherForecastConfigActivity"
+            android:theme="@style/FakeDialog"
+            android:exported="true"/>
+
         <service
             android:name=".TimeService"
             android:enabled="true"
@@ -308,5 +313,20 @@
                 android:resource="@xml/accessibility_info_time_service" />
 
         </service>
+        <service
+            android:name=".widgets.list.WeatherForecastService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"/>
+
+        <receiver
+            android:name=".widgets.list.WeatherForecastWidget"
+            android:label="@string/label_weather_forecast">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_weather_forecast" />
+        </receiver>
     </application>
 </manifest>

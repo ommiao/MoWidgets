@@ -1,20 +1,22 @@
-package cn.ommiao.mowidgets.httpcalls.weathernow;
+package cn.ommiao.mowidgets.httpcalls.weather;
 
-import cn.ommiao.mowidgets.httpcalls.weathernow.model.WeatherNowIn;
-import cn.ommiao.mowidgets.httpcalls.weathernow.model.WeatherNowOut;
+import cn.ommiao.mowidgets.httpcalls.weather.model.WeatherIn;
+import cn.ommiao.mowidgets.httpcalls.weather.model.WeatherOut;
 import cn.ommiao.network.BaseRequest;
 import cn.ommiao.network.ErrorCodes;
 
-public class WeatherNowCall extends BaseRequest<WeatherNowIn, WeatherNowOut> {
+public abstract class BaseWeatherCall extends BaseRequest<WeatherIn, WeatherOut> {
 
     @Override
     protected String api() {
-        return "now?location={location}&key={key}";
+        return key() + "?location={location}&key={key}";
     }
 
+    protected abstract String key();
+
     @Override
-    protected Class<WeatherNowOut> outClass() {
-        return WeatherNowOut.class;
+    protected Class<WeatherOut> outClass() {
+        return WeatherOut.class;
     }
 
     @Override
@@ -24,7 +26,7 @@ public class WeatherNowCall extends BaseRequest<WeatherNowIn, WeatherNowOut> {
 
     @Override
     protected String extraHandle(String res) {
-        WeatherNowOut out = WeatherNowOut.fromJson(res, WeatherNowOut.class);
+        WeatherOut out = WeatherOut.fromJson(res, WeatherOut.class);
         if("ok".equals(out.getStatus())){
             out.setCode(ErrorCodes.SUCCESS);
         } else {
@@ -33,5 +35,6 @@ public class WeatherNowCall extends BaseRequest<WeatherNowIn, WeatherNowOut> {
         }
         return out.toJson();
     }
+
 
 }

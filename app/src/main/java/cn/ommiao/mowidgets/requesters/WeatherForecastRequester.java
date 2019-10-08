@@ -7,25 +7,30 @@ import com.orhanobut.logger.Logger;
 
 import cn.ommiao.mowidgets.Constant;
 import cn.ommiao.mowidgets.R;
-import cn.ommiao.mowidgets.entities.NowWeather;
-import cn.ommiao.mowidgets.httpcalls.weather.WeatherNowCall;
+import cn.ommiao.mowidgets.httpcalls.weather.WeatherForecastCall;
 import cn.ommiao.mowidgets.httpcalls.weather.model.WeatherIn;
 import cn.ommiao.mowidgets.httpcalls.weather.model.WeatherOut;
-import cn.ommiao.mowidgets.widgets.BaseWidget;
+import cn.ommiao.mowidgets.utils.SPUtil;
+import cn.ommiao.mowidgets.widgets.list.WeatherForecastWidget;
 import cn.ommiao.network.SimpleRequestCallback;
 
-public abstract class WeatherNowRequester<W extends BaseWidget> extends BaseRequester<W> {
+public class WeatherForecastRequester extends BaseRequester<WeatherForecastWidget> {
 
     protected static final String INVALID_KEY = "Invalid Key.";
 
-    public WeatherNowRequester(Context context, AppWidgetManager appWidgetManager, int widgetId) {
+    public WeatherForecastRequester(Context context, AppWidgetManager appWidgetManager, int widgetId) {
         super(context, appWidgetManager, widgetId);
     }
 
     @Override
+    protected WeatherForecastWidget getTargetWidget() {
+        return new WeatherForecastWidget();
+    }
+
+    @Override
     public void request() {
-        String location = getLocation();
-        String key = getWeatherKey();
+        String location = SPUtil.getString(context.getString(R.string.label_weather_forecast) + widgetId + "_location", "北京");
+        String key = SPUtil.getString(context.getString(R.string.label_weather_forecast) + widgetId + "_key", INVALID_KEY);
         if(INVALID_KEY.equals(key)){
             //ToastUtil.shortToast("请设置和风天气的Key以获取天气");
             notifyDataRequested();
@@ -35,10 +40,10 @@ public abstract class WeatherNowRequester<W extends BaseWidget> extends BaseRequ
             key = Constant.WEATHER_KEY;
         }
         WeatherIn in = new WeatherIn(location, key);
-        newCall(new WeatherNowCall(), in, new SimpleRequestCallback<WeatherOut>() {
+        newCall(new WeatherForecastCall(), in, new SimpleRequestCallback<WeatherOut>() {
             @Override
             public void onSuccess(WeatherOut out) {
-                saveWeatherData(out.getNowWeather());
+                saveWeatherData(out);
                 notifyDataRequested();
             }
 
@@ -54,10 +59,9 @@ public abstract class WeatherNowRequester<W extends BaseWidget> extends BaseRequ
         });
     }
 
-    protected abstract String getLocation();
-
-    protected abstract String getWeatherKey();
-
-    protected abstract void saveWeatherData(NowWeather nowWeather);
-
+    private void saveWeatherData(WeatherOut out) {
+        String data = out.getHeWeather6().toJson();
+        Logger.d("save: " + widgetId + "--->" + data);
+        SPUtil.put(context.getString(R.string.label_weather_forecast) + widgetId + "_heweather6", data);
+    }
 }
