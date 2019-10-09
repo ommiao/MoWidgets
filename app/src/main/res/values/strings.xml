@@ -67,6 +67,6 @@
     <string name="label_book_picture">书叶</string>
     <string name="label_custom_picture">自定义图片</string>
     <string name="title_custom_settings">自定义图片控件设置</string>
-    <string name="label_weather_forecast">天气预报</string>
+    <string name="label_weather_forecast">三日天气</string>
     <string name="title_weather_forecast_settings">天气预报设置</string>
 </resources>
