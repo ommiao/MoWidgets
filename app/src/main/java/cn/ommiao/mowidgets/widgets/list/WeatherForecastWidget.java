@@ -17,7 +17,7 @@ public class WeatherForecastWidget extends BaseListWidget<WeatherForecastService
 
     @Override
     public RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_list);
+        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_weather_forecast);
         views.setRemoteAdapter(R.id.list, new Intent(context, classOfS()).putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId));
         return views;
     }

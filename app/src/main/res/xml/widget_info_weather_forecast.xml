@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:initialKeyguardLayout="@layout/widget_list"
-    android:initialLayout="@layout/widget_list"
-    android:minHeight="120dp"
+    android:initialKeyguardLayout="@layout/widget_weather_forecast"
+    android:initialLayout="@layout/widget_weather_forecast"
+    android:minHeight="50dp"
     android:minWidth="120dp"
     android:previewImage="@drawable/ic_rectangle_round"
     android:updatePeriodMillis="0"

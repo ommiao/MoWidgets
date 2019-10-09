@@ -61,7 +61,6 @@ public class WeatherForecastRequester extends BaseRequester<WeatherForecastWidge
 
     private void saveWeatherData(WeatherOut out) {
         String data = out.getHeWeather6().toJson();
-        Logger.d("save: " + widgetId + "--->" + data);
         SPUtil.put(context.getString(R.string.label_weather_forecast) + widgetId + "_heweather6", data);
     }
 }
