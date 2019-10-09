@@ -328,5 +328,17 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info_weather_forecast" />
         </receiver>
+
+        <receiver
+            android:name=".widgets.BlackCardWeatherWidget"
+            android:label="@string/label_black_card_weather">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_black_card_weather" />
+        </receiver>
     </application>
 </manifest>
