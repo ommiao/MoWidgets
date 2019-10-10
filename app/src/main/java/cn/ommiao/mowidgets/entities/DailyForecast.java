@@ -10,6 +10,7 @@ public class DailyForecast extends JavaBean {
     private String tmp_max, tmp_min;
     private String wind_sc, wind_dir;
     private String sr, ss;
+    private String uv_index;
     private String colorCard = "#ff0000", colorText = "#ffffff";
 
     public String getDate() {
@@ -114,5 +115,9 @@ public class DailyForecast extends JavaBean {
 
     public void setSs(String ss) {
         this.ss = ss;
+    }
+
+    public String getUv_index() {
+        return uv_index;
     }
 }

@@ -69,5 +69,6 @@
     <string name="title_custom_settings">自定义图片控件设置</string>
     <string name="label_weather_forecast">三日天气</string>
     <string name="title_weather_forecast_settings">天气预报设置</string>
-    <string name="label_black_card_weather">Black Card Weather</string>
+    <string name="label_black_card_weather">VIP天气卡</string>
+    <string name="title_black_card_weather_settings">VIP天气卡设置</string>
 </resources>

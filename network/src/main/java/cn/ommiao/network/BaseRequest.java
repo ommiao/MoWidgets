@@ -24,7 +24,7 @@ public abstract class BaseRequest<IN extends RequestInBase, OUT extends RequestO
     protected static final int POST = 0;
     protected static final int GET = 1;
 
-    private static final String DEFAULT_BASE_URL = "https://free-api.heweather.net/s6/weather/";
+    private static final String DEFAULT_BASE_URL = "https://free-api.heweather.net/s6/";
 
     private Retrofit.Builder builder;
     private Retrofit retrofit;

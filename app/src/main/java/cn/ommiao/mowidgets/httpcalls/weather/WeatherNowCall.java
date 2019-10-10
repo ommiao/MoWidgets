@@ -4,7 +4,7 @@ public class WeatherNowCall extends BaseWeatherCall {
 
     @Override
     protected String key() {
-        return "now";
+        return "weather/now";
     }
 
 }

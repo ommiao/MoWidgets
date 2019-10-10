@@ -5,7 +5,7 @@ import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
 import cn.ommiao.mowidgets.utils.SPUtil;
 import cn.ommiao.mowidgets.widgets.ColorosClockWidget;
 
-public class ColorosClockConfigActivity extends WeatherNowConfigActivity<ColorosClockWidget> {
+public class ColorosClockConfigActivity extends BaseWeatherConfigActivity<ColorosClockWidget> {
 
     private LayoutEdittextBinding bindingTopPadding, bindingLeftPadding;
     private int topPadding, leftPadding;

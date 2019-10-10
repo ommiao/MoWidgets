@@ -9,7 +9,7 @@ import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
 import cn.ommiao.mowidgets.utils.ToastUtil;
 import cn.ommiao.mowidgets.widgets.BaseWidget;
 
-public abstract class WeatherNowConfigActivity<W extends BaseWidget> extends BaseConfigActivity<W> {
+public abstract class BaseWeatherConfigActivity<W extends BaseWidget> extends BaseConfigActivity<W> {
 
     private LayoutEdittextBinding edittextBinding;
     private String area;

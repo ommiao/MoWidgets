@@ -4,7 +4,7 @@ import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.utils.SPUtil;
 import cn.ommiao.mowidgets.widgets.PixelDateWeatherWidget;
 
-public class PixelDateWeatherConfigActivity extends WeatherNowConfigActivity<PixelDateWeatherWidget> {
+public class PixelDateWeatherConfigActivity extends BaseWeatherConfigActivity<PixelDateWeatherWidget> {
 
     @Override
     protected void saveConfigs(String area, String key) {

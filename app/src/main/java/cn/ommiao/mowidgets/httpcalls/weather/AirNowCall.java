@@ -1,9 +1,10 @@
 package cn.ommiao.mowidgets.httpcalls.weather;
 
-public class WeatherForecastCall extends BaseWeatherCall {
+public class AirNowCall extends BaseWeatherCall {
 
     @Override
     protected String key() {
-        return "weather/forecast";
+        return "air/now";
     }
+
 }

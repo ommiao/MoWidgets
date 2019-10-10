@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_bg_black_card_weather"
-        android:padding="12dp"
+        android:padding="15dp"
         android:layout_gravity="center"
         android:orientation="vertical">
 
@@ -46,6 +46,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/tv_tmp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
@@ -78,15 +79,17 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:textColor="@color/colorAqi"
-                    android:textSize="13sp"
+                    android:textSize="10sp"
                     android:fontFamily="@font/product"
-                    android:paddingTop="0dp"
-                    android:paddingBottom="0dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
                     android:paddingStart="4dp"
                     android:paddingEnd="4dp"
                     android:includeFontPadding="true"
                     android:background="@drawable/shape_bg_aqi"
-                    android:text="AQI 良"/>
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="AQI 轻度污染"/>
 
             </LinearLayout>
 
