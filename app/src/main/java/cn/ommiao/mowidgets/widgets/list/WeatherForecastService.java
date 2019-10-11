@@ -6,7 +6,7 @@ import android.graphics.Color;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.AbsoluteSizeSpan;
-import android.view.View;
+import android.util.TypedValue;
 import android.widget.RemoteViews;
 
 import com.orhanobut.logger.Logger;
@@ -26,6 +26,8 @@ public class WeatherForecastService extends BaseRemoteViewsService {
     }
 
     class StringListFactory extends BaseRemoteViewsService.BaseFactory<DailyForecast> {
+
+        private static final int MAX_LENGTH = 27;
 
         private HeWeather6 heWeather6;
 
@@ -88,6 +90,11 @@ public class WeatherForecastService extends BaseRemoteViewsService {
                 views.setInt(R.id.iv_mask, "setColorFilter", Color.parseColor(forecast.getColorCard()));
                 String weatherDesc = "白天" + forecast.getCond_txt_d() + "   " + "夜间" + forecast.getCond_txt_n() + "   " + "气温" + forecast.getTmp_min() + "° - " + forecast.getTmp_max() + "°";
                 views.setTextViewText(R.id.tv_weather_desc, weatherDesc);
+                if(weatherDesc.length() > MAX_LENGTH){
+                    views.setTextViewTextSize(R.id.tv_weather_desc, TypedValue.COMPLEX_UNIT_SP, 12);
+                } else {
+                    views.setTextViewTextSize(R.id.tv_weather_desc, TypedValue.COMPLEX_UNIT_SP, 14);
+                }
                 views.setTextViewText(R.id.tv_sun_desc, "日出" + forecast.getSr() + "   " + "日落" + forecast.getSs());
                 views.setTextViewText(R.id.tv_wind_desc, forecast.getWind_sc() + "级" + forecast.getWind_dir());
             } else {
