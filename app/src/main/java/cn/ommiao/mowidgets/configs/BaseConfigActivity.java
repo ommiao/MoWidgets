@@ -294,6 +294,10 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompat
     }
 
     protected LayoutAlignmentBinding getAlignmentBinding(String label){
+        return getAlignmentBinding(label, false);
+    }
+
+    protected LayoutAlignmentBinding getAlignmentBinding(String label, boolean vertical){
         RadioTextView.clearGroup(label);
         LayoutAlignmentBinding binding = DataBindingUtil.bind(LayoutInflater.from(this).inflate(R.layout.layout_alignment, null));
         assert binding != null;
@@ -301,19 +305,41 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompat
         binding.tvAlignLeft.setGroupId(label);
         binding.tvAlignMiddle.setGroupId(label);
         binding.tvAlignRight.setGroupId(label);
+        if(vertical){
+            binding.tvAlignLeft.setText("顶部");
+            binding.tvAlignMiddle.setText("居中");
+            binding.tvAlignRight.setText("底部");
+        }
         return binding;
     }
 
     protected int getAlignment(String alignmentStr){
-        switch (alignmentStr){
-            case "居左":
-                return Gravity.START;
-            case "居中":
-                return Gravity.CENTER_HORIZONTAL;
-            case "居右":
-                return Gravity.END;
-            default:
-                return Gravity.START;
+        return getAlignment(alignmentStr, false);
+    }
+
+    protected int getAlignment(String alignmentStr, boolean vertical){
+        if(vertical){
+            switch (alignmentStr){
+                case "顶部":
+                    return Gravity.TOP;
+                case "居中":
+                    return Gravity.CENTER_VERTICAL;
+                case "底部":
+                    return Gravity.BOTTOM;
+                default:
+                    return Gravity.TOP;
+            }
+        } else {
+            switch (alignmentStr){
+                case "居左":
+                    return Gravity.START;
+                case "居中":
+                    return Gravity.CENTER_HORIZONTAL;
+                case "居右":
+                    return Gravity.END;
+                default:
+                    return Gravity.START;
+            }
         }
     }
 

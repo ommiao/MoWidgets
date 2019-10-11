@@ -2,25 +2,35 @@ package cn.ommiao.mowidgets.widgets;
 
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
+import android.view.Gravity;
+import android.view.View;
 import android.widget.RemoteViews;
-
-import com.orhanobut.logger.Logger;
 
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.entities.DailyForecast;
 import cn.ommiao.mowidgets.entities.HeWeather6;
 import cn.ommiao.mowidgets.entities.NowWeather;
-import cn.ommiao.mowidgets.requesters.BaseRequester;
 import cn.ommiao.mowidgets.requesters.BlackCardWeatherRequester;
 import cn.ommiao.mowidgets.utils.SPUtil;
 import cn.ommiao.mowidgets.utils.WeatherUtil;
 
-public class BlackCardWeatherWidget extends BaseWidget {
+public class BlackCardWeatherWidget extends BaseWidget<BlackCardWeatherRequester> {
     @Override
     public RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_black_card_weather);
+        int alignment = SPUtil.getInt(context.getString(R.string.label_black_card_weather) + appWidgetId + "_alignment", Gravity.TOP);
+        if(alignment == Gravity.TOP){
+            views.setViewVisibility(R.id.iv_top, View.GONE);
+            views.setViewVisibility(R.id.iv_bottom, View.VISIBLE);
+        } else if(alignment == Gravity.BOTTOM){
+            views.setViewVisibility(R.id.iv_top, View.VISIBLE);
+            views.setViewVisibility(R.id.iv_bottom, View.GONE);
+        } else {
+            views.setViewVisibility(R.id.iv_top, View.VISIBLE);
+            views.setViewVisibility(R.id.iv_bottom, View.VISIBLE);
+        }
         HeWeather6 heWeather6 = HeWeather6.fromJson(SPUtil.getString(context.getString(R.string.label_black_card_weather) + appWidgetId + "_heweather6", "{}"), HeWeather6.class);
-        Logger.d(heWeather6.toJson());
+        views.setOnClickPendingIntent(R.id.tv_time, getRefreshIntent(context, appWidgetId));
         if(heWeather6.getNow() != null){
             NowWeather nowWeather = heWeather6.getNow();
             views.setTextViewText(R.id.tv_location, heWeather6.getBasic().getLocation());
@@ -50,7 +60,7 @@ public class BlackCardWeatherWidget extends BaseWidget {
     }
 
     @Override
-    public BaseRequester getDataRequester(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
+    public BlackCardWeatherRequester getDataRequester(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         return new BlackCardWeatherRequester(context, appWidgetManager, appWidgetId);
     }
 }

@@ -58,11 +58,11 @@ public abstract class BaseRemoteViewsService extends RemoteViewsService {
         @Override
         public RemoteViews getViewAt(int i) {
             RemoteViews views = new RemoteViews(mContext.getPackageName(), getItemLayoutId(i));
-            return buildRemoteViews(views, mData.get(i));
+            return buildRemoteViews(i, views, mData.get(i));
         }
 
         protected abstract @LayoutRes int getItemLayoutId(int i);
-        protected abstract RemoteViews buildRemoteViews(RemoteViews views, E bean);
+        protected abstract RemoteViews buildRemoteViews(int pos, RemoteViews views, E bean);
 
         @Override
         public RemoteViews getLoadingView() {

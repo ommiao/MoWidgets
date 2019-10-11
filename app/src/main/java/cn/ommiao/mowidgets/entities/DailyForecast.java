@@ -12,6 +12,7 @@ public class DailyForecast extends JavaBean {
     private String sr, ss;
     private String uv_index;
     private String colorCard = "#ff0000", colorText = "#ffffff";
+    private String updateTime = "";
 
     public String getDate() {
         return date;
@@ -119,5 +120,13 @@ public class DailyForecast extends JavaBean {
 
     public String getUv_index() {
         return uv_index;
+    }
+
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getUpdateTime() {
+        return updateTime;
     }
 }

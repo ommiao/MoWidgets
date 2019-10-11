@@ -11,7 +11,10 @@ import android.widget.RemoteViews;
 
 import java.util.Calendar;
 
+import cn.ommiao.mowidgets.RefreshActivity;
 import cn.ommiao.mowidgets.requesters.BaseRequester;
+
+import static cn.ommiao.mowidgets.Constant.EXTRA_WIDGET_CLASS;
 
 public abstract class BaseWidget<R extends BaseRequester> extends AppWidgetProvider {
 
@@ -197,6 +200,13 @@ public abstract class BaseWidget<R extends BaseRequester> extends AppWidgetProvi
     protected PendingIntent getAlarmIntent(Context context){
         Intent alarmIntent = new Intent(AlarmClock.ACTION_SHOW_ALARMS);
         return PendingIntent.getActivity(context, 0, alarmIntent, 0);
+    }
+
+    protected PendingIntent getRefreshIntent(Context context, int appWidgetId){
+        Intent intent = new Intent(context, RefreshActivity.class);
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
+        intent.putExtra(EXTRA_WIDGET_CLASS, getClass().getName());
+        return PendingIntent.getActivity(context, appWidgetId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     public boolean needRequestData(){

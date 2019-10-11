@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.AbsoluteSizeSpan;
+import android.view.View;
 import android.widget.RemoteViews;
 
 import com.orhanobut.logger.Logger;
@@ -14,6 +15,7 @@ import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.entities.DailyForecast;
 import cn.ommiao.mowidgets.entities.HeWeather6;
 import cn.ommiao.mowidgets.utils.SPUtil;
+import cn.ommiao.mowidgets.utils.StringUtil;
 import cn.ommiao.mowidgets.utils.WeatherUtil;
 
 public class WeatherForecastService extends BaseRemoteViewsService {
@@ -25,15 +27,27 @@ public class WeatherForecastService extends BaseRemoteViewsService {
 
     class StringListFactory extends BaseRemoteViewsService.BaseFactory<DailyForecast> {
 
+        private HeWeather6 heWeather6;
+
         StringListFactory(Context context, Intent intent) {
             super(context, intent);
         }
 
         @Override
         protected void initData() {
+            DailyForecast dailyForecast = new DailyForecast();
+            dailyForecast.setDate("祝你拥有美好的一天");
+            dailyForecast.setUpdateTime("Now");
+            mData.add(dailyForecast);
+        }
+
+        @Override
+        public void onDataSetChanged() {
+            super.onDataSetChanged();
+            mData.clear();
             String data = SPUtil.getString(mContext.getString(R.string.label_weather_forecast) + widgetId + "_heweather6", "{}");
-            Logger.d("get: " + widgetId + "--->" + data);
-            HeWeather6 heWeather6 = HeWeather6.fromJson(data, HeWeather6.class);
+            Logger.d("get: " + widgetId + " forecast --->" + data);
+            heWeather6 = HeWeather6.fromJson(data, HeWeather6.class);
             if(heWeather6.getDaily_forecast() != null && heWeather6.getDaily_forecast().size() >= 3){
                 mData.addAll(heWeather6.getDaily_forecast());
                 mData.get(0).setColorCard(getColorFromSp("_color_card1", "#FFD200"));
@@ -42,10 +56,7 @@ public class WeatherForecastService extends BaseRemoteViewsService {
                 mData.get(0).setColorText(getColorFromSp("_color_text1", "#000000"));
                 mData.get(1).setColorText(getColorFromSp("_color_text2", "#000000"));
                 mData.get(2).setColorText(getColorFromSp("_color_text3", "#FFFFFF"));
-            } else {
-                DailyForecast dailyForecast = new DailyForecast();
-                dailyForecast.setDate("祝你拥有美好的一天");
-                mData.add(dailyForecast);
+                mData.get(2).setUpdateTime(heWeather6.getUpdateTime());
             }
         }
 
@@ -55,8 +66,14 @@ public class WeatherForecastService extends BaseRemoteViewsService {
         }
 
         @Override
-        protected RemoteViews buildRemoteViews(RemoteViews views, DailyForecast forecast) {
-            setColorForText(views, Color.parseColor(forecast.getColorText()), R.id.tv_date, R.id.tv_weather_desc, R.id.tv_sun_desc, R.id.tv_wind_desc);
+        protected RemoteViews buildRemoteViews(int pos, RemoteViews views, DailyForecast forecast) {
+            setColorForText(views, Color.parseColor(forecast.getColorText()), R.id.tv_date, R.id.tv_weather_desc, R.id.tv_sun_desc, R.id.tv_wind_desc, R.id.tv_time);
+            String timeAndLocation = forecast.getUpdateTime();
+            if(heWeather6.getBasic() != null && !StringUtil.isEmpty(timeAndLocation)){
+                timeAndLocation += " / " + heWeather6.getBasic().getLocation();
+            }
+            views.setTextViewText(R.id.tv_time,  timeAndLocation);
+            views.setOnClickFillInIntent(R.id.tv_time, new Intent());
             String date = forecast.getDate();
             String[] yyyymmdd = date.split("-");
             if(yyyymmdd.length == 3){
@@ -91,10 +108,7 @@ public class WeatherForecastService extends BaseRemoteViewsService {
 
         private String getColorFromSp(String key, String defaultValue){
             String fullKey = mContext.getString(R.string.label_weather_forecast) + widgetId + key;
-            String result = SPUtil.getString(fullKey, defaultValue);
-            Logger.d(fullKey);
-            Logger.d(result);
-            return result;
+            return SPUtil.getString(fullKey, defaultValue);
         }
     }
 

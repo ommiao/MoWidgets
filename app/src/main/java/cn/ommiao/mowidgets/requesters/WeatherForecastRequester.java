@@ -5,8 +5,13 @@ import android.content.Context;
 
 import com.orhanobut.logger.Logger;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import cn.ommiao.mowidgets.Constant;
 import cn.ommiao.mowidgets.R;
+import cn.ommiao.mowidgets.entities.HeWeather6;
 import cn.ommiao.mowidgets.httpcalls.weather.WeatherForecastCall;
 import cn.ommiao.mowidgets.httpcalls.weather.model.WeatherIn;
 import cn.ommiao.mowidgets.httpcalls.weather.model.WeatherOut;
@@ -60,7 +65,11 @@ public class WeatherForecastRequester extends BaseRequester<WeatherForecastWidge
     }
 
     private void saveWeatherData(WeatherOut out) {
-        String data = out.getHeWeather6().toJson();
+        HeWeather6 heWeather6 = out.getHeWeather6();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.CHINA);
+        heWeather6.setUpdateTime(formatter.format(new Date()));
+        String data = heWeather6.toJson();
+        Logger.d("set: " + widgetId + " forecast --->" + data);
         SPUtil.put(context.getString(R.string.label_weather_forecast) + widgetId + "_heweather6", data);
     }
 }

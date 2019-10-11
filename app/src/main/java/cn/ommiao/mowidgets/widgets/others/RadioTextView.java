@@ -3,14 +3,15 @@ package cn.ommiao.mowidgets.widgets.others;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
-import android.widget.TextView;
+
+import androidx.appcompat.widget.AppCompatTextView;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.utils.StringUtil;
 
-public class RadioTextView extends TextView {
+public class RadioTextView extends AppCompatTextView {
 
     private static CopyOnWriteArrayList<RadioTextView> allRadioTextViews = new CopyOnWriteArrayList<>();
 
@@ -51,11 +52,7 @@ public class RadioTextView extends TextView {
     }
 
     public RadioTextView(Context context, AttributeSet attrs, int defStyleAttr) {
-        this(context, attrs, defStyleAttr, 0);
-    }
-
-    public RadioTextView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
+        super(context, attrs, defStyleAttr);
         allRadioTextViews.add(this);
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.RadioTextView);
         groupId = ta.getString(R.styleable.RadioTextView_groupId);

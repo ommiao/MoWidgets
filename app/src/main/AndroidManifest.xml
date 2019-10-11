@@ -303,6 +303,10 @@
             android:theme="@style/FakeDialog"
             android:exported="true"/>
 
+        <activity
+            android:name=".RefreshActivity"
+            android:theme="@android:style/Theme.NoDisplay"/>
+
         <service
             android:name=".TimeService"
             android:enabled="true"
@@ -345,5 +349,6 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info_black_card_weather" />
         </receiver>
+
     </application>
 </manifest>

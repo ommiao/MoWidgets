@@ -126,5 +126,6 @@ public class BlackCardWeatherRequester extends BaseRequester<BlackCardWeatherWid
         heWeather6.setUpdateTime(formatter.format(new Date()));
         String data = heWeather6.toJson();
         SPUtil.put(context.getString(R.string.label_black_card_weather) + widgetId + "_heweather6", data);
+        Logger.d("BlackCardWeatherRequester saved data.");
     }
 }

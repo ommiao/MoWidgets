@@ -31,7 +31,6 @@ public abstract class BaseWeatherConfigActivity<W extends BaseWidget> extends Ba
                             String allDigits = "0123456789abcdefermiao";
                             String result = source.toString();
                             for(int i = end - 1; i >= start; i--){
-                                Logger.d("ommiao: " + i);
                                 String c = String.valueOf(source.charAt(i));
                                 if(!allDigits.contains(c)){
                                     result = result.replace(c, "");
