@@ -24,4 +24,9 @@ public class HydrogenClockWidget extends TimingRefreshWidget {
         return views;
     }
 
+    @Override
+    protected String[] getCacheKeys(Context context, int appWidgetId) {
+        return new String[0];
+    }
+
 }

@@ -31,4 +31,15 @@ public class PaperNotesWidget extends BaseWidget {
         return views;
     }
 
+    @Override
+    protected String[] getCacheKeys(Context context, int appWidgetId) {
+        return new String[]{
+                context.getString(R.string.label_paper_notes) + appWidgetId + "_color_bottom",
+                context.getString(R.string.label_paper_notes) + appWidgetId + "_color_top",
+                context.getString(R.string.label_paper_notes) + appWidgetId + "_color_pin",
+                context.getString(R.string.label_paper_notes) + appWidgetId + "_text",
+                context.getString(R.string.label_paper_notes) + appWidgetId + "_color_text"
+        };
+    }
+
 }

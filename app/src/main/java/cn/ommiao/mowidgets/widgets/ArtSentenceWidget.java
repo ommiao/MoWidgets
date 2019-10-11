@@ -56,6 +56,20 @@ public class ArtSentenceWidget extends BaseWidget {
         return views;
     }
 
+    @Override
+    protected String[] getCacheKeys(Context context, int appWidgetId) {
+        return new String[]{
+                context.getString(R.string.label_art_sentence) + appWidgetId + "_text_large",
+                context.getString(R.string.label_art_sentence) + appWidgetId + "_text_small",
+                context.getString(R.string.label_art_sentence) + appWidgetId + "_color_large",
+                context.getString(R.string.label_art_sentence) + appWidgetId + "_color_small",
+                context.getString(R.string.label_art_sentence) + appWidgetId + "_offset",
+                context.getString(R.string.label_art_sentence) + appWidgetId + "_font_path",
+                context.getString(R.string.label_art_sentence) + appWidgetId + "_offset_inside",
+                context.getString(R.string.label_art_sentence) + appWidgetId + "_space"
+        };
+    }
+
     @SuppressWarnings("IntegerDivisionInFloatingPointContext")
     private Bitmap getBitmap() {
 

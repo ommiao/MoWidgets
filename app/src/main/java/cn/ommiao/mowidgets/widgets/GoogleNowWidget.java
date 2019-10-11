@@ -15,4 +15,11 @@ public class GoogleNowWidget extends BaseWidget {
         views.setTextViewText(R.id.tv_slogan, slogan);
         return views;
     }
+
+    @Override
+    protected String[] getCacheKeys(Context context, int appWidgetId) {
+        return new String[]{
+                context.getString(R.string.label_google_now) + appWidgetId + "_word"
+        };
+    }
 }

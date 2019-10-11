@@ -19,4 +19,8 @@ public abstract class BasePictureWidget extends BaseWidget {
 
     protected abstract  @DrawableRes int getPictureRes();
 
+    @Override
+    protected String[] getCacheKeys(Context context, int appWidgetId) {
+        return new String[0];
+    }
 }

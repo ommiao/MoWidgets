@@ -9,10 +9,13 @@ import android.os.Environment;
 import android.provider.AlarmClock;
 import android.widget.RemoteViews;
 
+import com.orhanobut.logger.Logger;
+
 import java.util.Calendar;
 
 import cn.ommiao.mowidgets.RefreshActivity;
 import cn.ommiao.mowidgets.requesters.BaseRequester;
+import cn.ommiao.mowidgets.utils.SPUtil;
 
 import static cn.ommiao.mowidgets.Constant.EXTRA_WIDGET_CLASS;
 
@@ -238,5 +241,21 @@ public abstract class BaseWidget<R extends BaseRequester> extends AppWidgetProvi
     protected String appendRootPath(String relativePath){
         return Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + relativePath;
     }
+
+    @Override
+    public void onDeleted(Context context, int[] appWidgetIds) {
+        for (int appWidgetId : appWidgetIds) {
+            clearCache(context, appWidgetId);
+        }
+    }
+
+    private void clearCache(Context context, int appWidgetId){
+        for (String cacheKey : getCacheKeys(context, appWidgetId)) {
+            SPUtil.remove(cacheKey);
+            Logger.d("clear cache key --> " + cacheKey);
+        }
+    }
+
+    protected abstract String[] getCacheKeys(Context context, int appWidgetId);
 
 }

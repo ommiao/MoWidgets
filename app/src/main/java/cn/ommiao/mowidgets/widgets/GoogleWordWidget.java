@@ -17,4 +17,11 @@ public class GoogleWordWidget extends BaseWidget {
         views.setInt(R.id.iv_google_word, "setAlpha", getAlphaByHex(colorStrOrigin));
         return views;
     }
+
+    @Override
+    protected String[] getCacheKeys(Context context, int appWidgetId) {
+        return new String[]{
+                context.getString(R.string.label_google_word) + appWidgetId
+        };
+    }
 }

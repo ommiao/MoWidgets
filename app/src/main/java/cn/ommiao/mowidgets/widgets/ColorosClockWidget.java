@@ -35,4 +35,14 @@ public class ColorosClockWidget extends BaseWidget<ColorosClockRequester> {
     public ColorosClockRequester getDataRequester(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         return new ColorosClockRequester(context, appWidgetManager, appWidgetId);
     }
+
+    @Override
+    protected String[] getCacheKeys(Context context, int appWidgetId) {
+        return new String[]{
+                context.getString(R.string.label_coloros_clock) + appWidgetId + "_tmp",
+                context.getString(R.string.label_coloros_clock) + appWidgetId + "_con_txt",
+                context.getString(R.string.label_coloros_clock) + appWidgetId + "_top_padding",
+                context.getString(R.string.label_coloros_clock) + appWidgetId + "_left_padding"
+        };
+    }
 }

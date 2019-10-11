@@ -11,4 +11,9 @@ public class NeverSettleWidget extends BaseWidget {
     public RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         return new RemoteViews(context.getPackageName(), R.layout.widget_clock_never_settle);
     }
+
+    @Override
+    protected String[] getCacheKeys(Context context, int appWidgetId) {
+        return new String[0];
+    }
 }

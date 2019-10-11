@@ -39,6 +39,15 @@ public class JapaneseClockWidget extends TimingRefreshWidget {
         return views;
     }
 
+    @Override
+    protected String[] getCacheKeys(Context context, int appWidgetId) {
+        return new String[]{
+                context.getString(R.string.label_japanese_clock) + appWidgetId + "_color_its",
+                context.getString(R.string.label_japanese_clock) + appWidgetId + "_color_time",
+                context.getString(R.string.label_japanese_clock) + appWidgetId + "_font_path"
+        };
+    }
+
     private Bitmap getBitmap(){
         int width = 600, height = 600;
         Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);

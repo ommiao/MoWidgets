@@ -38,4 +38,16 @@ public class CustomPictureWidget extends BaseWidget {
         return views;
     }
 
+    @Override
+    protected String[] getCacheKeys(Context context, int appWidgetId) {
+        return new String[]{
+                context.getString(R.string.label_custom_picture) + appWidgetId + "_path",
+                context.getString(R.string.label_custom_picture) + appWidgetId + "_alpha",
+                context.getString(R.string.label_custom_picture) + appWidgetId + "_padding_left",
+                context.getString(R.string.label_custom_picture) + appWidgetId + "_padding_top",
+                context.getString(R.string.label_custom_picture) + appWidgetId + "_padding_right",
+                context.getString(R.string.label_custom_picture) + appWidgetId + "_padding_bottom"
+        };
+    }
+
 }

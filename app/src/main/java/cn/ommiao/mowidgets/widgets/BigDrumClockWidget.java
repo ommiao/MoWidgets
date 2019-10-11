@@ -26,4 +26,14 @@ public class BigDrumClockWidget extends BaseWidget {
         return views;
     }
 
+    @Override
+    protected String[] getCacheKeys(Context context, int appWidgetId) {
+        return new String[]{
+                context.getString(R.string.label_big_drum_clock) + appWidgetId + "_color_hour",
+                context.getString(R.string.label_big_drum_clock) + appWidgetId + "_color_minute",
+                context.getString(R.string.label_big_drum_clock) + appWidgetId + "_color_week",
+                context.getString(R.string.label_big_drum_clock) + appWidgetId + "_color_line"
+        };
+    }
+
 }

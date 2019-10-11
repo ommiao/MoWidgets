@@ -47,4 +47,18 @@ public class WeatherForecastWidget extends BaseListWidget<WeatherForecastService
     public WeatherForecastRequester getDataRequester(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         return new WeatherForecastRequester(context, appWidgetManager, appWidgetId);
     }
+
+    @Override
+    protected String[] getCacheKeys(Context context, int appWidgetId) {
+        return new String[]{
+                context.getString(R.string.label_weather_forecast) + appWidgetId + "_alignment",
+                context.getString(R.string.label_weather_forecast) + appWidgetId + "_heweather6",
+                context.getString(R.string.label_weather_forecast) + appWidgetId + "_color_card1",
+                context.getString(R.string.label_weather_forecast) + appWidgetId + "_color_card2",
+                context.getString(R.string.label_weather_forecast) + appWidgetId + "_color_card3",
+                context.getString(R.string.label_weather_forecast) + appWidgetId + "_color_text1",
+                context.getString(R.string.label_weather_forecast) + appWidgetId + "_color_text2",
+                context.getString(R.string.label_weather_forecast) + appWidgetId + "_color_text3",
+        };
+    }
 }

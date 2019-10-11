@@ -63,4 +63,12 @@ public class BlackCardWeatherWidget extends BaseWidget<BlackCardWeatherRequester
     public BlackCardWeatherRequester getDataRequester(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         return new BlackCardWeatherRequester(context, appWidgetManager, appWidgetId);
     }
+
+    @Override
+    protected String[] getCacheKeys(Context context, int appWidgetId) {
+        return new String[]{
+                context.getString(R.string.label_black_card_weather) + appWidgetId + "_alignment",
+                context.getString(R.string.label_black_card_weather) + appWidgetId + "_heweather6"
+        };
+    }
 }

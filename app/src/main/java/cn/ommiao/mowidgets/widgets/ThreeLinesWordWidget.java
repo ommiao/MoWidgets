@@ -32,4 +32,21 @@ public class ThreeLinesWordWidget extends BaseWidget {
         return views;
     }
 
+    @Override
+    protected String[] getCacheKeys(Context context, int appWidgetId) {
+        return new String[]{
+                context.getString(R.string.label_three_lines_word) + appWidgetId + "_word_line1",
+                context.getString(R.string.label_three_lines_word) + appWidgetId + "_word_line2",
+                context.getString(R.string.label_three_lines_word) + appWidgetId + "_word_line3",
+                context.getString(R.string.label_three_lines_word) + appWidgetId + "_color_line1",
+                context.getString(R.string.label_three_lines_word) + appWidgetId + "_color_line2",
+                context.getString(R.string.label_three_lines_word) + appWidgetId + "_color_line3",
+                context.getString(R.string.label_three_lines_word) + appWidgetId + "_size_line1",
+                context.getString(R.string.label_three_lines_word) + appWidgetId + "_size_line2",
+                context.getString(R.string.label_three_lines_word) + appWidgetId + "_size_line3",
+                context.getString(R.string.label_three_lines_word) + appWidgetId + "_alignment",
+                context.getString(R.string.label_three_lines_word) + appWidgetId + "_horizontal_padding"
+        };
+    }
+
 }

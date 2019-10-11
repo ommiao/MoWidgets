@@ -33,4 +33,12 @@ public class PixelDateWeatherWidget extends BaseWidget<PixelDateWeatherRequester
         return new PixelDateWeatherRequester(context, appWidgetManager, appWidgetId);
     }
 
+    @Override
+    protected String[] getCacheKeys(Context context, int appWidgetId) {
+        return new String[]{
+                context.getString(R.string.label_pixel_date_weather) + appWidgetId + "_tmp",
+                context.getString(R.string.label_pixel_date_weather) + appWidgetId + "_cond_code"
+        };
+    }
+
 }

@@ -16,6 +16,7 @@ import cn.ommiao.mowidgets.httpcalls.weather.WeatherForecastCall;
 import cn.ommiao.mowidgets.httpcalls.weather.model.WeatherIn;
 import cn.ommiao.mowidgets.httpcalls.weather.model.WeatherOut;
 import cn.ommiao.mowidgets.utils.SPUtil;
+import cn.ommiao.mowidgets.utils.ToastUtil;
 import cn.ommiao.mowidgets.widgets.list.WeatherForecastWidget;
 import cn.ommiao.network.SimpleRequestCallback;
 
@@ -59,6 +60,9 @@ public class WeatherForecastRequester extends BaseRequester<WeatherForecastWidge
                     msg = out.getStatus();
                 }
                 Logger.d("天气获取失败：" + msg);
+                if("unknown location".equals(msg)){
+                    ToastUtil.shortToast("天气获取失败，请确认地点准确且精确" );
+                }
                 notifyDataRequested();
             }
         });

@@ -39,4 +39,11 @@ public class IUNIDateWidget extends TimingRefreshWidget {
         return views;
     }
 
+    @Override
+    protected String[] getCacheKeys(Context context, int appWidgetId) {
+        return new String[]{
+                context.getString(R.string.label_iuni_date) + appWidgetId + "_show_chinese"
+        };
+    }
+
 }

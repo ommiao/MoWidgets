@@ -15,4 +15,9 @@ public class PocoClockWidget extends BaseWidget {
         return views;
     }
 
+    @Override
+    protected String[] getCacheKeys(Context context, int appWidgetId) {
+        return new String[0];
+    }
+
 }

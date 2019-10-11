@@ -32,6 +32,21 @@ public class QTextClockWidget extends TimingRefreshWidget {
         return views;
     }
 
+    @Override
+    protected String[] getCacheKeys(Context context, int appWidgetId) {
+        return new String[]{
+                context.getString(R.string.label_q_text_clock) + appWidgetId + "_color_it_s",
+                context.getString(R.string.label_q_text_clock) + appWidgetId + "_color_time",
+                context.getString(R.string.label_q_text_clock) + appWidgetId + "_color_time",
+                context.getString(R.string.label_q_text_clock) + appWidgetId + "_size_text",
+                context.getString(R.string.label_q_text_clock) + appWidgetId + "_size_text",
+                context.getString(R.string.label_q_text_clock) + appWidgetId + "_size_text",
+                context.getString(R.string.label_q_text_clock) + appWidgetId + "_top_padding",
+                context.getString(R.string.label_q_text_clock) + appWidgetId + "_left_padding",
+                context.getString(R.string.label_q_text_clock) + appWidgetId + "_line_padding"
+        };
+    }
+
     private String getTextHourEn(){
         int hour = getHour();
         switch (hour){
