@@ -1,0 +1,124 @@
+package cn.ommiao.mowidgets.widgets.list;
+
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.widget.RemoteViews;
+
+import com.orhanobut.logger.Logger;
+
+import java.util.Calendar;
+import java.util.HashMap;
+
+import cn.ommiao.mowidgets.R;
+import cn.ommiao.mowidgets.entities.MonthCalendarDay;
+
+public class MonthCalendarService extends BaseRemoteViewsService {
+
+    @Override
+    protected RemoteViewsFactory getFactory(Intent intent) {
+        return new MonthCalendarFactory(this, intent);
+    }
+
+    class MonthCalendarFactory extends BaseRemoteViewsService.BaseFactory<MonthCalendarDay> {
+
+        private final String[] WEEKS = {"周日", "周一", "周二", "周三", "周四", "周五", "周六"};
+
+        private final HashMap<MonthCalendarDay.ViewType, Integer> LAYOUT_MAP = new HashMap<MonthCalendarDay.ViewType, Integer>(){
+            {
+                put(MonthCalendarDay.ViewType.WEEK_ROW, R.layout.item_month_calendar_week_row);
+                put(MonthCalendarDay.ViewType.NONE, R.layout.item_month_calendar_week_row);
+                put(MonthCalendarDay.ViewType.DAY, R.layout.item_calendar_day);
+                put(MonthCalendarDay.ViewType.WEEK_COL, R.layout.item_month_calendar_week_col);
+            }
+        };
+
+        MonthCalendarFactory(Context context, Intent intent) {
+            super(context, intent);
+        }
+
+        @Override
+        protected void initData() {
+            for(int i = 0; i < 7; i++){
+                MonthCalendarDay monthCalendarDay = new MonthCalendarDay();
+                monthCalendarDay.setViewType(MonthCalendarDay.ViewType.WEEK_ROW);
+                monthCalendarDay.setData(WEEKS[i]);
+                if(i == getWeekNo()){
+                    monthCalendarDay.setHighLight(true);
+                }
+                mData.add(monthCalendarDay);
+            }
+            MonthCalendarDay none = new MonthCalendarDay();
+            none.setViewType(MonthCalendarDay.ViewType.NONE);
+            mData.add(none);
+            int weekOfYearRowOne = getWeekOfYearRowOne();
+            int weekOfYear = getWeekOfYear();
+            for(int i = 8; i < 56; i++){
+                MonthCalendarDay monthCalendarDay = new MonthCalendarDay();
+                if((i - 7) % 8 == 0){
+                    monthCalendarDay.setViewType(MonthCalendarDay.ViewType.WEEK_COL);
+                    monthCalendarDay.setData(String.valueOf(weekOfYearRowOne));
+                    if(weekOfYear == weekOfYearRowOne){
+                        monthCalendarDay.setHighLight(true);
+                    }
+                    weekOfYearRowOne++;
+                } else {
+                    monthCalendarDay.setViewType(MonthCalendarDay.ViewType.DAY);
+                }
+                mData.add(monthCalendarDay);
+            }
+        }
+
+        @Override
+        protected int getItemLayoutId(int i) {
+            return LAYOUT_MAP.get(mData.get(i).getViewType());
+        }
+
+        @Override
+        protected RemoteViews buildRemoteViews(int pos, RemoteViews views, MonthCalendarDay bean) {
+
+            if(bean.getViewType() == MonthCalendarDay.ViewType.WEEK_ROW ||
+                bean.getViewType() == MonthCalendarDay.ViewType.WEEK_COL){
+                views.setTextViewText(R.id.tv_content, bean.getData());
+                if(bean.isHighLight()){
+                    views.setTextColor(R.id.tv_content, Color.BLACK);
+                }
+            }
+
+            return views;
+        }
+
+        private int getWeekNo(){
+            Calendar calendar = Calendar.getInstance();
+            return calendar.get(Calendar.DAY_OF_WEEK) - 1;
+        }
+
+        private int getWeekOfYearRowOne(){
+            Calendar calendar = Calendar.getInstance();
+            int dayOfYear = getDayOfMonth();
+            calendar.add(Calendar.DAY_OF_MONTH, -dayOfYear);
+            return calendar.get(Calendar.WEEK_OF_YEAR);
+        }
+
+        private int getWeekOfYear(){
+            Calendar calendar = Calendar.getInstance();
+            return calendar.get(Calendar.WEEK_OF_YEAR);
+        }
+
+        private int getDayOfMonth(){
+            Calendar calendar = Calendar.getInstance();
+            return calendar.get(Calendar.DAY_OF_MONTH);
+        }
+
+        @Override
+        public int getViewTypeCount() {
+            return 4;
+        }
+
+        @Override
+        public boolean hasStableIds() {
+            return false;
+        }
+    }
+
+}

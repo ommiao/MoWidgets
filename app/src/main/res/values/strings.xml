@@ -71,4 +71,5 @@
     <string name="title_weather_forecast_settings">天气预报设置</string>
     <string name="label_black_card_weather">VIP天气卡</string>
     <string name="title_black_card_weather_settings">VIP天气卡设置</string>
+    <string name="label_month_calendar">Month Calendar</string>
 </resources>
