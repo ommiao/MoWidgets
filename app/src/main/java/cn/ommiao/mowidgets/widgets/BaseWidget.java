@@ -59,6 +59,11 @@ public abstract class BaseWidget<R extends BaseRequester> extends AppWidgetProvi
         return String.valueOf(getYear());
     }
 
+    protected String getMonthWith0(){
+        int m = getMonthNo();
+        return m >= 10 ? String.valueOf(m) : "0" + m;
+    }
+
     protected int getDay(){
         Calendar calendar = Calendar.getInstance();
         return calendar.get(Calendar.DAY_OF_MONTH);

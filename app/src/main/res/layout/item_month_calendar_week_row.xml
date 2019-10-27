@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="20dp"
-    android:layout_height="20dp">
+    android:layout_height="20dp"
+    android:layout_marginBottom="-2dp">
 
     <TextView
         android:id="@+id/tv_content"
@@ -11,8 +12,12 @@
         android:layout_height="wrap_content"
         android:textSize="9sp"
         android:includeFontPadding="false"
+        android:fontFamily="@font/product"
         android:layout_gravity="center_horizontal|bottom"
         android:textStyle="bold"
-        tools:text="周一" />
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="#bbbbbb"
+        tools:text="Sun" />
 
 </FrameLayout>

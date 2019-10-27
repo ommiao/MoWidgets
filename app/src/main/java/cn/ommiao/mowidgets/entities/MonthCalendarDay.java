@@ -10,7 +10,7 @@ public class MonthCalendarDay extends JavaBean {
 
     private ViewType viewType = ViewType.DAY;
 
-    private String data;
+    private String data = "";
 
     private boolean highLight;
 

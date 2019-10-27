@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.widget.RemoteViews;
 
-import com.orhanobut.logger.Logger;
-
 import java.util.Calendar;
 import java.util.HashMap;
 
@@ -22,7 +20,7 @@ public class MonthCalendarService extends BaseRemoteViewsService {
 
     class MonthCalendarFactory extends BaseRemoteViewsService.BaseFactory<MonthCalendarDay> {
 
-        private final String[] WEEKS = {"周日", "周一", "周二", "周三", "周四", "周五", "周六"};
+        private final String[] WEEKS = {"Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"};
 
         private final HashMap<MonthCalendarDay.ViewType, Integer> LAYOUT_MAP = new HashMap<MonthCalendarDay.ViewType, Integer>(){
             {
@@ -39,6 +37,7 @@ public class MonthCalendarService extends BaseRemoteViewsService {
 
         @Override
         protected void initData() {
+            mData.clear();
             for(int i = 0; i < 7; i++){
                 MonthCalendarDay monthCalendarDay = new MonthCalendarDay();
                 monthCalendarDay.setViewType(MonthCalendarDay.ViewType.WEEK_ROW);
@@ -53,6 +52,10 @@ public class MonthCalendarService extends BaseRemoteViewsService {
             mData.add(none);
             int weekOfYearRowOne = getWeekOfYearRowOne();
             int weekOfYear = getWeekOfYear();
+            int dayStart = getFirstDayWeek();
+            int allDays = getDaysOfThisMonth();
+            int day = 1;
+            int today = getDayOfMonth();
             for(int i = 8; i < 56; i++){
                 MonthCalendarDay monthCalendarDay = new MonthCalendarDay();
                 if((i - 7) % 8 == 0){
@@ -64,6 +67,13 @@ public class MonthCalendarService extends BaseRemoteViewsService {
                     weekOfYearRowOne++;
                 } else {
                     monthCalendarDay.setViewType(MonthCalendarDay.ViewType.DAY);
+                    if((i - 7) >= dayStart && day <= allDays){
+                        monthCalendarDay.setData(String.valueOf(day));
+                        if(day == today){
+                            monthCalendarDay.setHighLight(true);
+                        }
+                        day++;
+                    }
                 }
                 mData.add(monthCalendarDay);
             }
@@ -71,7 +81,8 @@ public class MonthCalendarService extends BaseRemoteViewsService {
 
         @Override
         protected int getItemLayoutId(int i) {
-            return LAYOUT_MAP.get(mData.get(i).getViewType());
+            Integer id = LAYOUT_MAP.get(mData.get(i).getViewType());
+            return id == null ? R.layout.item_month_calendar_week_row : id;
         }
 
         @Override
@@ -82,10 +93,28 @@ public class MonthCalendarService extends BaseRemoteViewsService {
                 views.setTextViewText(R.id.tv_content, bean.getData());
                 if(bean.isHighLight()){
                     views.setTextColor(R.id.tv_content, Color.BLACK);
+                } else {
+                    views.setTextColor(R.id.tv_content, Color.parseColor("#bbbbbb"));
+                }
+            } else if(bean.getViewType() == MonthCalendarDay.ViewType.DAY){
+                views.setTextViewText(R.id.tv_content, bean.getData());
+                if(bean.isHighLight()){
+                    views.setTextColor(R.id.tv_content, Color.WHITE);
+                    views.setInt(R.id.iv_day_bg, "setColorFilter", mContext.getResources().getColor(R.color.colorPrimary));
+                } else {
+                    views.setTextColor(R.id.tv_content, Color.BLACK);
+                    views.setInt(R.id.iv_day_bg, "setColorFilter", Color.parseColor("#eeeeee"));
                 }
             }
 
             return views;
+        }
+
+        @Override
+        public void onDataSetChanged() {
+            super.onDataSetChanged();
+            mData.clear();
+            initData();
         }
 
         private int getWeekNo(){
@@ -95,8 +124,7 @@ public class MonthCalendarService extends BaseRemoteViewsService {
 
         private int getWeekOfYearRowOne(){
             Calendar calendar = Calendar.getInstance();
-            int dayOfYear = getDayOfMonth();
-            calendar.add(Calendar.DAY_OF_MONTH, -dayOfYear);
+            calendar.set(Calendar.DATE, 1);
             return calendar.get(Calendar.WEEK_OF_YEAR);
         }
 
@@ -108,6 +136,17 @@ public class MonthCalendarService extends BaseRemoteViewsService {
         private int getDayOfMonth(){
             Calendar calendar = Calendar.getInstance();
             return calendar.get(Calendar.DAY_OF_MONTH);
+        }
+
+        private int getFirstDayWeek(){
+            Calendar calendar = Calendar.getInstance();
+            calendar.set(Calendar.DATE, 1);
+            return calendar.get(Calendar.DAY_OF_WEEK);
+        }
+
+        private int getDaysOfThisMonth(){
+            Calendar calendar = Calendar.getInstance();
+            return calendar.getActualMaximum(Calendar.DATE);
         }
 
         @Override
