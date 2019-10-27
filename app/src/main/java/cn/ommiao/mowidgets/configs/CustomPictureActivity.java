@@ -57,6 +57,7 @@ public class CustomPictureActivity extends BaseConfigActivity<CustomPictureWidge
             }
         } else {
             ToastUtil.shortToast("请输入图片文件路径");
+            return false;
         }
         String a = edittextBindingAlpha.et.getText().toString().trim();
         if(!isNumberValid(a)){

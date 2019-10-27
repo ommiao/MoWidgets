@@ -170,7 +170,7 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompat
         } else {
             appWidgetManager.updateAppWidget(widgetId, getRemoteViews());
         }
-        if(getTargetWidget() instanceof TimingRefreshWidget && !isTimeAccessibilityServiceOn()){
+        if(getTargetWidget() instanceof TimingRefreshWidget && (((TimingRefreshWidget) getTargetWidget()).needAccessibilityService()) && !isTimeAccessibilityServiceOn()){
             ToastUtil.shortToast("请打开无障碍服务以稳定更新时间！");
             try {
                 Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);

@@ -18,4 +18,8 @@ public abstract class TimingRefreshWidget<R extends BaseRequester> extends BaseW
             super.onReceive(context, intent);
         }
     }
+
+    public boolean needAccessibilityService(){
+        return true;
+    }
 }

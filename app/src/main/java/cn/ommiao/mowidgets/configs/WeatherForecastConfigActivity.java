@@ -1,11 +1,8 @@
 package cn.ommiao.mowidgets.configs;
 
-import android.text.InputFilter;
-
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.databinding.LayoutAlignmentBinding;
 import cn.ommiao.mowidgets.databinding.LayoutColorSelectorBinding;
-import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
 import cn.ommiao.mowidgets.utils.SPUtil;
 import cn.ommiao.mowidgets.utils.ToastUtil;
 import cn.ommiao.mowidgets.widgets.list.WeatherForecastWidget;

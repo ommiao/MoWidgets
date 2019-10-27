@@ -307,6 +307,10 @@
             android:name=".RefreshActivity"
             android:theme="@android:style/Theme.NoDisplay"/>
 
+        <activity
+            android:name=".configs.MonthCalendarConfigActivity"
+            android:theme="@style/FakeDialog"/>
+
         <service
             android:name=".TimeService"
             android:enabled="true"

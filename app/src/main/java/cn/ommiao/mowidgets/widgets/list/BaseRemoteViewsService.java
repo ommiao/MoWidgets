@@ -21,7 +21,7 @@ public abstract class BaseRemoteViewsService extends RemoteViewsService {
 
     protected abstract RemoteViewsFactory getFactory(Intent intent);
 
-    public abstract static class BaseFactory<E extends JavaBean> implements RemoteViewsService.RemoteViewsFactory {
+    public abstract class BaseFactory<E extends JavaBean> implements RemoteViewsService.RemoteViewsFactory {
 
         protected Context mContext;
         protected ArrayList<E> mData = new ArrayList<>();

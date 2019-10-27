@@ -5,11 +5,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.widget.RemoteViews;
 
+import com.orhanobut.logger.Logger;
+
 import java.util.Calendar;
 import java.util.HashMap;
 
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.entities.MonthCalendarDay;
+import cn.ommiao.mowidgets.utils.SPUtil;
 
 public class MonthCalendarService extends BaseRemoteViewsService {
 
@@ -61,7 +64,7 @@ public class MonthCalendarService extends BaseRemoteViewsService {
                 if( i % 8 == 0){
                     monthCalendarDay.setViewType(MonthCalendarDay.ViewType.WEEK_COL);
                     monthCalendarDay.setData(String.valueOf(weekOfYearRowOne));
-                    if(weekOfYear == weekOfYearRowOne){
+                    if(weekOfYearRowOne >= weekOfYear){
                         monthCalendarDay.setHighLight(true);
                     }
                     weekOfYearRowOne++;
@@ -99,8 +102,12 @@ public class MonthCalendarService extends BaseRemoteViewsService {
             } else if(bean.getViewType() == MonthCalendarDay.ViewType.DAY){
                 views.setTextViewText(R.id.tv_content, bean.getData());
                 if(bean.isHighLight()){
-                    views.setTextColor(R.id.tv_content, Color.WHITE);
-                    views.setInt(R.id.iv_day_bg, "setColorFilter", mContext.getResources().getColor(R.color.colorPrimary));
+                    String colorDateNow = SPUtil.getString(getString(R.string.label_month_calendar) + widgetId + "_color_date_now", "#ffffff");
+                    views.setTextColor(R.id.tv_content, Color.parseColor(colorDateNow));
+                    String bgColor = SPUtil.getString(getString(R.string.label_month_calendar) + widgetId + "_color_main", "#ff0000");
+                    Logger.d(widgetId+"->"+bgColor);
+                    views.setInt(R.id.iv_day_bg, "setColorFilter", Color.parseColor(getColorByHex(bgColor)));
+                    views.setInt(R.id.iv_day_bg, "setAlpha", getAlphaByHex(bgColor));
                 } else {
                     views.setTextColor(R.id.tv_content, Color.BLACK);
                     views.setInt(R.id.iv_day_bg, "setColorFilter", Color.parseColor("#eeeeee"));
@@ -156,7 +163,25 @@ public class MonthCalendarService extends BaseRemoteViewsService {
 
         @Override
         public boolean hasStableIds() {
-            return false;
+            return true;
+        }
+
+        private String getColorByHex(String hex){
+            String colorStr;
+            if(hex.length() == 9){
+                colorStr = "#" + hex.substring(3);
+            } else {
+                colorStr = hex;
+            }
+            return colorStr;
+        }
+
+        private int getAlphaByHex(String hex){
+            int alpha = 255;
+            if(hex.length() == 9){
+                alpha = Integer.parseInt(hex.substring(1, 3), 16);
+            }
+            return alpha;
         }
     }
 
