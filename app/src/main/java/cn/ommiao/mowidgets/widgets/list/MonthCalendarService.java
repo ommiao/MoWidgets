@@ -38,18 +38,18 @@ public class MonthCalendarService extends BaseRemoteViewsService {
         @Override
         protected void initData() {
             mData.clear();
-            for(int i = 0; i < 7; i++){
+            MonthCalendarDay none = new MonthCalendarDay();
+            none.setViewType(MonthCalendarDay.ViewType.NONE);
+            mData.add(none);
+            for(int i = 1; i < 8; i++){
                 MonthCalendarDay monthCalendarDay = new MonthCalendarDay();
                 monthCalendarDay.setViewType(MonthCalendarDay.ViewType.WEEK_ROW);
-                monthCalendarDay.setData(WEEKS[i]);
-                if(i == getWeekNo()){
+                monthCalendarDay.setData(WEEKS[i-1]);
+                if(i - 1 == getWeekNo()){
                     monthCalendarDay.setHighLight(true);
                 }
                 mData.add(monthCalendarDay);
             }
-            MonthCalendarDay none = new MonthCalendarDay();
-            none.setViewType(MonthCalendarDay.ViewType.NONE);
-            mData.add(none);
             int weekOfYearRowOne = getWeekOfYearRowOne();
             int weekOfYear = getWeekOfYear();
             int dayStart = getFirstDayWeek();
@@ -58,7 +58,7 @@ public class MonthCalendarService extends BaseRemoteViewsService {
             int today = getDayOfMonth();
             for(int i = 8; i < 56; i++){
                 MonthCalendarDay monthCalendarDay = new MonthCalendarDay();
-                if((i - 7) % 8 == 0){
+                if( i % 8 == 0){
                     monthCalendarDay.setViewType(MonthCalendarDay.ViewType.WEEK_COL);
                     monthCalendarDay.setData(String.valueOf(weekOfYearRowOne));
                     if(weekOfYear == weekOfYearRowOne){
@@ -67,7 +67,7 @@ public class MonthCalendarService extends BaseRemoteViewsService {
                     weekOfYearRowOne++;
                 } else {
                     monthCalendarDay.setViewType(MonthCalendarDay.ViewType.DAY);
-                    if((i - 7) >= dayStart && day <= allDays){
+                    if(i - 8 >= dayStart && day <= allDays){
                         monthCalendarDay.setData(String.valueOf(day));
                         if(day == today){
                             monthCalendarDay.setHighLight(true);
