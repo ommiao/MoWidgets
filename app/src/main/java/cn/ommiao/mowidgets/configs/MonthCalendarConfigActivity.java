@@ -82,4 +82,14 @@ public class MonthCalendarConfigActivity extends BaseConfigActivity<MonthCalenda
     protected boolean needReadStorage() {
         return true;
     }
+
+    @Override
+    protected boolean isSharedWidget() {
+        return true;
+    }
+
+    @Override
+    protected String getSharedUserName() {
+        return "@题海散人";
+    }
 }

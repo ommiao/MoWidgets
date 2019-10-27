@@ -64,6 +64,7 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:text="May.20.2019"
+            android:fontFamily="@font/product"
             android:textSize="13sp"/>
 
         <TextView
@@ -72,6 +73,7 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:text="Monday"
+            android:fontFamily="@font/product"
             android:textSize="13sp"/>
 
     </LinearLayout>
