@@ -3,6 +3,7 @@ package cn.ommiao.mowidgets.configs;
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.databinding.LayoutColorSelectorBinding;
 import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
+import cn.ommiao.mowidgets.databinding.LayoutFileSelectorBinding;
 import cn.ommiao.mowidgets.utils.SPUtil;
 import cn.ommiao.mowidgets.utils.StringUtil;
 import cn.ommiao.mowidgets.utils.ToastUtil;
@@ -19,7 +20,7 @@ public class ArtSentenceConfigActivity extends BaseConfigActivity<ArtSentenceWid
     private LayoutEdittextBinding offsetBinding;
     private int offset;
 
-    private LayoutEdittextBinding bindingFontPath;
+    private LayoutFileSelectorBinding bindingFontPath;
     private String fontPath;
 
     private LayoutEdittextBinding offsetInsideBinding;
@@ -48,8 +49,7 @@ public class ArtSentenceConfigActivity extends BaseConfigActivity<ArtSentenceWid
         offsetBinding = getNumberEdittextBinding("小字布局偏移", 4, true);
         offsetBinding.et.setHint("正值向下，负值向上偏移，不填为默认位置");
         addConfigView(offsetBinding.getRoot());
-        bindingFontPath = getEdittextBinding("字体路径");
-        bindingFontPath.et.setHint("填写根目录的相对路径如font/roboto.ttf");
+        bindingFontPath = getFontSelectorBinding("字体路径");
         addConfigView(bindingFontPath.getRoot());
         offsetInsideBinding = getNumberEdittextBinding("小字布局内偏移", 3, true);
         offsetInsideBinding.et.setHint("默认为0");
@@ -70,7 +70,7 @@ public class ArtSentenceConfigActivity extends BaseConfigActivity<ArtSentenceWid
         textS = edittextBindingS.et.getText().toString().trim();
         colorL = selectorBindingL.etColor.getText().toString();
         colorS = selectorBindingS.etColor.getText().toString();
-        fontPath = bindingFontPath.et.getText().toString().trim();
+        fontPath = bindingFontPath.tvFileName.getText().toString().trim();
         String offsetStr = offsetBinding.et.getText().toString().trim();
         if(!isNumberValid(offsetStr)){
             offsetStr = "0";
@@ -91,12 +91,6 @@ public class ArtSentenceConfigActivity extends BaseConfigActivity<ArtSentenceWid
         if(!isColorValid(colorS)){
             ToastUtil.shortToast("请输入有效的文字颜色(小)");
             return false;
-        }
-        if(fontPath.length() > 0){
-            if (!fontPath.endsWith(".ttf") && !fontPath.endsWith(".otf")){
-                ToastUtil.shortToast("请输入正确的字体文件路径");
-                return false;
-            }
         }
         String offsetInsideStr = offsetInsideBinding.et.getText().toString().trim();
         if(!isNumberValid(offsetInsideStr)){

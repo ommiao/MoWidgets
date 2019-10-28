@@ -3,6 +3,7 @@ package cn.ommiao.mowidgets.configs;
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.databinding.LayoutColorSelectorBinding;
 import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
+import cn.ommiao.mowidgets.databinding.LayoutFileSelectorBinding;
 import cn.ommiao.mowidgets.utils.SPUtil;
 import cn.ommiao.mowidgets.utils.ToastUtil;
 import cn.ommiao.mowidgets.widgets.JapaneseClockWidget;
@@ -12,7 +13,7 @@ public class JapaneseClockConfigActivity extends BaseConfigActivity<JapaneseCloc
     private LayoutColorSelectorBinding bindingColorIts, bindingColorTime;
     private String colorIts, colorTime;
 
-    private LayoutEdittextBinding bindingFontPath;
+    private LayoutFileSelectorBinding bindingFontPath;
     private String fontPath;
 
     @Override
@@ -26,8 +27,7 @@ public class JapaneseClockConfigActivity extends BaseConfigActivity<JapaneseCloc
         bindingColorTime = getColorSelectorBinding("时间颜色");
         addConfigView(bindingColorIts.getRoot());
         addConfigView(bindingColorTime.getRoot());
-        bindingFontPath = getEdittextBinding("字体路径");
-        bindingFontPath.et.setHint("填写根目录的相对路径如font/roboto.ttf");
+        bindingFontPath = getFontSelectorBinding("字体路径");
         addConfigView(bindingFontPath.getRoot());
     }
 
@@ -40,13 +40,7 @@ public class JapaneseClockConfigActivity extends BaseConfigActivity<JapaneseCloc
     protected boolean isDataValid() {
         colorIts = "#" + bindingColorIts.etColor.getText().toString().trim();
         colorTime = "#" + bindingColorTime.etColor.getText().toString().trim();
-        fontPath = bindingFontPath.et.getText().toString().trim();
-        if(fontPath.length() > 0){
-            if (!fontPath.endsWith(".ttf") && !fontPath.endsWith(".otf")){
-                ToastUtil.shortToast("请输入正确的字体文件路径");
-                return false;
-            }
-        }
+        fontPath = bindingFontPath.tvFileName.getText().toString().trim();
         return true;
     }
 

@@ -20,4 +20,5 @@
     <color name="qTextClockIts">#f9cc88</color>
     <color name="editColor">#555555</color>
     <color name="colorAqi">#B9B53B</color>
+    <color name="colorListDivider">#F1F1F1</color>
 </resources>

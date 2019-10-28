@@ -29,6 +29,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.orhanobut.logger.Logger;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import cn.ommiao.mowidgets.R;
@@ -38,14 +39,18 @@ import cn.ommiao.mowidgets.databinding.LayoutAlignmentBinding;
 import cn.ommiao.mowidgets.databinding.LayoutColorSelectorBinding;
 import cn.ommiao.mowidgets.databinding.LayoutDescriptionBinding;
 import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
+import cn.ommiao.mowidgets.databinding.LayoutFileSelectorBinding;
 import cn.ommiao.mowidgets.databinding.LayoutTwoSelectionBinding;
 import cn.ommiao.mowidgets.ui.ColorPickerFragment;
 import cn.ommiao.mowidgets.ui.CustomDialogFragment;
+import cn.ommiao.mowidgets.ui.PathSelectFragment;
 import cn.ommiao.mowidgets.utils.StringUtil;
 import cn.ommiao.mowidgets.utils.ToastUtil;
 import cn.ommiao.mowidgets.widgets.BaseWidget;
 import cn.ommiao.mowidgets.widgets.TimingRefreshWidget;
 import cn.ommiao.mowidgets.widgets.others.RadioTextView;
+
+import static cn.ommiao.mowidgets.Constant.MO_WIDGETS_DIR;
 
 
 public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompatActivity {
@@ -80,14 +85,19 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompat
         widget = getTargetWidget();
         initConfigViews();
         initViews();
-        if(needReadStorage() && !hasReadStoragePermission()){
-            showRequestReadStoragePermission();
+        if(needReadStorage()){
+            if(hasReadStoragePermission()){
+                makeDir();
+            } else {
+                showRequestReadStoragePermission();
+            }
         }
     }
 
     private boolean hasReadStoragePermission(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            return checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
+            return checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED &&
+                    checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED;
         } else {
             return true;
         }
@@ -107,19 +117,30 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompat
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void requestReadStoragePermission(){
-        requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
-        if(shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE)){
+        requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 0);
+        if(shouldShowRequestPermissionRationale(Manifest.permission.READ_EXTERNAL_STORAGE) || shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)){
             ToastUtil.shortToast("如读取文件失败，请手动打开读写存储权限！");
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+        if(grantResults.length >= 2 &&
+                grantResults[0] == PackageManager.PERMISSION_GRANTED &&
+                grantResults[1] == PackageManager.PERMISSION_GRANTED){
             Logger.d("Permission Granted.");
+            makeDir();
         } else{
             ToastUtil.shortToast("读写存储权限被拒绝！");
             finish();
+        }
+    }
+
+    @SuppressWarnings("ResultOfMethodCallIgnored")
+    private void makeDir(){
+        File autoTaskDir = new File(MO_WIDGETS_DIR);
+        if(!autoTaskDir.exists()){
+            autoTaskDir.mkdirs();
         }
     }
 
@@ -409,6 +430,31 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompat
             return false;
         }
         return true;
+    }
+
+    protected LayoutFileSelectorBinding getImgSelectorBinding(String label){
+        return getFileSelectorBinding(label, PathSelectFragment.FileType.IMG);
+    }
+
+    protected LayoutFileSelectorBinding getFontSelectorBinding(String label){
+        return getFileSelectorBinding(label, PathSelectFragment.FileType.FONT);
+    }
+
+    private LayoutFileSelectorBinding getFileSelectorBinding(String label, PathSelectFragment.FileType fileType){
+        LayoutFileSelectorBinding binding = DataBindingUtil.bind(LayoutInflater.from(this).inflate(R.layout.layout_file_selector, null));
+        assert binding != null;
+        binding.tvLabel.setText(label);
+        binding.tvLabel.setSelected(true);
+        binding.ivSelect.setOnClickListener(v -> {
+            PathSelectFragment fragment = new PathSelectFragment();
+            fragment.setFileType(fileType);
+            fragment.setOnFileSelectListener((path -> {
+                binding.tvFileName.setText(path);
+                binding.tvFileName.setSelected(true);
+            }));
+            fragment.show(getSupportFragmentManager());
+        });
+        return binding;
     }
 
     protected boolean isSharedWidget(){

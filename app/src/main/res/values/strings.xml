@@ -73,4 +73,5 @@
     <string name="title_black_card_weather_settings">VIP天气卡设置</string>
     <string name="label_month_calendar">Month Calendar</string>
     <string name="title_month_calendar_settings">Month Calendar Settings</string>
+    <string name="files_not_found">未检索到文件</string>
 </resources>

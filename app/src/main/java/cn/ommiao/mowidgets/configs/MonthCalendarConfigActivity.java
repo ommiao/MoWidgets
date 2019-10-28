@@ -3,7 +3,7 @@ package cn.ommiao.mowidgets.configs;
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.databinding.LayoutAlignmentBinding;
 import cn.ommiao.mowidgets.databinding.LayoutColorSelectorBinding;
-import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
+import cn.ommiao.mowidgets.databinding.LayoutFileSelectorBinding;
 import cn.ommiao.mowidgets.utils.SPUtil;
 import cn.ommiao.mowidgets.utils.ToastUtil;
 import cn.ommiao.mowidgets.widgets.list.MonthCalendarWidget;
@@ -19,7 +19,7 @@ public class MonthCalendarConfigActivity extends BaseConfigActivity<MonthCalenda
 
     private String alignment;
 
-    private LayoutEdittextBinding edittextBindingPath;
+    private LayoutFileSelectorBinding fileSelectorBinding;
     private String path;
 
     @Override
@@ -35,9 +35,8 @@ public class MonthCalendarConfigActivity extends BaseConfigActivity<MonthCalenda
         addConfigView(colorSelectorBindingDateNow.getRoot());
         LayoutAlignmentBinding alignmentBinding = getAlignmentBinding("垂直对齐", true);
         addConfigView(alignmentBinding.getRoot());
-        edittextBindingPath = getEdittextBinding("图片路径");
-        edittextBindingPath.et.setHint("填写相对路径，png/jpg格式，不填为默认图片");
-        addConfigView(edittextBindingPath.getRoot());
+        fileSelectorBinding = getImgSelectorBinding("图片路径");
+        addConfigView(fileSelectorBinding.getRoot());
     }
 
     @Override
@@ -58,15 +57,7 @@ public class MonthCalendarConfigActivity extends BaseConfigActivity<MonthCalenda
             return false;
         }
         alignment = RadioTextView.getCheckedString("垂直对齐");
-        path = edittextBindingPath.et.getText().toString().trim();
-        if(path.length() > 0){
-            if (!path.endsWith(".jpg") && !path.endsWith(".JPG") &&
-                    !path.endsWith(".png") && !path.endsWith(".PNG") &&
-                    !path.endsWith(".jpeg") && !path.endsWith(".JPEG")){
-                ToastUtil.shortToast("请输入正确的图片文件路径");
-                return false;
-            }
-        }
+        path = fileSelectorBinding.tvFileName.getText().toString().trim();
         return true;
     }
 

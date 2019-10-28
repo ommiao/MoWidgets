@@ -38,4 +38,5 @@ dependencies {
     implementation project(path: ':network')
     implementation project(path: ':logger')
     implementation 'com.github.QuadFlask:colorpicker:0.0.13'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
 }

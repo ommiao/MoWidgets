@@ -17,13 +17,14 @@ public class CustomPictureWidget extends BaseWidget {
     public RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_picture);
         String picPath = SPUtil.getString(context.getString(R.string.label_custom_picture) + appWidgetId + "_path", "Invalid path");
-        picPath = appendRootPath(picPath);
         Bitmap bitmap = null;
-        try {
-            bitmap = BitmapFactory.decodeFile(picPath);
-        } catch (Exception e){
-            e.printStackTrace();
-            ToastUtil.shortToast("图片加载失败，请检查路径");
+        if(!"Invalid path".equals(picPath)){
+            picPath = appendRootPath(picPath);
+            try {
+                bitmap = BitmapFactory.decodeFile(picPath);
+            } catch (Exception e){
+                e.printStackTrace();
+            }
         }
         if(bitmap != null){
             views.setImageViewBitmap(R.id.iv_picture, bitmap);

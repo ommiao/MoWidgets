@@ -2,13 +2,14 @@ package cn.ommiao.mowidgets.configs;
 
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.databinding.LayoutEdittextBinding;
+import cn.ommiao.mowidgets.databinding.LayoutFileSelectorBinding;
 import cn.ommiao.mowidgets.utils.SPUtil;
 import cn.ommiao.mowidgets.utils.ToastUtil;
 import cn.ommiao.mowidgets.widgets.picture.CustomPictureWidget;
 
 public class CustomPictureActivity extends BaseConfigActivity<CustomPictureWidget> {
 
-    private LayoutEdittextBinding edittextBindingPath;
+    private LayoutFileSelectorBinding fileSelectorBinding;
     private String path;
 
     private LayoutEdittextBinding edittextBindingAlpha;
@@ -24,9 +25,8 @@ public class CustomPictureActivity extends BaseConfigActivity<CustomPictureWidge
 
     @Override
     protected void initConfigViews() {
-        edittextBindingPath = getEdittextBinding("图片路径");
-        edittextBindingPath.et.setHint("填写根目录的相对路径如picture/dog.png");
-        addConfigView(edittextBindingPath.getRoot());
+        fileSelectorBinding = getImgSelectorBinding("图片路径");
+        addConfigView(fileSelectorBinding.getRoot());
         edittextBindingAlpha = getNumberEdittextBinding("透明度", 3);
         edittextBindingAlpha.et.setText("255");
         addConfigView(edittextBindingAlpha.getRoot());
@@ -47,15 +47,8 @@ public class CustomPictureActivity extends BaseConfigActivity<CustomPictureWidge
 
     @Override
     protected boolean isDataValid() {
-        path = edittextBindingPath.et.getText().toString().trim();
-        if(path.length() > 0){
-            if (!path.endsWith(".jpg") && !path.endsWith(".JPG") &&
-                    !path.endsWith(".png") && !path.endsWith(".PNG") &&
-                    !path.endsWith(".jpeg") && !path.endsWith(".JPEG")){
-                ToastUtil.shortToast("请输入正确的图片文件路径");
-                return false;
-            }
-        } else {
+        path = fileSelectorBinding.tvFileName.getText().toString().trim();
+        if(path.length() == 0){
             ToastUtil.shortToast("请输入图片文件路径");
             return false;
         }
