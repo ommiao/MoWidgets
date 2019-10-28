@@ -2,7 +2,6 @@ package cn.ommiao.mowidgets.widgets.list;
 
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
-import android.content.Intent;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.RemoteViews;
@@ -32,7 +31,7 @@ public class WeatherForecastWidget extends BaseListWidget<WeatherForecastService
             views.setViewVisibility(R.id.iv_top, View.VISIBLE);
             views.setViewVisibility(R.id.iv_bottom, View.VISIBLE);
         }
-        views.setRemoteAdapter(R.id.list, new Intent(context, classOfS()).putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId));
+        views.setRemoteAdapter(R.id.list, getRefreshListIntent(context, appWidgetId));
         views.setPendingIntentTemplate(R.id.list, getRefreshIntent(context, appWidgetId));
         appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.list);
         return views;

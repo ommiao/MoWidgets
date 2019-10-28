@@ -2,7 +2,6 @@ package cn.ommiao.mowidgets.widgets.list;
 
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -62,7 +61,7 @@ public class MonthCalendarWidget extends BaseTimingRefreshListWidget<MonthCalend
             views.setInt(R.id.iv_custom, "setAlpha", getAlphaByHex(colorStrOrigin));
         }
 
-        views.setRemoteAdapter(R.id.grid_calendar, new Intent(context, classOfS()).putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId));
+        views.setRemoteAdapter(R.id.grid_calendar, getRefreshListIntent(context, appWidgetId));
         appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId, R.id.grid_calendar);
         return views;
     }

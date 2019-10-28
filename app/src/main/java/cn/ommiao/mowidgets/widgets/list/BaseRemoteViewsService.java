@@ -9,6 +9,7 @@ import android.widget.RemoteViewsService;
 import androidx.annotation.LayoutRes;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import cn.ommiao.bean.JavaBean;
 
@@ -29,7 +30,7 @@ public abstract class BaseRemoteViewsService extends RemoteViewsService {
 
         BaseFactory(Context context, Intent intent){
             this.mContext = context;
-            widgetId = intent.getIntExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID);
+            widgetId = Integer.valueOf(Objects.requireNonNull(intent.getData()).getSchemeSpecificPart());;
         }
 
         @Override
