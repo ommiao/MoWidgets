@@ -192,13 +192,7 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompat
             appWidgetManager.updateAppWidget(widgetId, getRemoteViews());
         }
         if(getTargetWidget() instanceof TimingRefreshWidget && (((TimingRefreshWidget) getTargetWidget()).needAccessibilityService()) && !isTimeAccessibilityServiceOn()){
-            ToastUtil.shortToast("请打开无障碍服务以稳定更新时间！");
-            try {
-                Intent intent = new Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS);
-                startActivity(intent);
-            } catch (Exception e){
-                e.printStackTrace();
-            }
+            ToastUtil.shortToast("请打开无障碍服务->Mo控件时间服务以稳定更新时间");
         }
         finish();
     }

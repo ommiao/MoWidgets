@@ -21,7 +21,7 @@
 
         <GridView
             android:id="@+id/grid_calendar"
-            android:layout_width="@dimen/x618"
+            android:layout_width="@dimen/x610"
             android:layout_height="@dimen/x438"
             android:layout_marginTop="@dimen/_x16"
             android:layout_marginStart="@dimen/_x26"
@@ -69,6 +69,8 @@
                 android:id="@+id/iv_custom"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/x17"
+                android:layout_marginEnd="@dimen/x12"
                 android:src="@drawable/never_settle"/>
 
         </LinearLayout>

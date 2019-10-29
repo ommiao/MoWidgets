@@ -257,7 +257,6 @@ public abstract class BaseWidget<R extends BaseRequester> extends AppWidgetProvi
     private void clearCache(Context context, int appWidgetId){
         for (String cacheKey : getCacheKeys(context, appWidgetId)) {
             SPUtil.remove(cacheKey);
-            Logger.d("clear cache key --> " + cacheKey);
         }
     }
 
