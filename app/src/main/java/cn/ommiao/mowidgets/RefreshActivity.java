@@ -30,6 +30,8 @@ public class RefreshActivity extends Activity {
                 BaseWidget widget = (BaseWidget) Class.forName(clazz).newInstance();
                 if(widget.needRequestData()){
                     widget.getDataRequester(this, appWidgetManager, id).request();
+                } else {
+                    appWidgetManager.updateAppWidget(id, widget.getRemoteViews(this, appWidgetManager, id));
                 }
             } catch (IllegalAccessException | InstantiationException | ClassNotFoundException e) {
                 e.printStackTrace();

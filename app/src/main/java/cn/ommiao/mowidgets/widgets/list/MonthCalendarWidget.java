@@ -43,6 +43,7 @@ public class MonthCalendarWidget extends BaseTimingRefreshListWidget<MonthCalend
         String colorStrOrigin = SPUtil.getString(context.getString(R.string.label_month_calendar) + appWidgetId + "_color_main", "#ff0000");
         views.setInt(R.id.iv_rect, "setColorFilter", Color.parseColor(getColorByHex(colorStrOrigin)));
         views.setInt(R.id.iv_rect, "setAlpha", getAlphaByHex(colorStrOrigin));
+        views.setOnClickPendingIntent(R.id.iv_rect, getRefreshIntent(context, appWidgetId));
 
         String picPath = SPUtil.getString(context.getString(R.string.label_month_calendar) + appWidgetId + "_path", "Invalid path");
         Bitmap bitmap = null;
