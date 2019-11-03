@@ -117,6 +117,7 @@ public class PathSelectFragment extends DialogFragment implements PathSelectAdap
                     for (String targetType : targetTypes) {
                         if(fileName.endsWith(targetType)){
                             contains = true;
+                            break;
                         }
                     }
                     if(contains){

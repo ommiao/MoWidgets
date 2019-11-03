@@ -189,10 +189,17 @@ public abstract class BaseConfigActivity<W extends BaseWidget> extends AppCompat
         if(widget.needRequestData()){
             widget.getDataRequester(this, appWidgetManager, widgetId).request();
         } else {
-            appWidgetManager.updateAppWidget(widgetId, getRemoteViews());
+            try {
+                appWidgetManager.updateAppWidget(widgetId, getRemoteViews());
+            } catch (IllegalArgumentException e){
+                e.printStackTrace();
+                if(e.getMessage() != null && e.getMessage().contains("bitmap memory")){
+                    ToastUtil.shortToast("图片内存占用过大，请降低分辨率重试。");
+                }
+            }
         }
         if(getTargetWidget() instanceof TimingRefreshWidget && (((TimingRefreshWidget) getTargetWidget()).needAccessibilityService()) && !isTimeAccessibilityServiceOn()){
-            ToastUtil.shortToast("请打开无障碍服务->Mo控件时间服务以稳定更新时间");
+            ToastUtil.shortToast("请打开无障碍服务中的Mo控件时间服务以稳定更新时间");
         }
         finish();
     }

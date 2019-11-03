@@ -10,8 +10,8 @@ public class Constant {
 
     public static final String MO_WIDGETS_DIR = Environment.getExternalStorageDirectory() + "/MoWidgets";
 
-    public static final String[] SUFFIX_IMG = {".png"," .jpg", ".PNG", ".JPG", ".jpeg", ".JPEG"};
+    public static final String[] SUFFIX_IMG = {".png",".jpg", ".PNG", ".JPG", ".jpeg", ".JPEG"};
 
-    public static final String[] SUFFIX_FONT = {".ttf"," .otf", ".TTF", ".OTF"};
+    public static final String[] SUFFIX_FONT = {".ttf",".otf", ".TTF", ".OTF"};
 
 }
