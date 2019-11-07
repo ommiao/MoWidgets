@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/x31"
-        android:background="@drawable/shape_white_round_corners"
+        android:background="@drawable/shape_black_round_corners"
         android:clipChildren="false"
         android:orientation="horizontal">
 
@@ -60,7 +60,7 @@
                     android:fontFamily="@font/product"
                     android:includeFontPadding="false"
                     android:textStyle="bold"
-                    android:textColor="@android:color/black"
+                    android:textColor="@android:color/white"
                     android:text="2019/10"/>
 
             </LinearLayout>

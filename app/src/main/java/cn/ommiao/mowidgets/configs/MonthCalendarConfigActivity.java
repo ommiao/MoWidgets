@@ -4,12 +4,16 @@ import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.databinding.LayoutAlignmentBinding;
 import cn.ommiao.mowidgets.databinding.LayoutColorSelectorBinding;
 import cn.ommiao.mowidgets.databinding.LayoutFileSelectorBinding;
+import cn.ommiao.mowidgets.databinding.LayoutTwoSelectionBinding;
 import cn.ommiao.mowidgets.utils.SPUtil;
 import cn.ommiao.mowidgets.utils.ToastUtil;
 import cn.ommiao.mowidgets.widgets.list.MonthCalendarWidget;
 import cn.ommiao.mowidgets.widgets.others.RadioTextView;
 
 public class MonthCalendarConfigActivity extends BaseConfigActivity<MonthCalendarWidget> {
+
+    private LayoutTwoSelectionBinding twoSelectionBindingTheme;
+    private MonthCalendarWidget.Theme theme = MonthCalendarWidget.Theme.WHITE;
 
     private LayoutColorSelectorBinding colorSelectorBindingMain;
     private String colorMain;
@@ -29,6 +33,8 @@ public class MonthCalendarConfigActivity extends BaseConfigActivity<MonthCalenda
 
     @Override
     protected void initConfigViews() {
+        twoSelectionBindingTheme = getTwoSelectionBinding("主题", new String[]{"皓白", "暗夜"});
+        addConfigView(twoSelectionBindingTheme.getRoot());
         colorSelectorBindingMain = getColorSelectorBinding("强调色", "ff0000");
         colorSelectorBindingDateNow = getColorSelectorBinding("当前日期文字颜色", "ffffff");
         addConfigView(colorSelectorBindingMain.getRoot());
@@ -57,12 +63,14 @@ public class MonthCalendarConfigActivity extends BaseConfigActivity<MonthCalenda
             return false;
         }
         alignment = RadioTextView.getCheckedString("垂直对齐");
+        theme = "暗夜".equals(RadioTextView.getCheckedString("主题")) ? MonthCalendarWidget.Theme.BLACK : MonthCalendarWidget.Theme.WHITE;
         path = fileSelectorBinding.tvFileName.getText().toString().trim();
         return true;
     }
 
     @Override
     protected void saveConfigs() {
+        SPUtil.put(getString(R.string.label_month_calendar) + widgetId + "_theme", theme.name());
         SPUtil.put(getString(R.string.label_month_calendar) + widgetId + "_color_main", "#" + colorMain);
         SPUtil.put(getString(R.string.label_month_calendar) + widgetId + "_color_date_now", "#" + colorDateNow);
         SPUtil.put(getString(R.string.label_month_calendar) + widgetId + "_alignment", getAlignment(alignment, true));

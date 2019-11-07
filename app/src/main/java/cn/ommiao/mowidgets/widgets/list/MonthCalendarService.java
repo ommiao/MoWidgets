@@ -23,6 +23,8 @@ public class MonthCalendarService extends BaseRemoteViewsService {
 
     class MonthCalendarFactory extends BaseRemoteViewsService.BaseFactory<MonthCalendarDay> {
 
+        private MonthCalendarWidget.Theme theme;
+
         private final String[] WEEKS = {"Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"};
 
         private final HashMap<MonthCalendarDay.ViewType, Integer> LAYOUT_MAP = new HashMap<MonthCalendarDay.ViewType, Integer>(){
@@ -36,6 +38,7 @@ public class MonthCalendarService extends BaseRemoteViewsService {
 
         MonthCalendarFactory(Context context, Intent intent) {
             super(context, intent);
+            theme = MonthCalendarWidget.Theme.valueOf(SPUtil.getString(context.getString(R.string.label_month_calendar) + widgetId + "_theme", "WHITE"));
         }
 
         @Override
@@ -95,9 +98,9 @@ public class MonthCalendarService extends BaseRemoteViewsService {
                 bean.getViewType() == MonthCalendarDay.ViewType.WEEK_COL){
                 views.setTextViewText(R.id.tv_content, bean.getData());
                 if(bean.isHighLight()){
-                    views.setTextColor(R.id.tv_content, Color.BLACK);
+                    views.setTextColor(R.id.tv_content, theme.getWeekHighLightColor());
                 } else {
-                    views.setTextColor(R.id.tv_content, Color.parseColor("#bbbbbb"));
+                    views.setTextColor(R.id.tv_content, theme.getWeekNormalColor());
                 }
             } else if(bean.getViewType() == MonthCalendarDay.ViewType.DAY){
                 views.setTextViewText(R.id.tv_content, bean.getData());
@@ -105,12 +108,13 @@ public class MonthCalendarService extends BaseRemoteViewsService {
                     String colorDateNow = SPUtil.getString(getString(R.string.label_month_calendar) + widgetId + "_color_date_now", "#ffffff");
                     views.setTextColor(R.id.tv_content, Color.parseColor(colorDateNow));
                     String bgColor = SPUtil.getString(getString(R.string.label_month_calendar) + widgetId + "_color_main", "#ff0000");
-                    Logger.d(widgetId+"->"+bgColor);
                     views.setInt(R.id.iv_day_bg, "setColorFilter", Color.parseColor(getColorByHex(bgColor)));
                     views.setInt(R.id.iv_day_bg, "setAlpha", getAlphaByHex(bgColor));
                 } else {
-                    views.setTextColor(R.id.tv_content, Color.BLACK);
-                    views.setInt(R.id.iv_day_bg, "setColorFilter", Color.parseColor("#eeeeee"));
+                    views.setTextColor(R.id.tv_content, theme.getDayNormalColor());
+                    String bgColor = theme.getDayNormalBgColor();
+                    views.setInt(R.id.iv_day_bg, "setColorFilter", Color.parseColor(getColorByHex(bgColor)));
+                    views.setInt(R.id.iv_day_bg, "setAlpha", getAlphaByHex(bgColor));
                 }
             }
 

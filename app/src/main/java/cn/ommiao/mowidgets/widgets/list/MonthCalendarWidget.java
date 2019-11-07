@@ -9,11 +9,50 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.RemoteViews;
 
+import androidx.annotation.ColorInt;
+import androidx.annotation.LayoutRes;
+
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.requesters.BaseRequester;
 import cn.ommiao.mowidgets.utils.SPUtil;
 
 public class MonthCalendarWidget extends BaseTimingRefreshListWidget<MonthCalendarService, BaseRequester<MonthCalendarWidget>> {
+
+    public enum Theme {
+        WHITE(R.layout.widget_month_calendar, Color.parseColor("#bbbbbb"), Color.BLACK, Color.BLACK, "#ffeeeeee"),
+        BLACK(R.layout.widget_month_calendar_black, Color.parseColor("#99999999"), Color.WHITE, Color.WHITE, "#00000000");
+
+        private int mainLayoutRes, weekNormalColor, weekHighLightColor, dayNormalColor;
+        private String dayNormalBgColor;
+
+        Theme(@LayoutRes int mainLayoutRes, @ColorInt int weekNormalColor, @ColorInt int weekHighLightColor, @ColorInt int dayNormalColor, String dayNormalBgColor){
+            this.mainLayoutRes = mainLayoutRes;
+            this.weekNormalColor = weekNormalColor;
+            this.weekHighLightColor = weekHighLightColor;
+            this.dayNormalColor = dayNormalColor;
+            this.dayNormalBgColor = dayNormalBgColor;
+        }
+
+        public int getMainLayoutRes() {
+            return mainLayoutRes;
+        }
+
+        public int getWeekNormalColor() {
+            return weekNormalColor;
+        }
+
+        public int getWeekHighLightColor() {
+            return weekHighLightColor;
+        }
+
+        public int getDayNormalColor() {
+            return dayNormalColor;
+        }
+
+        public String getDayNormalBgColor() {
+            return dayNormalBgColor;
+        }
+    }
 
     @Override
     protected Class<MonthCalendarService> classOfS() {
@@ -22,7 +61,9 @@ public class MonthCalendarWidget extends BaseTimingRefreshListWidget<MonthCalend
 
     @Override
     public RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
-        RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_month_calendar);
+
+        Theme theme = Theme.valueOf(SPUtil.getString(context.getString(R.string.label_month_calendar) + appWidgetId + "_theme", "WHITE"));
+        RemoteViews views = new RemoteViews(context.getPackageName(), theme.getMainLayoutRes());
 
         String yearMonth = String.format("%s/%s", getYearStr(), getMonthWith0());
         views.setTextViewText(R.id.tv_year_month, yearMonth);
