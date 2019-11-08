@@ -12,7 +12,6 @@ import cn.ommiao.mowidgets.widgets.others.RadioTextView;
 
 public class MonthCalendarConfigActivity extends BaseConfigActivity<MonthCalendarWidget> {
 
-    private LayoutTwoSelectionBinding twoSelectionBindingTheme;
     private MonthCalendarWidget.Theme theme = MonthCalendarWidget.Theme.WHITE;
 
     private LayoutColorSelectorBinding colorSelectorBindingMain;
@@ -33,7 +32,7 @@ public class MonthCalendarConfigActivity extends BaseConfigActivity<MonthCalenda
 
     @Override
     protected void initConfigViews() {
-        twoSelectionBindingTheme = getTwoSelectionBinding("主题", new String[]{"皓白", "暗夜"});
+        LayoutTwoSelectionBinding twoSelectionBindingTheme = getTwoSelectionBinding("主题", new String[]{"皓白", "暗夜"});
         addConfigView(twoSelectionBindingTheme.getRoot());
         colorSelectorBindingMain = getColorSelectorBinding("强调色", "ff0000");
         colorSelectorBindingDateNow = getColorSelectorBinding("当前日期文字颜色", "ffffff");

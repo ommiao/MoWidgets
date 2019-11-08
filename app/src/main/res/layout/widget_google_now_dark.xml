@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/lock"
     android:layout_width="match_parent"
     android:layout_height="@dimen/x122"
-    android:background="@drawable/shape_circle_left_and_right_transwhite"
+    android:background="@drawable/shape_circle_left_and_right_black"
     android:gravity="center_vertical"
     android:layout_margin="@dimen/x19"
     android:padding="@dimen/x21"
@@ -28,7 +28,7 @@
         android:gravity="end"
         android:maxLines="1"
         android:text="@string/slogan_google_now"
-        android:textColor="@color/greyWhite"
+        android:textColor="@color/transWhite"
         android:textSize="@dimen/x39" />
 
     <ImageView
