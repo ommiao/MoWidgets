@@ -30,18 +30,6 @@
         </receiver>
 
         <receiver
-            android:name=".widgets.NeverSettleWidget"
-            android:label="@string/label_never_settle">
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.appwidget.provider"
-                android:resource="@xml/widget_info_never_settle" />
-        </receiver>
-
-        <receiver
             android:name=".widgets.GoogleNowWidget"
             android:label="@string/label_google_now">
         <intent-filter>
@@ -315,6 +303,9 @@
             android:theme="@style/FakeDialog"/>
 
         <activity android:name=".configs.HydrogenClockConfigActivity"
+            android:theme="@style/FakeDialog"/>
+
+        <activity android:name=".configs.PocoClockConfigActivity"
             android:theme="@style/FakeDialog"/>
 
         <service

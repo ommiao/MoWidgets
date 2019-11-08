@@ -38,6 +38,7 @@ public class GoogleNowWidget extends BaseWidget {
     @Override
     protected String[] getCacheKeys(Context context, int appWidgetId) {
         return new String[]{
+                context.getString(R.string.label_google_now) + appWidgetId + "_theme",
                 context.getString(R.string.label_google_now) + appWidgetId + "_word"
         };
     }

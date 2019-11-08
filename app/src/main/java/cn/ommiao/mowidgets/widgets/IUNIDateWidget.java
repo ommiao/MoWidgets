@@ -2,6 +2,7 @@ package cn.ommiao.mowidgets.widgets;
 
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.RemoteViews;
 
@@ -13,6 +14,8 @@ public class IUNIDateWidget extends TimingRefreshWidget {
     @Override
     public RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_iuni_date);
+        String color = SPUtil.getString(context.getString(R.string.label_iuni_date) + appWidgetId + "_color", "#ffffff");
+        setTextColor(views, Color.parseColor(color), R.id.tv_week, R.id.tv_date, R.id.tv_suffix, R.id.tv_date_and_week);
         views.setTextViewText(R.id.tv_week, getDisplayWeekEn());
         int day = getDay();
         String dateLarge = getDisplayMonthEn() + " " + day;
@@ -42,6 +45,7 @@ public class IUNIDateWidget extends TimingRefreshWidget {
     @Override
     protected String[] getCacheKeys(Context context, int appWidgetId) {
         return new String[]{
+                context.getString(R.string.label_iuni_date) + appWidgetId + "_color",
                 context.getString(R.string.label_iuni_date) + appWidgetId + "_show_chinese"
         };
     }

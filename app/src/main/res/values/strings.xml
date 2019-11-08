@@ -75,4 +75,5 @@
     <string name="title_month_calendar_settings">Month Calendar Settings</string>
     <string name="files_not_found">未检索到文件</string>
     <string name="title_hydrogen_clock_settings">Hydrogen Clock Settings</string>
+    <string name="title_poco_clock_settings">Poco Clock Settings</string>
 </resources>

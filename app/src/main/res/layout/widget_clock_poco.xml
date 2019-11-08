@@ -15,6 +15,7 @@
         android:orientation="vertical">
 
         <TextClock
+            android:id="@+id/tc_time"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -26,6 +27,7 @@
             tools:text="12:34"/>
 
         <TextClock
+            android:id="@+id/tc_week_date"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -34,6 +36,7 @@
             android:format12Hour="@string/date_format_poco_clock"
             android:format24Hour="@string/date_format_poco_clock"
             android:maxLines="1"
+            android:fontFamily="@font/product"
             tools:text="Friday, July 26"/>
     </LinearLayout>
 </RelativeLayout>

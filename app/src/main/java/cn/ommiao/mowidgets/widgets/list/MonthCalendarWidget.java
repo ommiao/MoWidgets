@@ -116,6 +116,7 @@ public class MonthCalendarWidget extends BaseTimingRefreshListWidget<MonthCalend
     @Override
     protected String[] getCacheKeys(Context context, int appWidgetId) {
         return new String[]{
+                context.getString(R.string.label_month_calendar) + appWidgetId + "_theme",
                 context.getString(R.string.label_month_calendar) + appWidgetId + "_color_main",
                 context.getString(R.string.label_month_calendar) + appWidgetId + "_color_date_now",
                 context.getString(R.string.label_month_calendar) + appWidgetId + "_alignment",

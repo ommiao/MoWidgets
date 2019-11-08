@@ -2,6 +2,7 @@ package cn.ommiao.mowidgets.widgets;
 
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
+import android.graphics.Color;
 import android.widget.RemoteViews;
 
 import cn.ommiao.mowidgets.R;
@@ -14,6 +15,8 @@ public class ColorosClockWidget extends BaseWidget<ColorosClockRequester> {
     @Override
     public RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_clock_coloros);
+        String color = SPUtil.getString(context.getString(R.string.label_coloros_clock) + appWidgetId + "_color", "#ffffff");
+        setTextColor(views, Color.parseColor(color), R.id.tc_time, R.id.tc_date, R.id.tv_weather);
         String tmp = SPUtil.getString(context.getString(R.string.label_coloros_clock) + appWidgetId + "_tmp", "26");
         String conTxt = SPUtil.getString(context.getString(R.string.label_coloros_clock) + appWidgetId + "_con_txt", "晴");
         String weatherStr = conTxt + "   " + tmp + "℃";
@@ -39,6 +42,7 @@ public class ColorosClockWidget extends BaseWidget<ColorosClockRequester> {
     @Override
     protected String[] getCacheKeys(Context context, int appWidgetId) {
         return new String[]{
+                context.getString(R.string.label_coloros_clock) + appWidgetId + "_color",
                 context.getString(R.string.label_coloros_clock) + appWidgetId + "_tmp",
                 context.getString(R.string.label_coloros_clock) + appWidgetId + "_con_txt",
                 context.getString(R.string.label_coloros_clock) + appWidgetId + "_top_padding",

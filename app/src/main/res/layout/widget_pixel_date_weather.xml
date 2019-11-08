@@ -12,6 +12,7 @@
         android:gravity="center_vertical">
         
         <TextClock
+            android:id="@+id/tc_week_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
@@ -22,9 +23,10 @@
             tools:text="星期三 7月31日"/>
 
         <ImageView
+            android:id="@+id/iv_line"
             android:layout_width="@dimen/x3"
             android:layout_height="match_parent"
-            android:background="@android:color/white"
+            android:src="@drawable/shape_rect"
             android:layout_margin="@dimen/x13"/>
 
         <ImageView

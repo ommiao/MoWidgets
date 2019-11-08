@@ -32,7 +32,9 @@ public class HydrogenClockWidget extends TimingRefreshWidget {
 
     @Override
     protected String[] getCacheKeys(Context context, int appWidgetId) {
-        return new String[0];
+        return new String[]{
+                context.getString(R.string.label_hydrogen_clock) + appWidgetId + "_color"
+        };
     }
 
 }
