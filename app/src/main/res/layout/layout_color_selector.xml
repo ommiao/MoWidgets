@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorLabel"
             android:textSize="@dimen/labelSize"
-            android:layout_marginEnd="10dp"
+            android:layout_marginEnd="@dimen/x26"
             tools:text="颜色"/>
 
         <TextView
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorLabel"
             android:textSize="@dimen/labelSize"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="@dimen/x13"
             android:text="@string/color_prefix"/>
 
         <EditText
@@ -44,15 +44,15 @@
             android:layout_height="wrap_content"
             android:background="@drawable/ic_rectangle_round_grey"
             android:src="@drawable/ic_rectangle_round"
-            android:padding="1dp"
-            android:layout_marginStart="10dp" />
+            android:padding="@dimen/x3"
+            android:layout_marginStart="@dimen/x26" />
 
         <ImageView
             android:id="@+id/iv_test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_test_color"
-            android:layout_marginStart="10dp"/>
+            android:layout_marginStart="@dimen/x26"/>
 
     </LinearLayout>
 

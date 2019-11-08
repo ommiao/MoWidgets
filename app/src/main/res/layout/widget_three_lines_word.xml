@@ -28,7 +28,7 @@
             android:singleLine="true"
             android:ellipsize="middle"
             android:textColor="@android:color/white"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/x26"
             android:text="@string/default_word_line2"/>
 
         <TextView
@@ -38,7 +38,7 @@
             android:singleLine="true"
             android:ellipsize="middle"
             android:textColor="@android:color/white"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="@dimen/x26"
             android:text="@string/default_word_line3"/>
 
     </LinearLayout>

@@ -18,29 +18,29 @@
             android:format12Hour="@string/date_format_pixel_date"
             android:format24Hour="@string/date_format_pixel_date"
             android:fontFamily="@font/product"
-            android:textSize="18sp"
+            android:textSize="@dimen/x46"
             tools:text="星期三 7月31日"/>
 
         <ImageView
-            android:layout_width="1dp"
+            android:layout_width="@dimen/x3"
             android:layout_height="match_parent"
             android:background="@android:color/white"
-            android:layout_margin="5dp"/>
+            android:layout_margin="@dimen/x13"/>
 
         <ImageView
             android:id="@+id/iv_weather"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
+            android:layout_width="@dimen/x46"
+            android:layout_height="@dimen/x46"
             android:src="@drawable/weather_clear_day_pixel"/>
 
         <TextView
             android:id="@+id/tv_tmp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
+            android:layout_marginStart="@dimen/x13"
             android:textColor="@android:color/white"
             android:fontFamily="@font/product"
-            android:textSize="18sp"
+            android:textSize="@dimen/x46"
             tools:text="29℃"/>
         
     </LinearLayout>

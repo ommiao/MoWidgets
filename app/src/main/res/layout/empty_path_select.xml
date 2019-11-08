@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:layout_margin="20dp"
+        android:layout_margin="@dimen/x51"
         android:text="@string/files_not_found"/>
 
 </FrameLayout>

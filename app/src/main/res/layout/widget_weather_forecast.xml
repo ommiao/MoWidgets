@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:scrollbars="none"
             android:divider="@android:color/transparent"
-            android:dividerHeight="-15dp"
+            android:dividerHeight="@dimen/_x39"
             tools:listitem="@layout/item_weather_forecast"/>
 
     </LinearLayout>

@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorLabel"
             android:textSize="@dimen/labelSize"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="@dimen/x13"
             tools:text="标签"/>
 
 

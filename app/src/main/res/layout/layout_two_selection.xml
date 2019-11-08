@@ -15,12 +15,12 @@
             android:layout_height="wrap_content"
             android:textColor="@color/colorLabel"
             android:textSize="@dimen/labelSize"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="@dimen/x13"
             tools:text="对齐"/>
 
         <View
             android:layout_width="0dp"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/x3"
             android:layout_weight="1"/>
 
 
@@ -28,10 +28,10 @@
             android:id="@+id/tv_selection1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="@dimen/x26"
             android:gravity="center"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
+            android:paddingStart="@dimen/x13"
+            android:paddingEnd="@dimen/x13"
             app:checked="true"
             android:text="@string/selection1"/>
 
@@ -39,10 +39,10 @@
             android:id="@+id/tv_selection2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="@dimen/x26"
             android:gravity="center"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
+            android:paddingStart="@dimen/x13"
+            android:paddingEnd="@dimen/x13"
             android:text="@string/selection2"/>
 
 

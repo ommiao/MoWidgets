@@ -247,6 +247,12 @@ public abstract class BaseWidget<R extends BaseRequester> extends AppWidgetProvi
         return Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + relativePath;
     }
 
+    protected void setTextColor(RemoteViews views, int color, int... tvIds){
+        for (int tvId : tvIds) {
+            views.setTextColor(tvId, color);
+        }
+    }
+
     @Override
     public void onDeleted(Context context, int[] appWidgetIds) {
         for (int appWidgetId : appWidgetIds) {

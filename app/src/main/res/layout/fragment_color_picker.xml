@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:layout_margin="15dp"
+            android:layout_margin="@dimen/x39"
             android:textSize="@dimen/configTitleSize"
             android:textColor="@color/configTitleColor"
             android:text="@string/title_color_picker"/>
@@ -51,12 +51,12 @@
                 <com.flask.colorpicker.slider.LightnessSlider
                     android:id="@+id/v_lightness_slider"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp" />
+                    android:layout_height="@dimen/x123"/>
 
                 <com.flask.colorpicker.slider.AlphaSlider
                     android:id="@+id/v_alpha_slider"
                     android:layout_width="match_parent"
-                    android:layout_height="48dp" />
+                    android:layout_height="@dimen/x123" />
 
             </LinearLayout>
 
@@ -73,7 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_margin="15dp"
+            android:layout_margin="@dimen/x39"
             android:layout_gravity="center_vertical">
 
             <TextView
@@ -81,8 +81,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginEnd="15dp"
-                android:textSize="12sp"
+                android:layout_marginEnd="@dimen/x39"
+                android:textSize="@dimen/x31"
                 android:singleLine="true"
                 android:ellipsize="end" />
 
@@ -93,7 +93,7 @@
                 android:text="@string/txt_confirm"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/configFooterSize"
-                android:layout_marginEnd="20dp"/>
+                android:layout_marginEnd="@dimen/x51"/>
 
 
             <TextView
@@ -103,7 +103,7 @@
                 android:text="@string/txt_cancel"
                 android:textColor="@color/cancelColor"
                 android:textSize="@dimen/configFooterSize"
-                android:layout_marginEnd="15dp"/>
+                android:layout_marginEnd="@dimen/x39"/>
 
         </LinearLayout>
 

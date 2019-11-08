@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_bg_black_card_weather"
-        android:padding="15dp"
+        android:padding="@dimen/x39"
         android:orientation="vertical">
 
         <LinearLayout
@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
-                android:textSize="14sp"
+                android:textSize="@dimen/x36"
                 android:text="西安"/>
 
             <TextView
@@ -38,9 +38,9 @@
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
                 android:fontFamily="@font/product"
-                android:textSize="12sp"
+                android:textSize="@dimen/x31"
                 android:gravity="end"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="@dimen/x31"
                 android:text="2019-10-09 14:17"/>
 
         </LinearLayout>
@@ -48,8 +48,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="@dimen/x26"
+            android:layout_marginBottom="@dimen/x26"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -58,19 +58,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
-                android:textSize="75sp"
+                android:textSize="@dimen/x193"
                 android:includeFontPadding="false"
                 android:fontFamily="@font/product"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginStart="@dimen/x13"
+                android:layout_marginEnd="@dimen/x26"
                 android:text="16°"/>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginStart="@dimen/x26"
+                android:layout_marginEnd="@dimen/x26"
                 android:orientation="vertical">
 
                 <TextView
@@ -78,21 +78,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@android:color/white"
-                    android:textSize="14sp"
+                    android:textSize="@dimen/x36"
                     android:text="小雨"/>
 
                 <TextView
                     android:id="@+id/tv_aqi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="@dimen/x10"
                     android:textColor="@color/colorAqi"
-                    android:textSize="10sp"
+                    android:textSize="@dimen/x26"
                     android:fontFamily="@font/product"
-                    android:paddingTop="2dp"
-                    android:paddingBottom="2dp"
-                    android:paddingStart="4dp"
-                    android:paddingEnd="4dp"
+                    android:paddingTop="@dimen/x5"
+                    android:paddingBottom="@dimen/x5"
+                    android:paddingStart="@dimen/x10"
+                    android:paddingEnd="@dimen/x10"
                     android:includeFontPadding="true"
                     android:background="@drawable/shape_bg_aqi"
                     android:maxLines="1"
@@ -103,10 +103,10 @@
 
             <ImageView
                 android:id="@+id/iv_weather"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="10dp"
-                android:padding="10dp"
+                android:layout_width="@dimen/x206"
+                android:layout_height="@dimen/x206"
+                android:layout_marginStart="@dimen/x26"
+                android:padding="@dimen/x26"
                 android:src="@drawable/weather_rain_pixel"/>
 
         </LinearLayout>
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
                 android:fontFamily="@font/product"
-                android:textSize="14sp"
+                android:textSize="@dimen/x36"
                 android:text="西北风2级"/>
 
             <TextView
@@ -132,10 +132,10 @@
                 android:layout_weight="1"
                 android:textColor="@android:color/white"
                 android:fontFamily="@font/product"
-                android:textSize="14sp"
+                android:textSize="@dimen/x36"
                 android:gravity="center"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginStart="@dimen/x26"
+                android:layout_marginEnd="@dimen/x26"
                 android:text="UV2"/>
 
             <TextView
@@ -144,17 +144,17 @@
                 android:layout_height="wrap_content"
                 android:textColor="@android:color/white"
                 android:fontFamily="@font/product"
-                android:textSize="14sp"
+                android:textSize="@dimen/x36"
                 android:text="相对湿度88%"/>
 
         </LinearLayout>
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/x3"
             android:src="@android:color/white"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"/>
+            android:layout_marginTop="@dimen/x26"
+            android:layout_marginBottom="@dimen/x26"/>
 
         <TextView
             android:id="@+id/tv_lifestyle"
@@ -162,7 +162,7 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/white"
             android:fontFamily="@font/product"
-            android:textSize="11sp"
+            android:textSize="@dimen/x28"
             android:maxLines="2"
             android:ellipsize="end"
             android:text="今天白天阴天，夜间有小雨，冷。"/>

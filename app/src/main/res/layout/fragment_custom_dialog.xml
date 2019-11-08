@@ -13,7 +13,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="15dp">
+            android:layout_margin="@dimen/x39">
 
             <ImageView
                 android:id="@+id/iv_tips"
@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 tools:text="提示"
                 android:textColor="@android:color/black"
-                android:textSize="17sp"
+                android:textSize="@dimen/x44"
                 android:ellipsize="end"/>
 
             <TextView
@@ -37,17 +37,17 @@
                 android:layout_below="@+id/iv_tips"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginTop="@dimen/x39"
+                android:layout_marginBottom="@dimen/x39"
                 tools:text="这是提示内容"
-                android:textSize="15sp"/>
+                android:textSize="@dimen/x39"/>
 
             <Button
                 android:id="@+id/btn_left"
                 android:layout_below="@id/tips_content"
                 android:layout_toStartOf="@+id/btn_right"
-                android:layout_width="50dp"
-                android:layout_height="22dp"
+                android:layout_width="@dimen/x129"
+                android:layout_height="@dimen/x57"
                 android:background="@android:color/transparent"
                 android:text="@string/confirm"
                 android:textColor="@color/colorPrimary"/>
@@ -56,8 +56,8 @@
                 android:id="@+id/btn_right"
                 android:layout_below="@id/tips_content"
                 android:layout_alignParentEnd="true"
-                android:layout_width="50dp"
-                android:layout_height="22dp"
+                android:layout_width="@dimen/x129"
+                android:layout_height="@dimen/x57"
                 android:background="@android:color/transparent"
                 android:text="@string/cancel"
                 android:textColor="@android:color/black"/>

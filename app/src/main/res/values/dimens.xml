@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="time_text_size_nerver_settle">14sp</dimen>
-    <dimen name="widget_margin_google_now">8dp</dimen>
-    <dimen name="dialog_margin">20dp</dimen>
-    <dimen name="dialog_margin_dialog">30dp</dimen>
-    <dimen name="configTitleSize">16sp</dimen>
-    <dimen name="configFooterSize">16sp</dimen>
-    <dimen name="labelSize">15sp</dimen>
-    <dimen name="editSize">15sp</dimen>
-    <dimen name="colorosTimeSize">70sp</dimen>
-    <dimen name="colorosDateSize">14sp</dimen>
-    <dimen name="colorosWeatherSize">14sp</dimen>
-    <dimen name="pocoTimeSize">65sp</dimen>
-    <dimen name="pocoDateSize">14sp</dimen>
-    <dimen name="configListDividerHeight">9dp</dimen>
-    <dimen name="configListPadding">15dp</dimen>
-    <dimen name="iuniDateLarge">42sp</dimen>
-    <dimen name="iuniSuffix">25sp</dimen>
-    <dimen name="iuniDateWeekSize">16sp</dimen>
-    <dimen name="qTextClockWordSize">24sp</dimen>
-    <dimen name="artSentenceLargeSize">100dp</dimen>
-    <dimen name="artSentenceSmallSize">20dp</dimen>
+    <dimen name="time_text_size_nerver_settle">@dimen/x36</dimen>
+    <dimen name="widget_margin_google_now">@dimen/x21</dimen>
+    <dimen name="dialog_margin">@dimen/x51</dimen>
+    <dimen name="dialog_margin_dialog">@dimen/x77</dimen>
+    <dimen name="configTitleSize">@dimen/x41</dimen>
+    <dimen name="configFooterSize">@dimen/x41</dimen>
+    <dimen name="labelSize">@dimen/x39</dimen>
+    <dimen name="editSize">@dimen/x39</dimen>
+    <dimen name="colorosTimeSize">@dimen/x180</dimen>
+    <dimen name="colorosDateSize">@dimen/x36</dimen>
+    <dimen name="colorosWeatherSize">@dimen/x36</dimen>
+    <dimen name="pocoTimeSize">@dimen/x167</dimen>
+    <dimen name="pocoDateSize">@dimen/x36</dimen>
+    <dimen name="configListDividerHeight">@dimen/x23</dimen>
+    <dimen name="configListPadding">@dimen/x39</dimen>
+    <dimen name="iuniDateLarge">@dimen/x108</dimen>
+    <dimen name="iuniSuffix">@dimen/x64</dimen>
+    <dimen name="iuniDateWeekSize">@dimen/x41</dimen>
+    <dimen name="qTextClockWordSize">@dimen/x62</dimen>
+    <dimen name="artSentenceLargeSize">@dimen/x257</dimen>
+    <dimen name="artSentenceSmallSize">@dimen/x51</dimen>
+    <dimen name="default_slider_handler_radius">@dimen/x26</dimen>
 
     
     <dimen name="x1">0.38dp</dimen>

@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="5dp"
-    android:paddingEnd="5dp"
+    android:paddingStart="@dimen/x13"
+    android:paddingEnd="@dimen/x13"
     android:background="@android:color/white">
 
     <LinearLayout
@@ -18,20 +18,21 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:padding="12dp"
+            android:padding="@dimen/x31"
             android:textColor="@android:color/black"
             android:singleLine="true"
             android:ellipsize="marquee"
+            android:textSize="@dimen/x36"
             android:marqueeRepeatLimit="marquee_forever"
             tools:text="test.at" />
 
         <ImageView
             android:id="@+id/iv_selected"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
+            android:layout_width="@dimen/x46"
+            android:layout_height="@dimen/x46"
             android:src="@drawable/ic_selected"
             android:tint="@color/colorPrimary"
-            android:layout_marginEnd="8dp"/>
+            android:layout_marginEnd="@dimen/x21"/>
 
     </LinearLayout>
 

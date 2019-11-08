@@ -12,23 +12,25 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:gravity="center"
-        android:textSize="50sp"
+        android:textSize="@dimen/x129"
         tools:text="12"
         android:fontFamily="@font/agency_m"
         android:format24Hour="HH"
-        android:format12Hour="hh"/>
+        android:format12Hour="hh"
+        android:includeFontPadding="false"/>
 
     <TextView
         android:id="@+id/tv_colon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
-        android:layout_marginEnd="3dp"
+        android:layout_marginStart="@dimen/x8"
+        android:layout_marginEnd="@dimen/x8"
         android:text="@string/colon"
         android:gravity="center"
         android:fontFamily="@font/agency_m"
-        android:textSize="50sp"
-        android:textColor="@android:color/white"/>
+        android:textSize="@dimen/x129"
+        android:textColor="@android:color/white"
+        android:includeFontPadding="false"/>
 
     <TextClock
         android:id="@+id/tv_minute"
@@ -36,27 +38,26 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
         android:gravity="center"
-        android:textSize="50sp"
+        android:textSize="@dimen/x129"
         tools:text="34"
         android:fontFamily="@font/agency_m"
         android:format24Hour="mm"
-        android:format12Hour="mm"/>
+        android:format12Hour="mm"
+        android:includeFontPadding="false"/>
 
     <ImageView
-        android:layout_width="3dp"
+        android:id="@+id/iv_line"
+        android:layout_width="@dimen/x8"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
-        android:layout_marginTop="11dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"/>
+        android:src="@drawable/shape_rect"
+        android:layout_margin="@dimen/x28" />
 
     <LinearLayout
         android:id="@+id/ll_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginBottom="10dp">
+        android:layout_marginBottom="@dimen/x26">
 
         <TextView
             android:id="@+id/date"
@@ -65,7 +66,8 @@
             android:textColor="@android:color/white"
             android:text="May.20.2019"
             android:fontFamily="@font/product"
-            android:textSize="13sp"/>
+            android:textSize="@dimen/x33"
+            android:includeFontPadding="false"/>
 
         <TextView
             android:id="@+id/week"
@@ -74,7 +76,8 @@
             android:textColor="@android:color/white"
             android:text="Monday"
             android:fontFamily="@font/product"
-            android:textSize="13sp"/>
+            android:textSize="@dimen/x33"
+            android:includeFontPadding="false"/>
 
     </LinearLayout>
 

@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="-8dp">
+            android:layout_marginTop="@dimen/_x21">
 
             <TextView
                 android:id="@+id/tv_date"
@@ -39,7 +39,7 @@
                 android:id="@+id/tv_suffix"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="@dimen/x8"
                 android:fontFamily="@font/roboto_a"
                 android:textSize="@dimen/iuniSuffix"
                 android:textColor="@color/colorIuniDateColor"
