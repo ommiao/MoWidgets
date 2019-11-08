@@ -300,13 +300,16 @@
 
         <activity
             android:name=".configs.MonthCalendarConfigActivity"
-            android:theme="@style/FakeDialog"/>
+            android:theme="@style/FakeDialog"
+            android:exported="true"/>
 
         <activity android:name=".configs.HydrogenClockConfigActivity"
-            android:theme="@style/FakeDialog"/>
+            android:theme="@style/FakeDialog"
+            android:exported="true"/>
 
         <activity android:name=".configs.PocoClockConfigActivity"
-            android:theme="@style/FakeDialog"/>
+            android:theme="@style/FakeDialog"
+            android:exported="true"/>
 
         <service
             android:name=".TimeService"
