@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:initialKeyguardLayout="@layout/widget_clock_miui_aod"
+    android:initialLayout="@layout/widget_clock_miui_aod"
+    android:minHeight="@dimen/x500"
+    android:minWidth="@dimen/x520"
+    android:previewImage="@drawable/preview_miui_aod"
+    android:updatePeriodMillis="1800000"
+    android:widgetCategory="home_screen"
+    android:resizeMode="vertical|horizontal"
+    android:configure="cn.ommiao.mowidgets.configs.MiuiAodConfigActivity"/>

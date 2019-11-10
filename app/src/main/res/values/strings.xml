@@ -76,4 +76,6 @@
     <string name="files_not_found">未检索到文件</string>
     <string name="title_hydrogen_clock_settings">Hydrogen Clock Settings</string>
     <string name="title_poco_clock_settings">Poco Clock Settings</string>
+    <string name="label_miui_aod">MIUI AOD Clock</string>
+    <string name="title_miui_aod_clock_settings">MIUI AOD Clock Settings</string>
 </resources>

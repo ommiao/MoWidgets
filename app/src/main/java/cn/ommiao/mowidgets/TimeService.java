@@ -16,6 +16,7 @@ import cn.ommiao.mowidgets.widgets.HydrogenClockWidget;
 import cn.ommiao.mowidgets.widgets.IUNIDateWidget;
 import cn.ommiao.mowidgets.widgets.JapaneseClockWidget;
 import cn.ommiao.mowidgets.widgets.QTextClockWidget;
+import cn.ommiao.mowidgets.widgets.pointerclock.MiuiAodWidget;
 
 public class TimeService extends AccessibilityService {
 
@@ -25,6 +26,7 @@ public class TimeService extends AccessibilityService {
             add(HydrogenClockWidget.class);
             add(IUNIDateWidget.class);
             add(JapaneseClockWidget.class);
+            add(MiuiAodWidget.class);
         }
     };
 

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/fl_style1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/aod_clock_1_bg"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:rotation="90"
+                android:src="@drawable/aod_clock_1_hour"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/aod_clock_1_minute"/>
+
+        </FrameLayout>
+
+        <cn.ommiao.mowidgets.widgets.others.RadioTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="样式1"
+            android:paddingStart="@dimen/x13"
+            android:paddingEnd="@dimen/x13"
+            app:groupId="AOD-STYLE"
+            app:checked="true"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/aod_clock_2_bg"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:rotation="90"
+                android:src="@drawable/aod_clock_2_hour"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/aod_clock_2_minute"/>
+
+        </FrameLayout>
+
+        <cn.ommiao.mowidgets.widgets.others.RadioTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="样式2"
+            android:paddingStart="@dimen/x13"
+            android:paddingEnd="@dimen/x13"
+            app:groupId="AOD-STYLE"
+            app:checked="false"/>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/aod_clock_3_bg"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:rotation="90"
+                android:src="@drawable/aod_clock_3_hour"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/aod_clock_3_minute"/>
+
+        </FrameLayout>
+
+        <cn.ommiao.mowidgets.widgets.others.RadioTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="样式3"
+            android:paddingStart="@dimen/x13"
+            android:paddingEnd="@dimen/x13"
+            app:groupId="AOD-STYLE"
+            app:checked="false"/>
+
+    </LinearLayout>
+
+</layout>
