@@ -15,6 +15,7 @@ import androidx.annotation.LayoutRes;
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.requesters.BaseRequester;
 import cn.ommiao.mowidgets.utils.SPUtil;
+import cn.ommiao.mowidgets.utils.StringUtil;
 
 public class MonthCalendarWidget extends BaseTimingRefreshListWidget<MonthCalendarService, BaseRequester<MonthCalendarWidget>> {
 
@@ -86,9 +87,9 @@ public class MonthCalendarWidget extends BaseTimingRefreshListWidget<MonthCalend
         views.setInt(R.id.iv_rect, "setAlpha", getAlphaByHex(colorStrOrigin));
         views.setOnClickPendingIntent(R.id.iv_rect, getRefreshIntent(context, appWidgetId));
 
-        String picPath = SPUtil.getString(context.getString(R.string.label_month_calendar) + appWidgetId + "_path", "Invalid path");
+        String picPath = SPUtil.getString(context.getString(R.string.label_month_calendar) + appWidgetId + "_path", "");
         Bitmap bitmap = null;
-        if(!"Invalid path".equals(picPath)){
+        if(!StringUtil.isEmpty(picPath)){
             picPath = appendRootPath(picPath);
             try {
                 bitmap = BitmapFactory.decodeFile(picPath);

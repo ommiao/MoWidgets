@@ -8,7 +8,7 @@ import android.widget.RemoteViews;
 
 import cn.ommiao.mowidgets.R;
 import cn.ommiao.mowidgets.utils.SPUtil;
-import cn.ommiao.mowidgets.utils.ToastUtil;
+import cn.ommiao.mowidgets.utils.StringUtil;
 import cn.ommiao.mowidgets.widgets.BaseWidget;
 
 public class CustomPictureWidget extends BaseWidget {
@@ -16,9 +16,9 @@ public class CustomPictureWidget extends BaseWidget {
     @Override
     public RemoteViews getRemoteViews(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_picture);
-        String picPath = SPUtil.getString(context.getString(R.string.label_custom_picture) + appWidgetId + "_path", "Invalid path");
+        String picPath = SPUtil.getString(context.getString(R.string.label_custom_picture) + appWidgetId + "_path", "");
         Bitmap bitmap = null;
-        if(!"Invalid path".equals(picPath)){
+        if(!StringUtil.isEmpty(picPath)){
             picPath = appendRootPath(picPath);
             try {
                 bitmap = BitmapFactory.decodeFile(picPath);

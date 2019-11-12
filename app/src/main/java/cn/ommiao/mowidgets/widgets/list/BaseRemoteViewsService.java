@@ -1,6 +1,5 @@
 package cn.ommiao.mowidgets.widgets.list;
 
-import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
@@ -30,7 +29,7 @@ public abstract class BaseRemoteViewsService extends RemoteViewsService {
 
         BaseFactory(Context context, Intent intent){
             this.mContext = context;
-            widgetId = Integer.valueOf(Objects.requireNonNull(intent.getData()).getSchemeSpecificPart());;
+            widgetId = Integer.valueOf(Objects.requireNonNull(intent.getData()).getSchemeSpecificPart());
         }
 
         @Override

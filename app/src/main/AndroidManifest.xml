@@ -315,6 +315,10 @@
             android:theme="@style/FakeDialog"
             android:exported="true"/>
 
+        <activity android:name=".configs.TextClockConfigActivity"
+            android:theme="@style/FakeDialog"
+            android:exported="true"/>
+
         <service
             android:name=".TimeService"
             android:enabled="true"
@@ -387,6 +391,19 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info_miui_aod" />
+        </receiver>
+
+        <receiver
+            android:name=".widgets.TextClockWidget"
+            android:label="@string/label_text_clock">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="android.intent.action.TIME_SET"/>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/widget_info_text_clock" />
         </receiver>
 
     </application>

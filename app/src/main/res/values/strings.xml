@@ -78,4 +78,8 @@
     <string name="title_poco_clock_settings">Poco Clock Settings</string>
     <string name="label_miui_aod">MIUI AOD Clock</string>
     <string name="title_miui_aod_clock_settings">MIUI AOD Clock Settings</string>
+    <string name="text_clock_dictionary">ITLISASGTFIACQUARTERBSTWENTYFIVEXHALFBTENFTOPASTERUNINEONESIXTHREEFOURFIVETWOEIGHTELEVENSEVENTWELVETENSEOCLOCKMIDNIGHTERO</string>
+    <string name="text_clock_dictionary_tgif">ITLISASTGIFACQUARTERBSTWENTYFIVEXHALFBTENFTOPASTERUNINEONESIXTHREEFOURFIVETWOEIGHTELEVENSEVENTWELVETENSEOCLOCKMIDNIGHTERO</string>
+    <string name="label_text_clock">Text Clock</string>
+    <string name="title_text_clock_settings">Text Clock Settings</string>
 </resources>

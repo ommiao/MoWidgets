@@ -32,6 +32,7 @@
             android:stretchMode="none"
             android:clipChildren="false"
             android:scrollbars="none"
+            android:listSelector="@android:color/transparent"
             tools:listitem="@layout/item_calendar_day" />
 
         <LinearLayout
