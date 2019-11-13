@@ -16,6 +16,7 @@ import java.util.Calendar;
 import cn.ommiao.mowidgets.RefreshActivity;
 import cn.ommiao.mowidgets.requesters.BaseRequester;
 import cn.ommiao.mowidgets.utils.SPUtil;
+import cn.ommiao.mowidgets.utils.ToastUtil;
 
 import static cn.ommiao.mowidgets.Constant.EXTRA_WIDGET_CLASS;
 
@@ -34,7 +35,14 @@ public abstract class BaseWidget<R extends BaseRequester> extends AppWidgetProvi
             getDataRequester(context, appWidgetManager, appWidgetId).request();
         } else {
             RemoteViews remoteViews = getRemoteViews(context, appWidgetManager, appWidgetId);
-            appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
+            try {
+                appWidgetManager.updateAppWidget(appWidgetId, remoteViews);
+            } catch (IllegalArgumentException e){
+                e.printStackTrace();
+                if(e.getMessage() != null && e.getMessage().contains("bitmap memory")){
+                    ToastUtil.shortToast("图片内存占用过大，请降低分辨率重试。");
+                }
+            }
         }
     }
 
