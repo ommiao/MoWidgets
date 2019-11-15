@@ -26,9 +26,6 @@ public class RollingGalleryWidget extends BaseWidget {
         views.setImageViewBitmap(R.id.iv_gallery_1, getBitmap(appendRootPath(SPUtil.getString(context.getString(R.string.label_rolling_gallery) + appWidgetId + "_path_1", ""))));
         views.setImageViewBitmap(R.id.iv_gallery_2, getBitmap(appendRootPath(SPUtil.getString(context.getString(R.string.label_rolling_gallery) + appWidgetId + "_path_2", ""))));
         views.setImageViewBitmap(R.id.iv_gallery_3, getBitmap(appendRootPath(SPUtil.getString(context.getString(R.string.label_rolling_gallery) + appWidgetId + "_path_3", ""))));
-        views.setImageViewBitmap(R.id.iv_gallery_1_bg, getBitmap(appendRootPath(SPUtil.getString(context.getString(R.string.label_rolling_gallery) + appWidgetId + "_path_bg_1", ""))));
-        views.setImageViewBitmap(R.id.iv_gallery_2_bg, getBitmap(appendRootPath(SPUtil.getString(context.getString(R.string.label_rolling_gallery) + appWidgetId + "_path_bg_2", ""))));
-        views.setImageViewBitmap(R.id.iv_gallery_3_bg, getBitmap(appendRootPath(SPUtil.getString(context.getString(R.string.label_rolling_gallery) + appWidgetId + "_path_bg_3", ""))));
         return views;
     }
 
@@ -65,10 +62,7 @@ public class RollingGalleryWidget extends BaseWidget {
                 context.getString(R.string.label_rolling_gallery) + appWidgetId + "_radius_scale",
                 context.getString(R.string.label_rolling_gallery) + appWidgetId + "_path_1",
                 context.getString(R.string.label_rolling_gallery) + appWidgetId + "_path_2",
-                context.getString(R.string.label_rolling_gallery) + appWidgetId + "_path_3",
-                context.getString(R.string.label_rolling_gallery) + appWidgetId + "_path_bg_1",
-                context.getString(R.string.label_rolling_gallery) + appWidgetId + "_path_bg_2",
-                context.getString(R.string.label_rolling_gallery) + appWidgetId + "_path_bg_3"
+                context.getString(R.string.label_rolling_gallery) + appWidgetId + "_path_3"
         };
     }
 

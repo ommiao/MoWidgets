@@ -4,7 +4,7 @@
     android:initialLayout="@layout/widget_rolling_gallery"
     android:minHeight="@dimen/x103"
     android:minWidth="@dimen/x103"
-    android:previewImage="@drawable/ic_rectangle_round"
+    android:previewImage="@drawable/preview_rolling_gallery"
     android:updatePeriodMillis="0"
     android:widgetCategory="home_screen"
     android:resizeMode="vertical|horizontal"

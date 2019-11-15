@@ -13,9 +13,7 @@ import cn.ommiao.mowidgets.widgets.RollingGalleryWidget;
 public class RollingGalleryConfigActivity extends BaseConfigActivity<RollingGalleryWidget> {
 
     private LayoutFileSelectorBinding fileSelectorBinding1, fileSelectorBinding2, fileSelectorBinding3;
-    private LayoutFileSelectorBinding fileSelectorBindingBg1, fileSelectorBindingBg2, fileSelectorBindingBg3;
     private String path1, path2, path3;
-    private String pathBg1, pathBg2, pathBg3;
 
     private LayoutEdittextBinding edittextBindingRadiusScale;
     private float radiusScale;
@@ -27,18 +25,12 @@ public class RollingGalleryConfigActivity extends BaseConfigActivity<RollingGall
 
     @Override
     protected void initConfigViews() {
-        fileSelectorBinding1 = getImgSelectorBinding("图片一前景");
-        fileSelectorBinding2 = getImgSelectorBinding("图片二前景");
-        fileSelectorBinding3 = getImgSelectorBinding("图片三前景");
-        fileSelectorBindingBg1 = getImgSelectorBinding("图片一背景");
-        fileSelectorBindingBg2 = getImgSelectorBinding("图片二背景");
-        fileSelectorBindingBg3 = getImgSelectorBinding("图片三背景");
+        fileSelectorBinding1 = getImgSelectorBinding("图片一");
+        fileSelectorBinding2 = getImgSelectorBinding("图片二");
+        fileSelectorBinding3 = getImgSelectorBinding("图片三");
         addConfigView(fileSelectorBinding1.getRoot());
-        addConfigView(fileSelectorBindingBg1.getRoot());
         addConfigView(fileSelectorBinding2.getRoot());
-        addConfigView(fileSelectorBindingBg2.getRoot());
         addConfigView(fileSelectorBinding3.getRoot());
-        addConfigView(fileSelectorBindingBg3.getRoot());
         edittextBindingRadiusScale = getEdittextBinding("圆角比例");
         edittextBindingRadiusScale.et.setText("0.03");
         edittextBindingRadiusScale.et.setHint("0-0.5的小数");
@@ -68,9 +60,6 @@ public class RollingGalleryConfigActivity extends BaseConfigActivity<RollingGall
         path1 = fileSelectorBinding1.tvFileName.getText().toString().trim();
         path2 = fileSelectorBinding2.tvFileName.getText().toString().trim();
         path3 = fileSelectorBinding3.tvFileName.getText().toString().trim();
-        pathBg1 = fileSelectorBindingBg1.tvFileName.getText().toString().trim();
-        pathBg2 = fileSelectorBindingBg2.tvFileName.getText().toString().trim();
-        pathBg3 = fileSelectorBindingBg3.tvFileName.getText().toString().trim();
         if(StringUtil.isEmpty(path1)){
             ToastUtil.shortToast("请选择图片一前景");
             return false;
@@ -81,18 +70,6 @@ public class RollingGalleryConfigActivity extends BaseConfigActivity<RollingGall
         }
         if(StringUtil.isEmpty(path3)){
             ToastUtil.shortToast("请选择图片三前景");
-            return false;
-        }
-        if(StringUtil.isEmpty(pathBg1)){
-            ToastUtil.shortToast("请选择图片一背景");
-            return false;
-        }
-        if(StringUtil.isEmpty(pathBg2)){
-            ToastUtil.shortToast("请选择图片二背景");
-            return false;
-        }
-        if(StringUtil.isEmpty(pathBg3)){
-            ToastUtil.shortToast("请选择图片三背景");
             return false;
         }
         try {
@@ -110,10 +87,11 @@ public class RollingGalleryConfigActivity extends BaseConfigActivity<RollingGall
         SPUtil.put(getString(R.string.label_rolling_gallery) + widgetId + "_path_1", path1);
         SPUtil.put(getString(R.string.label_rolling_gallery) + widgetId + "_path_2", path2);
         SPUtil.put(getString(R.string.label_rolling_gallery) + widgetId + "_path_3", path3);
-        SPUtil.put(getString(R.string.label_rolling_gallery) + widgetId + "_path_bg_1", pathBg1);
-        SPUtil.put(getString(R.string.label_rolling_gallery) + widgetId + "_path_bg_2", pathBg2);
-        SPUtil.put(getString(R.string.label_rolling_gallery) + widgetId + "_path_bg_3", pathBg3);
         SPUtil.put(getString(R.string.label_rolling_gallery) + widgetId + "_radius_scale", radiusScale);
     }
 
+    @Override
+    protected boolean needReadStorage() {
+        return true;
+    }
 }
